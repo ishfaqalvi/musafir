@@ -5,11 +5,11 @@ class BundleService extends BaseService
 {
     public function getAllBundles()
     {
-        return $this->get('/Bundles/GetAllBundles');
+        return $this->get('/Bundles/GetAllBundles')['details'];
     }
 
-    public function getFilterBundles()
+    public function getFilterBundles($params)
     {
-        return $this->get('/Bundles/GetFilteredBundles');
+        return $this->get('/Bundles/GetFilteredBundles', $params)['details'];
     }
 }

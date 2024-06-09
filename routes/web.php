@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Website\DynamicPageController;
+use App\Http\Controllers\Web\HomeController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -25,7 +25,67 @@ Auth::routes();
 
 /*
 |--------------------------------------------------------------------------
-| Dynamic Pages Routes
+| Web Public Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/', [DynamicPageController::class, 'viewHomePage']);
+Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
+    /*
+	|--------------------------------------------------------------------------
+	| Home Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::get('/', 'HomeController@index')->name('home');
+
+    /*
+	|--------------------------------------------------------------------------
+	| Plans Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::controller(PlanController::class)->prefix('plans')->as('plans.')->group(function () {
+        Route::get('list',             'index'       )->name('index'      );
+        Route::get('rent',             'rent'        )->name('rent'       );
+    });
+
+    /*
+	|--------------------------------------------------------------------------
+	| NewsLetter Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::post('news-letter/store', 'NewsletterController@store');
+
+    /*
+	|--------------------------------------------------------------------------
+	| Brand Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::get('brands', 'BrandController@index')->name('brand.index');
+
+    /*
+	|--------------------------------------------------------------------------
+	| Brand Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::get('about-us', 'AboutUsController@index')->name('aboutUs.index');
+
+    /*
+	|--------------------------------------------------------------------------
+	| Contact Us Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::controller(ContactUsController::class)->prefix('contact-us')->as('web.contactUs.')->group(function () {
+        Route::get('/',             'index' )->name('index');
+        Route::get('show/{id}',     'show'  )->name('show');
+    });
+
+
+
+    /*
+	|--------------------------------------------------------------------------
+	| Blog Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::controller(BlogController::class)->prefix('blogs')->as('web.blogs.')->group(function () {
+        Route::get('list',          'index'  )->name('index');
+        Route::get('show/{id}',     'show'  )->name('show');
+    });
+});

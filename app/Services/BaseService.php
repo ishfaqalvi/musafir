@@ -10,7 +10,7 @@ class BaseService
 
     public function __construct()
     {
-        $this->baseUrl = config('services.api_base_url');
+        $this->baseUrl = env('API_BASE_URL');
     }
 
     protected function get($endpoint, $params = [])
