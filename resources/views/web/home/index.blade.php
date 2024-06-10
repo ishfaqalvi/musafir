@@ -68,104 +68,19 @@
             <div class="tab-content pt-5">
                 <div class="tab-pane active" id="localEsims" role="tabpanel" aria-labelledby="localEsims-tab">
                     <h4 class="mb-lg-5 mb-3">Popular Countries</h4>
-                    <div class="row g-lg-5 g-3 pb-lg-5 pb-3">
-                        @foreach ($countries as $row)
-                        <div class="col-lg-4 col-md-6">
-                            <a href="{{ route('plans.index',['type' => 'local', 'country' => $row['countryCode']]) }}">
-                                <div class="card border-0">
-                                    <div class="card-body d-flex justify-content-between p-4 align-items-center">
-                                        <div>
-                                            <div class="d-flex gap-3 align-items-center">
-                                                <img src="data:image/svg+xml;base64, {{ base64_encode($row['flagImage']) }}" alt="" height="35px" width="45px">
-                                                <h5>{{ $row['countryName'] }}</h5>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <img src="{{ asset('assets/web/img/right-Icon.png') }}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="row pb-5 justify-content-center">
-                        <div class="col-lg-6 col-md-8">
-                            <div class="card border-0">
-                                <div class="card-body text-center">
-                                    <a href="#">
-                                        <p class="mb-0">Show All Countries</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="localEsimsCountriesList"></div>
                 </div>
                 <div class="tab-pane" id="regionalEsims" role="tabpanel" aria-labelledby="regionalEsims-tab">
                     <h4 class="mb-lg-5 mb-3">REGIONS</h4>
-                    <div class="row g-lg-5 g-3 pb-5">
-                        @foreach ($regions as $row)
-                        <div class="col-lg-6 col-md-6">
-                            <a href="{{ route('plans.index',['type' => 'regional', 'region' => $row['regionCode'], 'name' => $row['region']]) }}">
-                                <div class="card border-0">
-                                    <div class="card-body d-flex justify-content-between p-4 align-items-center">
-                                        <div>
-                                            <div class="d-flex gap-3 align-items-center">
-                                                <img src="{{ asset('assets/web/img/maps-icon.svg') }}" alt="">
-                                                <h5>{{ $row['region'] }}</h5>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <img src="{{ asset('assets/web/img/right-Icon.png') }}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        @endforeach
+                    <div class="row g-lg-5 g-3 pb-5" id="regionalEsimsRegionsList">
                     </div>
                 </div>
                 <div class="tab-pane" id="musafirPlans" role="tabpanel" aria-labelledby="musafirPlans-tab">
                     <h4 class="mb-lg-5 mb-3">Countries</h4>
-                    <div class="row g-lg-5 g-3 pb-lg-5 pb-3">
-                        @foreach ($countries as $row)
-                        <div class="col-lg-4 col-md-6">
-                            <a href="{{ route('plans.index',['type'=>'musafir','country'=>$row['countryCode']]) }}">
-                                <div class="card border-0">
-                                    <div class="card-body d-flex justify-content-between p-4 align-items-center">
-                                        <div>
-                                            <div class="d-flex gap-3 align-items-center">
-                                                <img src="data:image/svg+xml;base64, {{ base64_encode($row['flagImage']) }}" alt="" height="35px" width="45px">
-                                                <h5>{{ $row['countryName'] }}</h5>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <img src="{{ asset('assets/web/img/right-Icon.png') }}" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="row pb-5 justify-content-center">
-                        <div class="col-lg-6 col-md-8">
-                            <div class="card border-0">
-                                <div class="card-body text-center">
-                                    <a href="#">
-                                        <p class="mb-0">Show All Countries</p>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="musafirPlansCountriesList">
                     </div>
                 </div>
             </div>
-            <script>
-                var firstTabEl = document.querySelector('#myTab li:last-child a')
-                var firstTab = new bootstrap.Tab(firstTabEl)
-                firstTab.show()
-            </script>
         </div>
     </section>
     <section class="musafir-works">
@@ -315,4 +230,34 @@
     </section>
 </main>
 <!-- End #main -->
+@endsection
+
+@section('script')
+<script>
+    $(function () {
+        let spinnerContent =
+        `
+        <div class="text-center text-warning">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        `;
+        $('#localEsimsCountriesList').append(spinnerContent);
+        $('#musafirPlansCountriesList').append(spinnerContent);
+        $('#regionalEsimsRegionsList').append(spinnerContent);
+        $.ajax({
+            url: '{{ route('home.data') }}',
+            method: 'GET',
+            success: function(data) {
+                $('#localEsimsCountriesList').html(data.countries.localEsims);
+                $('#musafirPlansCountriesList').html(data.countries.musafirPlans);
+                $('#regionalEsimsRegionsList').html(data.regions);
+            },
+            error: function(error) {
+                $('#data-container').html('<p>Error loading data.</p>');
+            }
+        });
+    });
+</script>
 @endsection

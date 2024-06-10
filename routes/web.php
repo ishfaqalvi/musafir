@@ -34,7 +34,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
 	| Home Routes
 	|--------------------------------------------------------------------------
 	*/
-    Route::get('/', 'HomeController@index')->name('home');
+    Route::controller(HomeController::class)->as('home.')->group(function () {
+        Route::get('/',             'index')->name('index');
+        Route::get('data',          'data' )->name('data' );
+    });
 
     /*
 	|--------------------------------------------------------------------------
@@ -42,8 +45,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
 	|--------------------------------------------------------------------------
 	*/
     Route::controller(PlanController::class)->prefix('plans')->as('plans.')->group(function () {
-        Route::get('list',             'index'       )->name('index'      );
-        Route::get('rent',             'rent'        )->name('rent'       );
+        Route::get('list',             'index'   )->name('index'    );
+        Route::get('data',             'data'    )->name('data'     );
+        Route::get('packages',         'packages')->name('packages' );
     });
 
     /*

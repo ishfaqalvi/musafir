@@ -68,389 +68,29 @@
             <div class="tab-content pt-5">
                 <div class="tab-pane {{ $perameters['type'] == 'local' ? 'active' : '' }}" id="localEsims" role="tabpanel" aria-labelledby="localEsims-tab">
                     @if($perameters['type'] == 'local')
-                        <div class="d-flex justify-content-center align-items-center gap-4 mb-lg-5 mb-3">
-                            <div class="countries-flag">
-                                <img src="data:image/svg+xml;base64, {{ base64_encode($filterBy['flagImage']) }}" alt="" height="35px" width="45px">
-                            </div>
-                            <h4 class="mb-0 countries-heading">{{ $filterBy['countryName'] }}</h4>
-                        </div>
-                        @if(isset($plans['bundles']) && is_array($plans['bundles']))
-                            <div class="row g-3 pb-3 pb-lg-5">
-                                @foreach ($plans['bundles'] as $row)
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="main-div-deatil-card">
-                                            <div class="country-card-img text-end me-4">
-                                                <img src="{{ asset('assets/web/img/detail-card-img.png') }}" alt="">
-                                            </div>
-                                            <div class="card  details-card  position-relative">
-                                                <ul class="list-group border-0 mt-0">
-                                                    <li class="list-group-item">
-                                                        <h4 class="mb-1 text-white gif-mob">GiffGaf Mobile</h4>
-                                                        <h5 class="text-white United-kingdom">{{ $row['bundleName'] }}</h5>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/COVERAGE.svg') }}" alt="">
-                                                                    <p class="label-field">COVERAGE</p>
-                                                                </div>
-                                                            </div>
-                                                            <div><p class="data-field">{{ $row['countryNavigation']['countryName'] }}</p></div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/DATA.svg') }}" alt="">
-                                                                    <p class="label-field">DATA</p>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <p class="data-field">{{ $row['bundleData'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/VALIDITY.svg') }}" alt="">
-                                                                    <p class="label-field">VALIDITY</p>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <p class="data-field">{{ $row['period'].' '.$row['periodType'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item ">
-                                                        <div class="d-flex justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/price.png') }}" alt="">
-                                                                    <p class="label-field">PRICE</p>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <p class="data-field">{{ $row['currency'].' '.$row['price'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item align-items-center border-bottom-0 ">
-                                                        <a href="#" class="text-white">
-                                                            <div class="w-100 border py-2 fw-bold rounded text-white text-center" >
-                                                                BUY NOW
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @else
-                            <div class="row mb-md-5">
-                                <div class="col-sm-12 text-center">
-                                    <h4 class="mb-lg-3 mb-2">
-                                        Opps! No packages available for {{ $filterBy['countryName'] }}
-                                    </h4>
-                                </div>
-                            </div>
-                        @endif
+                        <div id="localEsimPlans"></div>
                     @else
                         <h4 class="mb-lg-5 mb-3">Popular Countries</h4>
-                        <div class="row g-lg-5 g-3 pb-lg-5 pb-3">
-                            @foreach ($countries as $row)
-                            <div class="col-lg-4 col-md-6">
-                                <a href="">
-                                    <div class="card border-0">
-                                        <div class="card-body d-flex justify-content-between p-4 align-items-center">
-                                            <div>
-                                                <div class="d-flex gap-3 align-items-center">
-                                                    <img src="data:image/svg+xml;base64, {{ base64_encode($row['flagImage']) }}" alt="" height="35px" width="45px">
-                                                    <h5>{{ $row['countryName'] }}</h5>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/web/img/right-Icon.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="row pb-5 justify-content-center">
-                            <div class="col-lg-6 col-md-8">
-                                <div class="card border-0">
-                                    <div class="card-body text-center">
-                                        <a href="#">
-                                            <p class="mb-0">Show All Countries</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="localEsimsCountriesList"></div>
                     @endif
                 </div>
                 <div class="tab-pane {{ $perameters['type'] == 'regional' ? 'active' : '' }}" id="regionalEsims" role="tabpanel" aria-labelledby="regionalEsims-tab">
                     @if($perameters['type'] == 'regional')
-                        <div class="d-flex justify-content-center align-items-center gap-4 mb-lg-5 mb-3">
-                            <div class="countries-flag">
-                                <img src="{{ asset('assets/web/img/maps-icon.svg') }}" alt="">
-                            </div>
-                            <h4 class="mb-0 countries-heading">{{ $filterBy['region'] }}</h4>
-                        </div>
-                        @if(isset($plans['bundles']) && is_array($plans['bundles']))
-                            <div class="row g-3 pb-3 pb-lg-5">
-                                @foreach ($plans['bundles'] as $row)
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="main-div-deatil-card">
-                                            <div class="country-card-img text-end me-4">
-                                                <img src="{{ asset('assets/web/img/detail-card-img.png') }}" alt="">
-                                            </div>
-                                            <div class="card  details-card  position-relative">
-                                                <ul class="list-group border-0 mt-0">
-                                                    <li class="list-group-item">
-                                                        <h4 class="mb-1 text-white gif-mob">GiffGaf Mobile</h4>
-                                                        <h5 class="text-white United-kingdom">{{ $row['bundleName'] }}</h5>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/COVERAGE.svg') }}" alt="">
-                                                                    <p class="label-field">COVERAGE</p>
-                                                                </div>
-                                                            </div>
-                                                            <div><p class="data-field">{{ $row['countryNavigation']['countryName'] }}</p></div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/DATA.svg') }}" alt="">
-                                                                    <p class="label-field">DATA</p>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <p class="data-field">{{ $row['bundleData'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/VALIDITY.svg') }}" alt="">
-                                                                    <p class="label-field">VALIDITY</p>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <p class="data-field">{{ $row['period'].' '.$row['periodType'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item ">
-                                                        <div class="d-flex justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/price.png') }}" alt="">
-                                                                    <p class="label-field">PRICE</p>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <p class="data-field">{{ $row['currency'].' '.$row['price'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item align-items-center border-bottom-0 ">
-                                                        <a href="#" class="text-white">
-                                                            <div class="w-100 border py-2 fw-bold rounded text-white text-center" >
-                                                                BUY NOW
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @else
-                            <div class="row mb-md-5">
-                                <div class="col-sm-12 text-center">
-                                    <h4 class="mb-lg-3 mb-2">
-                                        Opps! No packages available for {{ $filterBy['region'] }}
-                                    </h4>
-                                </div>
-                            </div>
-                        @endif
+                        <div id="regionalEsimPlans"></div>
                     @else
                         <h4 class="mb-lg-5 mb-3">REGIONS</h4>
-                        <div class="row g-lg-5 g-3 pb-5">
-                            @foreach ($regions as $row)
-                            <div class="col-lg-6 col-md-6">
-                                <a href="">
-                                    <div class="card border-0">
-                                        <div class="card-body d-flex justify-content-between p-4 align-items-center">
-                                            <div>
-                                                <div class="d-flex gap-3 align-items-center">
-                                                    <img src="{{ asset('assets/web/img/maps-icon.svg') }}" alt="">
-                                                    <h5>{{ $row['region'] }}</h5>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/web/img/right-Icon.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            @endforeach
-                        </div>
+                        <div class="row g-lg-5 g-3 pb-5" id="regionalEsimsRegionsList"></div>
                     @endif
                 </div>
                 <div class="tab-pane {{ $perameters['type'] == 'musafir' ? 'active' : '' }}" id="musafirPlans" role="tabpanel" aria-labelledby="musafirPlans-tab">
                     @if($perameters['type'] == 'musafir')
-                        <div class="d-flex justify-content-center align-items-center gap-4 mb-lg-5 mb-3">
-                            <div class="countries-flag">
-                                <img src="data:image/svg+xml;base64, {{ base64_encode($filterBy['flagImage']) }}" alt="" height="45px" width="45px">
-                            </div>
-                            <h4 class="mb-0 countries-heading">{{ $filterBy['countryName'] }}</h4>
-                        </div>
-                        @if(isset($plans['bundles']) && is_array($plans['bundles']))
-                            <div class="row g-3 pb-3 pb-lg-5">
-                                @foreach ($plans['bundles'] as $row)
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="main-div-deatil-card">
-                                            <div class="country-card-img text-end me-4">
-                                                <img src="{{ asset('assets/web/img/detail-card-img.png') }}" alt="">
-                                            </div>
-                                            <div class="card  details-card  position-relative">
-                                                <ul class="list-group border-0 mt-0">
-                                                    <li class="list-group-item">
-                                                        <h4 class="mb-1 text-white gif-mob">GiffGaf Mobile</h4>
-                                                        <h5 class="text-white United-kingdom">{{ $row['bundleName'] }}</h5>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/COVERAGE.svg') }}" alt="">
-                                                                    <p class="label-field">COVERAGE</p>
-                                                                </div>
-                                                            </div>
-                                                            <div><p class="data-field">{{ $row['countryNavigation']['countryName'] }}</p></div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/DATA.svg') }}" alt="">
-                                                                    <p class="label-field">DATA</p>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <p class="data-field">{{ $row['bundleData'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/VALIDITY.svg') }}" alt="">
-                                                                    <p class="label-field">VALIDITY</p>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <p class="data-field">{{ $row['period'].' '.$row['periodType'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item ">
-                                                        <div class="d-flex justify-content-between">
-                                                            <div>
-                                                                <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                                                    <img src="{{ asset('assets/web/img/price.png') }}" alt="">
-                                                                    <p class="label-field">PRICE</p>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <p class="data-field">{{ $row['currency'].' '.$row['price'] }}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li class="list-group-item align-items-center border-bottom-0 ">
-                                                        <a href="#" class="text-white">
-                                                            <div class="w-100 border py-2 fw-bold rounded text-white text-center" >
-                                                                BUY NOW
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        @else
-                            <div class="row mb-md-5">
-                                <div class="col-sm-12 text-center">
-                                    <h4 class="mb-lg-3 mb-2">
-                                        Opps! No packages available for {{ $filterBy['countryName'] }}
-                                    </h4>
-                                </div>
-                            </div>
-                        @endif
+                        <div id="musafirEsimPlans"></div>
                     @else
                         <h4 class="mb-lg-5 mb-3">Countries</h4>
-                        <div class="row g-lg-5 g-3 pb-lg-5 pb-3">
-                            @foreach ($countries as $row)
-                            <div class="col-lg-4 col-md-6">
-                                <a href="">
-                                    <div class="card border-0">
-                                        <div class="card-body d-flex justify-content-between p-4 align-items-center">
-                                            <div>
-                                                <div class="d-flex gap-3 align-items-center">
-                                                    <img src="data:image/svg+xml;base64, {{ base64_encode($row['flagImage']) }}" alt="" height="35px" width="45px">
-                                                    <h5>{{ $row['countryName'] }}</h5>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <img src="{{ asset('assets/web/img/right-Icon.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            @endforeach
-                        </div>
-                        <div class="row pb-5 justify-content-center">
-                            <div class="col-lg-6 col-md-8">
-                                <div class="card border-0">
-                                    <div class="card-body text-center">
-                                        <a href="#">
-                                            <p class="mb-0">Show All Countries</p>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="musafirPlansCountriesList"></div>
                     @endif
                 </div>
             </div>
-            <script>
-                var firstTabEl = document.querySelector('#myTab li:last-child a')
-                var firstTab = new bootstrap.Tab(firstTabEl)
-                firstTab.show()
-            </script>
         </div>
     </section>
     <section class="musafir-works">
@@ -600,4 +240,57 @@
     </section>
 </main>
 <!-- End #main -->
+@endsection
+
+@section('script')
+<script>
+    $(function () {
+        var type = "{{ $perameters['type'] }}";
+        let spinnerContent = `
+            <div class="text-center text-warning mb-5 mt-5">
+                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>`;
+        $('#localEsimsCountriesList').append(spinnerContent);
+        $('#regionalEsimsRegionsList').append(spinnerContent);
+        $('#musafirPlansCountriesList').append(spinnerContent);
+        if(type == 'local'){
+            $('#localEsimPlans').append(spinnerContent);
+        }else if(type == 'regional'){
+            $('#regionalEsimPlans').append(spinnerContent);
+        }else if(type == 'musafir'){
+            $('#musafirEsimPlans').append(spinnerContent);
+        }
+        $.ajax({
+            url: '{{ route('plans.data') }}',
+            method: 'GET',
+            success: function(data) {
+                $('#localEsimsCountriesList').html(data.countries.localEsims);
+                $('#musafirPlansCountriesList').html(data.countries.musafirPlans);
+                $('#regionalEsimsRegionsList').html(data.regions);
+            },
+            error: function(error) {
+                $('#data-container').html('<p>Error loading data.</p>');
+            }
+        });
+        var parameters = @json($perameters);
+        $.ajax({
+            url: "{{ route('plans.packages', []) }}" + '?' + $.param(parameters),
+            method: 'GET',
+            success: function(data) {
+                if(type == 'local'){
+                    $('#localEsimPlans').html(data);
+                }else if(type == 'regional'){
+                    $('#regionalEsimPlans').html(data);
+                }else if(type == 'musafir'){
+                    $('#musafirEsimPlans').html(data);
+                }
+            },
+            error: function(error) {
+                $('#data-container').html('<p>Error loading data.</p>');
+            }
+        });
+    });
+</script>
 @endsection

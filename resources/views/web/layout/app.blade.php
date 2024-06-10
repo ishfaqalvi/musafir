@@ -26,6 +26,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/web/css/home.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -56,7 +57,7 @@
                             <li><a href="#">Order Cards</a></li>
                             <li class="d-flex justify-content-between align-items-center">
                                 <a href="#">Logout</a>
-                                <img src="assets/img/logout.png" alt="">
+                                <img src="{{ asset('assets/web/img/logout.png') }}" alt="">
                             </li>
                         </ul>
                     </li>
@@ -141,8 +142,8 @@
     <script src="{{ asset('assets/web/vendor/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('assets/web/vendor/swiper/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('assets/web/vendor/purecounter/purecounter_vanilla.js') }}"></script>
-
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/web/js/main.js') }}"></script>
+    @yield('script')
 </body>
 </html>
