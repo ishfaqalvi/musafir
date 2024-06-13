@@ -1,30 +1,42 @@
 <?php
 namespace App\Services;
 
+use Illuminate\Support\Facades\Cache;
+
 class AdminService extends BaseService
 {
     public function getDataBundlesCM()
     {
-        return $this->get('/Admin/GetDataBundlesCM')['details']['dataBundles'];
+        return Cache::remember('getDataBundlesCM', 60, function () {
+            return $this->get('/Admin/GetDataBundlesCM')['details']['dataBundles'];
+        });
     }
 
     public function getCountries()
     {
-        return $this->get('/Admin/GetCountries')['details'];
+        return Cache::remember('getCountries', 60, function () {
+            return $this->get('/Admin/GetCountries')['details'];
+        });
     }
 
     public function getCountryByCode($code)
     {
-        return $this->get('/Admin/GetCountryByCode/'.$code)['details'];
+        return Cache::remember('getCountryByCode'.$code, 60, function () use($code) {
+            return $this->get('/Admin/GetCountryByCode/'.$code)['details'];
+        });
     }
 
     public function getCountriesByRegionCode($regionCode)
     {
-        return $this->get('/Admin/GetCountriesByRegionCode/'.$regionCode)['details'];
+        return Cache::remember('getCountriesByRegionCode'.$regionCode, 60, function () use($regionCode) {
+            return $this->get('/Admin/GetCountriesByRegionCode/'.$regionCode)['details'];
+        });
     }
 
     public function getRegions()
     {
-        return $this->get('/Admin/GetRegions')['details'];
+        return Cache::remember('getRegions', 60, function () {
+            return $this->get('/Admin/GetRegions')['details'];
+        });
     }
 }
