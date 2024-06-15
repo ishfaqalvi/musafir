@@ -23,29 +23,36 @@ class BaseService
         }
     }
 
-    protected function post($endpoint, $data = [])
-    {
+    protected function post($endpoint, $data = [], $token = null) {
         try {
-            $response = Http::post($this->baseUrl . $endpoint, $data);
+            if(!is_null($token)){
+                // dd($token);
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . $token,
+                ])->post($this->baseUrl . $endpoint, $data);
+            }else{
+                $response = Http::post($this->baseUrl . $endpoint, $data);
+            }
             return $this->handleResponse($response);
         } catch (\Exception $e) {
             return $this->handleException($e);
         }
     }
 
+
     private function handleResponse($response)
     {
         if ($response->successful()) {
-            return $response->json();
+            return ['status' => true, 'data' => $response->json()];
         } else {
             Log::error('API error: ' . $response->body());
-            return null; // or throw an exception
+            return ['status' => false, 'data' => json_decode($response->body(), true)];
         }
     }
 
     private function handleException($e)
     {
         Log::error('API exception: ' . $e->getMessage());
-        return null; // or throw an exception
+        return null;
     }
 }

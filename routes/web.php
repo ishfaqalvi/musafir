@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Auth;
 |--------------------------------------------------------------------------
 */
 
-Auth::routes();
+// Auth::routes();
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +48,20 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
         Route::get('list',             'index'   )->name('index'    );
         Route::get('data',             'data'    )->name('data'     );
         Route::get('packages',         'packages')->name('packages' );
+    });
+
+    /*
+	|--------------------------------------------------------------------------
+	| Auth Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::controller(AuthController::class)->as('auth.')->group(function () {
+        Route::get('login-register',     'loginRegisterForm')->name('login-register');
+        Route::post('register',          'register'         )->name('register'      );
+        Route::post('login',             'login'            )->name('login'         );
+        Route::post('send-otp',          'sendOTP'          )->name('sendOtp'       );
+        Route::post('verify-otp',        'verifyOTP'        )->name('verifyOtp'     );
+        Route::get('send-email',         'sendEmail'        )->name('sendEmail'     );
     });
 
     /*
@@ -91,5 +105,26 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
     Route::controller(BlogController::class)->prefix('blogs')->as('web.blogs.')->group(function () {
         Route::get('list',          'index'  )->name('index');
         Route::get('show/{id}',     'show'  )->name('show');
+    });
+});
+
+/*
+|--------------------------------------------------------------------------
+| Web Protected Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['namespace' => 'App\Http\Controllers\Web', 'middleware' => ['api.auth']], function () {
+    /*
+	|--------------------------------------------------------------------------
+	| Profile Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::controller(ProfileController::class)->as('profile.')->group(function () {
+        Route::get('account-info',       'accountInfo')->name('accountInfo');
+        // Route::post('register',          'register'         )->name('register'      );
+        // Route::post('login',             'login'            )->name('login'         );
+        // Route::post('send-otp',          'sendOTP'          )->name('sendOtp'       );
+        // Route::post('verify-otp',        'verifyOTP'        )->name('verifyOtp'     );
+        // Route::get('send-email',         'sendEmail'        )->name('sendEmail'     );
     });
 });

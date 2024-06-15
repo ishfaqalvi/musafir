@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\AdminService;
 use App\Services\BundleService;
+use App\Services\AuthService;
 use Illuminate\Support\ServiceProvider;
 
 class ApiServiceProvider extends ServiceProvider
@@ -21,6 +22,10 @@ class ApiServiceProvider extends ServiceProvider
 
         $this->app->singleton(BundleService::class, function ($app) {
             return new BundleService();
+        });
+
+        $this->app->singleton(AuthService::class, function ($app) {
+            return new AuthService();
         });
     }
 

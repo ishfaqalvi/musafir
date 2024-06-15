@@ -2,6 +2,10 @@
 
 @section('title') Musafir | Plan @endsection
 
+@section('header') @include('web.layout.header') @endsection
+
+@section('footer') @include('web.layout.footer') @endsection
+
 @section('content')
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero">
