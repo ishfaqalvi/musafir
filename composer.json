@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "anhskohbo/no-captcha": "^3.5",
         "firebase/php-jwt": "^6.10",
+        "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.8",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",

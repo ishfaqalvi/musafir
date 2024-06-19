@@ -41,7 +41,7 @@
                                             <input class="form-check-input me-3" type="checkbox" id="flexSwitchCheckChecked" checked>
                                             <label class="form-check-label" for="flexSwitchCheckChecked">Remember me</label>
                                         </div>
-                                        <a href="#" class="forget">Forgot password?</a>
+                                        <a href="{{ route('auth.forgotPassword') }}" class="forget">Forgot password?</a>
                                     </div>
                                     <div class="submit-btn" id="loginBtn">
                                         <button type="submit">LOGIN</button>
@@ -237,7 +237,7 @@
                                 }
                             });
                         }else{
-                            toaster.success('Login successfully.');
+                            toastr.success('Login successfully.');
                             window.location.href = "{{ route('profile.accountInfo') }}";
                         }
                     }else{
@@ -264,17 +264,17 @@
                     if(data.status){
                         if(data.data.status){
                             toastr.success('Your account is varified successfully!');
-                            // location.reload();
+                            location.reload();
                         }else{
                             if(data.data.data.details){
                                 toastr.warning(data.data.data.details);
                             }
                             toastr.warning(data.data.data.title);
-                            $('#signupBtn').html(signupBtn);
+                            $('#verifyOtpBtn').html(verifyOtpBtn);
                         }
                     }else{
                         toastr.warning(data.message);
-                        $('#signupBtn').html(signupBtn);
+                        $('#verifyOtpBtn').html(verifyOtpBtn);
                     }
                 },
                 error: function(xhr, status, error) {

@@ -56,56 +56,16 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
 	|--------------------------------------------------------------------------
 	*/
     Route::controller(AuthController::class)->as('auth.')->group(function () {
-        Route::get('login-register',     'loginRegisterForm')->name('login-register');
-        Route::post('register',          'register'         )->name('register'      );
-        Route::post('login',             'login'            )->name('login'         );
-        Route::post('send-otp',          'sendOTP'          )->name('sendOtp'       );
-        Route::post('verify-otp',        'verifyOTP'        )->name('verifyOtp'     );
-        Route::get('send-email',         'sendEmail'        )->name('sendEmail'     );
+        Route::get('login-register',     'loginRegisterForm' )->name('login-register');
+        Route::post('register',          'register'          )->name('register'      );
+        Route::post('login',             'login'             )->name('login'         );
+        Route::post('send-otp',          'sendOTP'           )->name('sendOtp'       );
+        Route::post('verify-otp',        'verifyOTP'         )->name('verifyOtp'     );
+        Route::get('forgot-password',    'forgotPasswordForm')->name('forgotPassword');
+        Route::post('forgot-password',   'forgotPassword'    )->name('forgotPassword');
+        Route::post('reset-password',    'resetPassword'     )->name('resetPassword' );
     });
 
-    /*
-	|--------------------------------------------------------------------------
-	| NewsLetter Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::post('news-letter/store', 'NewsletterController@store');
-
-    /*
-	|--------------------------------------------------------------------------
-	| Brand Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::get('brands', 'BrandController@index')->name('brand.index');
-
-    /*
-	|--------------------------------------------------------------------------
-	| Brand Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::get('about-us', 'AboutUsController@index')->name('aboutUs.index');
-
-    /*
-	|--------------------------------------------------------------------------
-	| Contact Us Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::controller(ContactUsController::class)->prefix('contact-us')->as('web.contactUs.')->group(function () {
-        Route::get('/',             'index' )->name('index');
-        Route::get('show/{id}',     'show'  )->name('show');
-    });
-
-
-
-    /*
-	|--------------------------------------------------------------------------
-	| Blog Routes
-	|--------------------------------------------------------------------------
-	*/
-    Route::controller(BlogController::class)->prefix('blogs')->as('web.blogs.')->group(function () {
-        Route::get('list',          'index'  )->name('index');
-        Route::get('show/{id}',     'show'  )->name('show');
-    });
 });
 
 /*
@@ -120,7 +80,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'middleware' => ['api.a
 	|--------------------------------------------------------------------------
 	*/
     Route::controller(ProfileController::class)->as('profile.')->group(function () {
-        Route::get('account-info',       'accountInfo')->name('accountInfo');
+        Route::get('account-info',          'accountInfoForm'   )->name('accountInfo');
+        Route::post('account-info',         'accountInfo'       )->name('accountInfo');
+        Route::get('card-list',             'cardList'          )->name('cardList');
+        Route::post('card-save',            'cardSave'          )->name('cardSave');
+        Route::get('logout',                'logout'            )->name('logout'     );
         // Route::post('register',          'register'         )->name('register'      );
         // Route::post('login',             'login'            )->name('login'         );
         // Route::post('send-otp',          'sendOTP'          )->name('sendOtp'       );

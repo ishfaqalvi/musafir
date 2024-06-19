@@ -20,7 +20,7 @@ class BundleService extends BaseService
             $filter = $filter.$str;
         }
         return Cache::remember('getFilterBundles'.$filter, 60, function () use($params){
-            return $this->get('/Bundles/GetFilteredBundles', $params)['details'];
+            return $this->get('/Bundles/GetFilteredBundles', $params)['data']['details'];
         });
     }
 }

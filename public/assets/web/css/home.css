@@ -763,7 +763,7 @@ padding: 57px 0 100px 0;
   font-weight: 500;
   line-height: 21px;
   text-align: center;
-  padding: 21px 21px;
+  padding: 21px 10px;
   color: var(--color-black);
 }
 .login-body .card .card-body li:first-child button {
@@ -810,7 +810,7 @@ padding: 57px 0 100px 0;
   max-width: 270px;
   margin: 25px auto 0;
   width: 100%;
-  padding: 12px 55px 12px 55px;
+  padding: 12px;
   border-radius: 15px;
   opacity: 0px;
   background: var(--color-yellow);
@@ -829,7 +829,7 @@ padding: 57px 0 100px 0;
   line-height: 40px;
 }
 .model-pakages .modal-dialog {
-  max-width: 1428px;
+  max-width: 1150px;
 }
 .model-pakages .modal-body {
     background-color: var(--color-default-bg);

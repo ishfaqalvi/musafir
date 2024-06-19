@@ -247,9 +247,72 @@
             </div>
         </div>
         `;
+        // const apiUrlCountries = config.apiBaseUrl + config.admin.countries;
         $('#localEsimsCountriesList').append(spinnerContent);
         $('#musafirPlansCountriesList').append(spinnerContent);
         $('#regionalEsimsRegionsList').append(spinnerContent);
+        // $.ajax({
+        //     url: apiUrlCountries,
+        //     method: 'GET',
+        //     dataType: 'json',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     success: function(countries) {
+        //         let localEsimsHtml = '';
+        //         let musafirPlansHtml = '';
+
+        //         $.each(countries.details, function(index, row) {
+        //             const countryCode = escapeHtml(row.countryCode);
+        //             const countryName = escapeHtml(row.countryName);
+        //             const flagImage = 'data:image/svg+xml;base64,' + btoa(row.flagImage);
+        //             const rightIconUrl = "{{ asset('assets/web/img/right-Icon.png') }}";
+
+        //             localEsimsHtml += `
+        //             <div class="col-lg-4 col-md-6">
+        //                 <a href="plans.html?type=local&country=${countryCode}">
+        //                     <div class="card border-0">
+        //                         <div class="card-body d-flex justify-content-between p-4 align-items-center">
+        //                             <div>
+        //                                 <div class="d-flex gap-3 align-items-center">
+        //                                     <img src="${flagImage}" alt="Flag of ${countryName}" height="35px" width="45px">
+        //                                     <h5>${countryName}</h5>
+        //                                 </div>
+        //                             </div>
+        //                             <div>
+        //                                 <img src="${rightIconUrl}" alt="Right Icon">
+        //                             </div>
+        //                         </div>
+        //                     </div>
+        //                 </a>
+        //             </div>`;
+
+        //             musafirPlansHtml += `
+        //             <div class="col-lg-4 col-md-6">
+        //                 <a href="plans.html?type=musafir&country=${countryCode}">
+        //                     <div class="card border-0">
+        //                         <div class="card-body d-flex justify-content-between p-4 align-items-center">
+        //                             <div>
+        //                                 <div class="d-flex gap-3 align-items-center">
+        //                                     <img src="${flagImage}" alt="Flag of ${countryName}" height="35px" width="45px">
+        //                                     <h5>${countryName}</h5>
+        //                                 </div>
+        //                             </div>
+        //                             <div>
+        //                                 <img src="${rightIconUrl}" alt="Right Icon">
+        //                             </div>
+        //                         </div>
+        //                     </div>
+        //                 </a>
+        //             </div>`;
+        //         });
+        //         $('#localEsimsContainer').html(localEsimsHtml);
+        //         $('#musafirPlansContainer').html(musafirPlansHtml);
+        //     },
+        //     error: function(error) {
+        //         toastr.warning('Something went wrong please reload page!.');
+        //     }
+        // });
         $.ajax({
             url: '{{ route('home.data') }}',
             method: 'GET',
@@ -259,7 +322,7 @@
                 $('#regionalEsimsRegionsList').html(data.regions);
             },
             error: function(error) {
-                $('#data-container').html('<p>Error loading data.</p>');
+                toastr.warning('Something went wrong please reload page!.');
             }
         });
     });

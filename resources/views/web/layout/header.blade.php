@@ -6,7 +6,7 @@
         </a>
         <nav id="navbar" class="navbar">
             <ul>
-                <li><a href="#hero">Home</a></li>
+                <li><a href="{{ route('home.index') }}">Home</a></li>
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Plans</a></li>
                 <li><img class="menu-divider" src="{{ asset('assets/web/img/menu-divider.svg') }}" alt="">
@@ -25,7 +25,7 @@
                         <li><a href="#">Used Cards</a></li>
                         <li><a href="#">Order Cards</a></li>
                         <li class="d-flex justify-content-between align-items-center">
-                            <a href="#">Logout</a>
+                            <a href="{{ route('profile.logout') }}">Logout</a>
                             <img src="{{ asset('assets/web/img/logout.png') }}" alt="">
                         </li>
                     </ul>

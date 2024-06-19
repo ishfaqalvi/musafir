@@ -26,7 +26,6 @@ class BaseService
     protected function post($endpoint, $data = [], $token = null) {
         try {
             if(!is_null($token)){
-                // dd($token);
                 $response = Http::withHeaders([
                     'Authorization' => 'Bearer ' . $token,
                 ])->post($this->baseUrl . $endpoint, $data);

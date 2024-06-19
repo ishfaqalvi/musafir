@@ -15,14 +15,14 @@ class AdminService extends BaseService
     public function getCountries()
     {
         return Cache::remember('getCountries', 60, function () {
-            return $this->get('/Admin/GetCountries')['details'];
+            return $this->get('/Admin/GetCountries')['data']['details'];
         });
     }
 
     public function getCountryByCode($code)
     {
         return Cache::remember('getCountryByCode'.$code, 60, function () use($code) {
-            return $this->get('/Admin/GetCountryByCode/'.$code)['details'];
+            return $this->get('/Admin/GetCountryByCode/'.$code)['data']['details'];
         });
     }
 
@@ -36,7 +36,7 @@ class AdminService extends BaseService
     public function getRegions()
     {
         return Cache::remember('getRegions', 60, function () {
-            return $this->get('/Admin/GetRegions')['details'];
+            return $this->get('/Admin/GetRegions')['data']['details'];
         });
     }
 }

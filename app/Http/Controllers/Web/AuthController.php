@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Http\Request;
 use App\Services\AuthService;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -14,6 +15,7 @@ class AuthController extends Controller
     {
         $this->authService = $authService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -107,19 +109,48 @@ class AuthController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Display a listing of the resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function sendEmail()
+    public function forgotPasswordForm()
     {
-        $token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI1NyIsIm5hbWUiOiJ0ZXN0ZGV2IiwiRmlyc3ROYW1lIjoiVGVzdCIsIkxhc3ROYW1lIjoiRGV2IiwiVmVyaWZpZWQiOiJGYWxzZSIsIlVzZXJJZFNTTyI6IiIsIklzU1NPIjoiRmFsc2UiLCJUeXBlU1NPIjoiIiwiZW1haWwiOiJsaW5rcGxheWVyMDYyQGdtYWlsLmNvbSIsImp0aSI6IjNiOTkyMTVmLTcxYWYtNDJjOC05Zjc3LWFkMGY3YTFiNTg1OCIsImV4cCI6MTc0OTk5MjUzNiwiaXNzIjoiRVNJTSIsImF1ZCI6IkVTSU0ifQ.2G2g950uZsesxmjEpC8q-6OZDHB7vF3REkCQ2Ka07xE";
-        $data = [
-            'isEmailVerification' => true,
-            'email'     => 'linkplayer062@gmail.com'
-        ];
-        $responce = $this->authService->sendOtp($data, $token);
-        dd($responce);
+        if(session('api_token'))
+        {
+            return redirect()->route('profile.accountInfo');
+        }
+        return view('web.auth.forgot-password');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function forgotPassword(Request $request)
+    {
+        $responce = $this->authService->forgotPassword($request->all());
+        if(!is_null($responce)){
+            return response()->json(['status' => true, 'data' => $responce]);
+        }else{
+            return response()->json(['status' => false, 'message' => 'Something went wrong!']);
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function resetPassword(Request $request)
+    {
+        $responce = $this->authService->resetPassword($request->all());
+        if(!is_null($responce)){
+            return response()->json(['status' => true, 'data' => $responce]);
+        }else{
+            return response()->json(['status' => false, 'message' => 'Something went wrong!']);
+        }
     }
 }

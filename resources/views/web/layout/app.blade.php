@@ -31,7 +31,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<body class="{{ str_contains(url()->full(), '/login-register') ? 'login-body' : ''}}">
+<body class="
+    {{ str_contains(url()->full(), '/login-register') ? 'login-body' : ''}}
+    {{ str_contains(url()->full(), '/forgot-password') ? 'login-body' : ''}}
+    ">
     <!-- ======= Header ======= -->
     @yield('header')
     <!-- End Header -->
@@ -57,6 +60,7 @@
     <script src="{{ asset('assets/web/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/web/js/main.js') }}"></script>
+    <script src="{{ asset('assets/web/js/config.js') }}"></script>
     @yield('script')
 </body>
 </html>

@@ -24,4 +24,14 @@ class AuthService extends BaseService
     {
         return $this->post('/Auth/verify-otp', $data, $token);
     }
+
+    public function forgotPassword($data)
+    {
+        return $this->post('/Auth/forgot-password', $data);
+    }
+
+    public function resetPassword($data)
+    {
+        return $this->post('/Auth/reset-password', $data);
+    }
 }

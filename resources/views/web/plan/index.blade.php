@@ -244,6 +244,7 @@
     </section>
 </main>
 <!-- End #main -->
+@include('web.plan.show')
 @endsection
 
 @section('script')
@@ -275,7 +276,7 @@
                 $('#regionalEsimsRegionsList').html(data.regions);
             },
             error: function(error) {
-                $('#data-container').html('<p>Error loading data.</p>');
+                toastr.warning('Something went wrong please reload page!.');
             }
         });
         var parameters = @json($perameters);
@@ -292,8 +293,13 @@
                 }
             },
             error: function(error) {
-                $('#data-container').html('<p>Error loading data.</p>');
+                toastr.warning('Something went wrong please reload page!.');
             }
+        });
+        $('.pakageDetailModel').on('click', function(event){
+            event.preventDefault();
+            $('#bundleName').append($(this).data('bundleName'));
+            $('#pakageDetailModel').show();
         });
     });
 </script>
