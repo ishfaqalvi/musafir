@@ -13,7 +13,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function accountInfo()
+    public function accountInfoForm()
     {
         return view('web.profile.account-info');
     }
