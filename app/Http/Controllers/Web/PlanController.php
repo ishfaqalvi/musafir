@@ -67,13 +67,15 @@ class PlanController extends Controller
         $package = $request->input('package');
         $packageId = $request->input('packageId');
         $token = session('api_token')['token'];
-        $iframeUrl = "https://griffin26-001-site10.atempurl.com/checkout.html?"
-            . "amount={$amount}"
-            . "&currency={$currency}"
-            . "&package=" . urlencode($package)
-            . "&packageId={$packageId}"
-            . "&token={$token}";
-        return view('web.plan.buy-now', compact('iframeUrl'));
+        $url = [
+            'baseurl' => "http://griffin26-001-site10.atempurl.com/checkout.html?",
+            'amount' => urlencode($amount),
+            'currency' => urlencode($currency),
+            'package' => urlencode($package),
+            'packageId' => urlencode($packageId),
+            'token' => urlencode($token)
+        ];
+        return view('web.plan.buy-now', compact('url'));
     }
 
     /**

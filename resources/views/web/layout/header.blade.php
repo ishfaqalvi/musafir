@@ -7,8 +7,9 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a href="{{ route('home.index') }}">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#services">Plans</a></li>
+                <li><a href="{{ route('home.index') }}#plans">Plans</a></li>
+                <li><a href="{{ route('home.index') }}#about">About Us</a></li>
+                <li><a href="{{ route('home.index') }}#download">Download</a></li>
                 <li><img class="menu-divider" src="{{ asset('assets/web/img/menu-divider.svg') }}" alt="">
                 </li>
                 @php($auth = session('api_token'))

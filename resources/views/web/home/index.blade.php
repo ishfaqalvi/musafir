@@ -27,7 +27,7 @@
 <!-- ======= Main ======= -->
 <main id="main">
     <section id="portfolio" class="portfolio">
-        <div class="container container-theme" data-aos="fade-up" data-aos-delay="300">
+        <div class="container container-theme" data-aos="fade-up" data-aos-delay="300" id="plans">
             <ul class="nav nav-tabs justify-content-center border-bottom-0 gap-lg-4 gap-md-3 gap-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button
@@ -87,7 +87,7 @@
             </div>
         </div>
     </section>
-    <section class="musafir-works">
+    <section class="musafir-works" id="about">
         <div class="container container-theme">
             <div class="row" data-aos="fade-up" data-aos-delay="200">
                 <div class="col-12 text-center pb-lg-5 pb-3">
@@ -130,7 +130,7 @@
             </div>
         </div>
     </section>
-    <section class="why-musafir">
+    <section class="why-musafir" id="about">
         <div class="container container-theme">
             <div class="row pb-lg-5 pb-md-5 pb-4 align-items-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="col-12 text-center">
@@ -212,7 +212,7 @@
             </div>
         </div>
     </section>
-    <section class="download-apps pb-4">
+    <section class="download-apps pb-4" id="download">
         <div class="container container-theme bg-download">
             <div class="row align-items-center g-3" data-aos="zoom-in" data-aos-delay="300">
                 <div class="col-lg-6 col-md-6">
