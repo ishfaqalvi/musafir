@@ -69,7 +69,7 @@
                     </button>
                 </li>
             </ul>
-            <div class="tab-content pt-5">
+            <div class="tab-content pt-5" id="bundleDetails">
                 <div class="tab-pane {{ $perameters['type'] == 'local' ? 'active' : '' }}" id="localEsims" role="tabpanel" aria-labelledby="localEsims-tab">
                     @if($perameters['type'] == 'local')
                         <div id="localEsimPlans"></div>
@@ -249,7 +249,7 @@
 
 @section('script')
 <script>
-    $(function () {
+    $(document).ready(function() {
         var type = "{{ $perameters['type'] }}";
         let spinnerContent = `
             <div class="text-center text-warning mb-5 mt-5">
@@ -296,10 +296,18 @@
                 toastr.warning('Something went wrong please reload page!.');
             }
         });
-        $('.pakageDetailModel').on('click', function(event){
-            event.preventDefault();
-            $('#bundleName').append($(this).data('bundleName'));
-            $('#pakageDetailModel').show();
+        $('#bundleDetails').on('click', '.pakageDetail', function(e) {
+            $('#bundlename').append($(this).data('bundlename'));
+            $('#countryname').append($(this).data('countryname'));
+            $('#coverage').append($(this).data('countryname'));
+            $('#bundledata').append($(this).data('bundledata'));
+            $('#validity').append($(this).data('period')+ ' ' + $(this).data('periodtype'));
+            $('#price').append($(this).data('currency')+ ' ' + $(this).data('price'));
+            $('#buyNowAmount').val($(this).data('price'));
+            $('#buyNowCurrency').val($(this).data('currency'));
+            $('#buyNowPackage').val($(this).data('bundlename'));
+            $('#buyNowPackageId').val($(this).data('bundleid'));
+            $('#pakageDetailModel').modal('show');
         });
     });
 </script>

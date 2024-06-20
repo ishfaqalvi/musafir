@@ -8,12 +8,8 @@
                 <div class="w-100 px-xl-5 px-lg-5">
                     <div class="row g-3">
                         <div class="col-12">
-                            <h4 class="mb-2 text-white" id="bundleName">
-                                GiffGaf Mobile
-                            </h4>
-                            <h5 class="mb-4 text-white">
-                                United Kingdom
-                            </h5>
+                            <h4 class="mb-2 text-white" id="bundlename"></h4>
+                            <h5 class="mb-4 text-white" id="countryname"></h5>
                         </div>
                         <div class="col-lg-6">
                             <img src="{{ asset('assets/web/img/busniess-card.png') }}" class="busniess-card-img" alt="">
@@ -32,9 +28,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <p class="data-field">
-                                                    United Kingdom
-                                                </p>
+                                                <p class="data-field" id="coverage"></p>
                                             </div>
                                         </div>
                                     </li>
@@ -49,9 +43,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <p class="data-field">
-                                                    3 GB
-                                                </p>
+                                                <p class="data-field" id="bundledata"></p>
                                             </div>
                                         </div>
                                     </li>
@@ -66,9 +58,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <p class="data-field">
-                                                    07 Days
-                                                </p>
+                                                <p class="data-field" id="validity"></p>
                                             </div>
                                         </div>
                                     </li>
@@ -83,9 +73,7 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <p class="data-field">
-                                                    07 Days
-                                                </p>
+                                                <p class="data-field" id="price"></p>
                                             </div>
                                         </div>
                                     </li>
@@ -103,7 +91,6 @@
                     <div class="Packages-slider pb-lg-5">
                         <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
                             <div class="swiper-wrapper pb-5">
-
                                 <div class="swiper-slide">
                                     <div class="card slider-card">
                                         <ul class="list-group border-0">
@@ -113,8 +100,7 @@
                                                 </h4>
                                             </li>
                                             <li class="list-group-item">
-                                                <div
-                                                    class="d-flex align-items-center justify-content-between  flex-wrap gap-3">
+                                                <div class="d-flex align-items-center justify-content-between  flex-wrap gap-3">
                                                     <div>
                                                         <div class="d-flex gap-4 align-items-center">
                                                             <img src="{{ asset('assets/web/img/DATA.svg') }}" alt="">
@@ -159,17 +145,13 @@
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <p class="data-field">
-                                                            07 Days
-                                                        </p>
+                                                        <p class="data-field">07 Days</p>
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
-                                <!-- End testimonial item -->
-
                                 <div class="swiper-slide">
                                     <div class="card slider-card">
                                         <ul class="list-group border-0">
@@ -622,9 +604,16 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer justify-content-center py-5">
-                <button type="button" class="btn">Proceed</button>
-            </div>
+            <form action="{{ route('plans.buyNow') }}" method="POST">
+                @csrf
+                <input type="hidden" name="amount" id="buyNowAmount">
+                <input type="hidden" name="currency" id="buyNowCurrency">
+                <input type="hidden" name="package" id="buyNowPackage">
+                <input type="hidden" name="packageId" id="buyNowPackageId">
+                <div class="modal-footer justify-content-center py-5">
+                    <button type="submit" class="btn">Proceed</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

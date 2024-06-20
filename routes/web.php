@@ -91,4 +91,13 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'middleware' => ['api.a
         // Route::post('verify-otp',        'verifyOTP'        )->name('verifyOtp'     );
         // Route::get('send-email',         'sendEmail'        )->name('sendEmail'     );
     });
+
+    /*
+	|--------------------------------------------------------------------------
+	| Plans Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::controller(PlanController::class)->prefix('plans')->as('plans.')->group(function () {
+        Route::post('buy_now',       'buyNow')->name('buyNow');
+    });
 });
