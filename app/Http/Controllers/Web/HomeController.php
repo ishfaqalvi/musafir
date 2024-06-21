@@ -57,7 +57,7 @@ class HomeController extends Controller
             // Sanitize the data
             $countryCode = htmlspecialchars($row['countryCode'], ENT_QUOTES, 'UTF-8');
             $countryName = htmlspecialchars($row['countryName'], ENT_QUOTES, 'UTF-8');
-            $flagImage = base64_encode($row['flagImage']);
+            $flagImage = asset('images/country-flag/'.strtolower($row['countryCode']).'.png');
             $rightIconUrl = asset("assets/web/img/right-Icon.png");
 
             // Generate the HTML content
@@ -68,7 +68,7 @@ class HomeController extends Controller
                         <div class="card-body d-flex justify-content-between p-4 align-items-center">
                             <div>
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="data:image/svg+xml;base64,' . $flagImage . '" alt="Flag of ' . $countryName . '" height="35px" width="45px">
+                                    <img src="' . $flagImage . '" alt="Flag of ' . $countryName . '" height="35px" width="45px">
                                     <h5>' . $countryName . '</h5>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@ class HomeController extends Controller
                         <div class="card-body d-flex justify-content-between p-4 align-items-center">
                             <div>
                                 <div class="d-flex gap-3 align-items-center">
-                                    <img src="data:image/svg+xml;base64,' . $flagImage . '" alt="Flag of ' . $countryName . '" height="35px" width="45px">
+                                    <img src="' . $flagImage . '" alt="Flag of ' . $countryName . '" height="35px" width="45px">
                                     <h5>' . $countryName . '</h5>
                                 </div>
                             </div>

@@ -16,7 +16,9 @@ class BaseService
     protected function get($endpoint, $params = [])
     {
         try {
-            $response = Http::get($this->baseUrl . $endpoint, $params);
+            $response = Http::withHeaders([
+                'secret-key' => '9e5b7a8c4f2d1a0f6c3e7b8a9d0c4e1f3b5d6a8c7e4b2d9a0f1e3d4c6b5a8e7'
+            ])->get($this->baseUrl . $endpoint, $params);
             return $this->handleResponse($response);
         } catch (\Exception $e) {
             return $this->handleException($e);

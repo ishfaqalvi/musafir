@@ -11,10 +11,10 @@
                             <h4 class="mb-2 text-white" id="bundlename"></h4>
                             <h5 class="mb-4 text-white" id="countryname"></h5>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-5">
                             <img src="{{ asset('assets/web/img/busniess-card.png') }}" class="busniess-card-img" alt="">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-7">
                             <div>
                                 <ul class="list-group border-0">
                                     <li class="list-group-item pt-0">
