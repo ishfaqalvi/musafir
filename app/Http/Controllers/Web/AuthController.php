@@ -90,7 +90,13 @@ class AuthController extends Controller
         $input['isSSO'] = false;
         $loginResponce = $this->authService->login($input);
         if($loginResponce['status']){
-            return response()->json($loginResponce['data']);
+            $token = $loginResponce['data']['details']['token'];
+            list($header, $payload, $signature) = explode('.', $token);
+
+            $decodedPayload = base64_decode($payload);
+
+            $data = json_decode($decodedPayload, true);
+            return response()->json($data);
         }
         return response()->json($loginResponce['status']);
         // if($loginResponce['status'] == true){
