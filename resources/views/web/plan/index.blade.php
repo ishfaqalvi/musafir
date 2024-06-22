@@ -76,6 +76,15 @@
                     @else
                         <h4 class="mb-lg-5 mb-3">Popular Countries</h4>
                         <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="localEsimsCountriesList"></div>
+                        <div class="row pb-5 justify-content-center" id="localShowAllCountriesContainer">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="card border-0">
+                                    <div class="card-body text-center">
+                                        <a href="javascript:;" id="localShowAllCountriesBtn"><p class="mb-0">Show All Countries</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endif
                 </div>
                 <div class="tab-pane {{ $perameters['type'] == 'regional' ? 'active' : '' }}" id="regionalEsims" role="tabpanel" aria-labelledby="regionalEsims-tab">
@@ -92,6 +101,15 @@
                     @else
                         <h4 class="mb-lg-5 mb-3">Countries</h4>
                         <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="musafirPlansCountriesList"></div>
+                        <div class="row pb-5 justify-content-center" id="musafirShowAllCountriesContainer">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="card border-0">
+                                    <div class="card-body text-center">
+                                        <a href="javascript:;" id="musafirShowAllCountriesBtn"><p class="mb-0">Show All Countries</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -250,64 +268,135 @@
 @section('script')
 <script>
     $(document).ready(function() {
-        var type = "{{ $perameters['type'] }}";
-        let spinnerContent = `
-            <div class="text-center text-warning mb-5 mt-5">
+        const config = {
+            type: "{{ $perameters['type'] }}",
+            parameters: @json($perameters),
+            spinnerContent: `
+            <div class="text-center text-warning">
                 <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-            </div>`;
-        $('#localEsimsCountriesList').append(spinnerContent);
-        $('#regionalEsimsRegionsList').append(spinnerContent);
-        $('#musafirPlansCountriesList').append(spinnerContent);
-        if(type == 'local'){
-            $('#localEsimPlans').append(spinnerContent);
-        }else if(type == 'regional'){
-            $('#regionalEsimPlans').append(spinnerContent);
-        }else if(type == 'musafir'){
-            $('#musafirEsimPlans').append(spinnerContent);
+            </div>
+            `,
+            routes: {
+                countries: '{{ route('plans.countries.list') }}',
+                regions: '{{ route('plans.regions.list') }}',
+                packages: '{{ route('plans.packages') }}'
+            },
+            selectors: {
+                localCountries: '#localEsimsCountriesList',
+                musafirCountries: '#musafirPlansCountriesList',
+                regionsList: '#regionalEsimsRegionsList',
+                localShowAllBtn: '#localShowAllCountriesBtn',
+                musafirShowAllBtn: '#musafirShowAllCountriesBtn',
+                localShowAllContainer: '#localShowAllCountriesContainer',
+                musafirShowAllContainer: '#musafirShowAllCountriesContainer',
+                localEsimPlans: '#localEsimPlans',
+                regionalEsimPlans: '#regionalEsimPlans',
+                musafirEsimPlans: '#musafirEsimPlans'
+            }
+        };
+
+        const $localCountries = $(config.selectors.localCountries);
+        const $musafirCountries = $(config.selectors.musafirCountries);
+        const $regionsList = $(config.selectors.regionsList);
+        const $localEsimPlans = $(config.selectors.localEsimPlans);
+        const $regionalEsimPlans = $(config.selectors.regionalEsimPlans);
+        const $musafirEsimPlans = $(config.selectors.musafirEsimPlans);
+        const $localShowAllContainer = $(config.selectors.localShowAllContainer);
+        const $musafirShowAllContainer = $(config.selectors.musafirShowAllContainer);
+
+        const showError = (xhr) => {
+            const errorMessage = `Error - ${xhr.status}: ${xhr.statusText} - ${xhr.responseText}`;
+            toastr.warning('Something went wrong in fetching data');
+            console.log(errorMessage);
+        };
+
+        const fetchData = (url, onSuccess) => {
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: onSuccess,
+                error: showError
+            });
+        };
+
+        // Show spinner while loading
+        $localCountries.append(config.spinnerContent);
+        $musafirCountries.append(config.spinnerContent);
+        $regionsList.append(config.spinnerContent);
+
+        switch (config.type) {
+            case 'local':
+                $localEsimPlans.append(config.spinnerContent);
+                break;
+            case 'regional':
+                $regionalEsimPlans.append(config.spinnerContent);
+                break;
+            case 'musafir':
+                $musafirEsimPlans.append(config.spinnerContent);
+                break;
         }
-        $.ajax({
-            url: '{{ route('plans.data') }}',
-            method: 'GET',
-            success: function(data) {
-                $('#localEsimsCountriesList').html(data.countries.localEsims);
-                $('#musafirPlansCountriesList').html(data.countries.musafirPlans);
-                $('#regionalEsimsRegionsList').html(data.regions);
-            },
-            error: function(error) {
-                toastr.warning('Something went wrong please reload page!.');
+
+        $localShowAllContainer.hide();
+        $musafirShowAllContainer.hide();
+
+        fetchData(`${config.routes.countries}?type=local&page=first`, (data) => {
+            $localCountries.html(data);
+            $localShowAllContainer.show();
+        });
+
+        $(config.selectors.localShowAllBtn).on('click', function() {
+            $localShowAllContainer.html(config.spinnerContent);
+            fetchData(`${config.routes.countries}?type=local&page=remaining`, (data) => {
+                $localCountries.append(data);
+                $localShowAllContainer.hide();
+            });
+        });
+
+        fetchData(config.routes.regions, (data) => {
+            $regionsList.html(data);
+        });
+
+        fetchData(`${config.routes.countries}?type=musafir&page=first`, (data) => {
+            $musafirCountries.html(data);
+            $musafirShowAllContainer.show();
+        });
+
+        $(config.selectors.musafirShowAllBtn).on('click', function() {
+            $musafirShowAllContainer.html(config.spinnerContent);
+            fetchData(`${config.routes.countries}?type=musafir&page=remaining`, (data) => {
+                $musafirCountries.append(data);
+                $musafirShowAllContainer.hide();
+            });
+        });
+
+        fetchData(`${config.routes.packages}?${$.param(config.parameters)}`, (data) => {
+            switch (config.type) {
+                case 'local':
+                    $localEsimPlans.html(data);
+                    break;
+                case 'regional':
+                    $regionalEsimPlans.html(data);
+                    break;
+                case 'musafir':
+                    $musafirEsimPlans.html(data);
+                    break;
             }
         });
-        var parameters = @json($perameters);
-        $.ajax({
-            url: "{{ route('plans.packages', []) }}" + '?' + $.param(parameters),
-            method: 'GET',
-            success: function(data) {
-                if(type == 'local'){
-                    $('#localEsimPlans').html(data);
-                }else if(type == 'regional'){
-                    $('#regionalEsimPlans').html(data);
-                }else if(type == 'musafir'){
-                    $('#musafirEsimPlans').html(data);
-                }
-            },
-            error: function(error) {
-                toastr.warning('Something went wrong please reload page!.');
-            }
-        });
-        $('#bundleDetails').on('click', '.pakageDetail', function(e) {
-            $('#bundlename').append($(this).data('bundlename'));
-            $('#countryname').append($(this).data('countryname'));
-            $('#coverage').append($(this).data('countryname'));
-            $('#bundledata').append($(this).data('bundledata'));
-            $('#validity').append($(this).data('period')+ ' ' + $(this).data('periodtype'));
-            $('#price').append($(this).data('currency')+ ' ' + $(this).data('price'));
+
+        $('#bundleDetails').on('click', '.packageDetail', function() {
+            $('#bundlename').text($(this).data('bundlename'));
+            $('#countryname').text($(this).data('countryname'));
+            $('#coverage').text($(this).data('countryname'));
+            $('#bundledata').text($(this).data('bundledata'));
+            $('#validity').text(`${$(this).data('period')} ${$(this).data('periodtype')}`);
+            $('#price').text(`${$(this).data('currency')} ${$(this).data('price')}`);
             $('#buyNowAmount').val($(this).data('price'));
             $('#buyNowCurrency').val($(this).data('currency'));
             $('#buyNowPackage').val($(this).data('bundlename'));
             $('#buyNowPackageId').val($(this).data('bundleid'));
-            $('#pakageDetailModel').modal('show');
+            $('#packageDetailModel').modal('show');
         });
     });
 </script>

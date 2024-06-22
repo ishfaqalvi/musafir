@@ -7,17 +7,19 @@ use Illuminate\Support\Facades\Log;
 class BaseService
 {
     protected $baseUrl;
+    protected $secretKey;
 
     public function __construct()
     {
         $this->baseUrl = env('API_BASE_URL');
+        $this->secretKey = env('API_SECRET_KEY');
     }
 
     protected function get($endpoint, $params = [])
     {
         try {
             $response = Http::withHeaders([
-                'secret-key' => '9e5b7a8c4f2d1a0f6c3e7b8a9d0c4e1f3b5d6a8c7e4b2d9a0f1e3d4c6b5a8e7'
+                'secret-key' => $this->secretKey
             ])->get($this->baseUrl . $endpoint, $params);
             return $this->handleResponse($response);
         } catch (\Exception $e) {
@@ -27,13 +29,12 @@ class BaseService
 
     protected function post($endpoint, $data = [], $token = null) {
         try {
+            $headers = ['secret-key' => $this->secretKey];
+
             if(!is_null($token)){
-                $response = Http::withHeaders([
-                    'Authorization' => 'Bearer ' . $token,
-                ])->post($this->baseUrl . $endpoint, $data);
-            }else{
-                $response = Http::post($this->baseUrl . $endpoint, $data);
+                $headers['Authorization'] = 'Bearer ' . $token;
             }
+            $response = Http::withHeaders($headers)->post($this->baseUrl . $endpoint, $data);
             return $this->handleResponse($response);
         } catch (\Exception $e) {
             return $this->handleException($e);

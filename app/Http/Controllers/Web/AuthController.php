@@ -27,7 +27,7 @@ class AuthController extends Controller
         {
             return redirect()->route('profile.accountInfo');
         }
-        return view('web.auth.login-register');
+        return view('web.auth.login-register.layout');
     }
 
     /**
@@ -38,12 +38,44 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        $responce = $this->authService->register($request->all());
-        if(!is_null($responce)){
-            return response()->json(['status' => true, 'data' => $responce]);
-        }else{
-            return response()->json(['status' => false, 'message' => 'Something went wrong!']);
+        $input = $request->all();
+        $nameArray = explode(' ', $request->name);
+        $input['firstName'] = $nameArray[0];
+        $input['lastName'] = $nameArray[1];
+        $registerResponce = $this->authService->register($input);
+        if($registerResponce['status']){
+            /**
+             * Login user.
+             */
+            $input['isSSO'] = false;
+            $loginResponce = $this->authService->login($input);
+            if($loginResponce['status']){
+                /**
+                 * User is not active so send otp.
+                 */
+                $token = $loginResponce['data']['details']['token'];
+                $data = ['isEmailVerification' => true, 'email' => $request->email];
+                $otpResponce = $this->authService->sendOtp($data, $token);
+                $otpResponce['token'] = $token;
+                return response()->json($otpResponce);
+            }
+            return response()->json($loginResponce);
         }
+        return response()->json($registerResponce);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function otpForm()
+    {
+        if(session('api_token'))
+        {
+            return redirect()->route('profile.accountInfo');
+        }
+        return view('web.auth.otp-form');
     }
 
     /**
@@ -85,11 +117,7 @@ class AuthController extends Controller
     {
         $data = ['isEmailVerification' => true, 'email' => $request->email];
         $responce = $this->authService->sendOtp($data, $request->token);
-        if(!is_null($responce)){
-            return response()->json(['status' => true, 'data' => $responce]);
-        }else{
-            return response()->json(['status' => false, 'message' => 'Something went wrong!']);
-        }
+        return response()->json($responce);
     }
 
     /**
@@ -100,12 +128,25 @@ class AuthController extends Controller
      */
     public function verifyOTP(Request $request)
     {
-        $responce = $this->authService->varifyOtp(['otp' => $request->otp], $request->token);
-        if(!is_null($responce)){
-            return response()->json(['status' => true, 'data' => $responce]);
-        }else{
-            return response()->json(['status' => false, 'message' => 'Something went wrong!']);
+        $otpResponce = $this->authService->varifyOtp(['otp' => $request->otp], $request->token);
+        if($otpResponce['status']){
+            $input = $request->all();
+            unset($input['token']);
+            $input['isSSO'] = false;
+            $loginResponce = $this->authService->login($input);
+            if($loginResponce['status']){
+                $token = $loginResponce['data']['details']['token'];
+                list($header, $payload, $signature) = explode('.', $token);
+                $decodedPayload = base64_decode($payload);
+
+                $data = json_decode($decodedPayload, true);
+                $data['token'] = $token;
+                session(['api_token' => $data]);
+                return response()->json(['status' => true, 'data' => $data]);
+            }
+            return response()->json($loginResponce);
         }
+        return response()->json($otpResponce);
     }
 
     /**

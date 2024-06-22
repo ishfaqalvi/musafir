@@ -1,10 +1,23 @@
 const config = {
-    apiBaseUrl: 'https://griffin26-001-site9.atempurl.com/api/',
-    admin: {
-        dataBundlesCM : 'Admin/GetDataBundlesCM',
-        countries: 'Admin/GetCountries',
-        countryByCode: 'Admin/GetCountryByCode/',
-        countriesByRegionCode: 'Admin/GetCountriesByRegionCode/',
-        regions: 'Admin/GetRegions'
+    spinnerContent :
+        `
+        <div class="text-center text-warning">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        `,
+    routes: {
+        countries: '{{ route('home.countries.list') }}',
+        regions: '{{ route('home.regions.list') }}'
+    },
+    selectors: {
+        localCountries: '#localEsimsCountriesList',
+        musafirCountries: '#musafirPlansCountriesList',
+        regionsList: '#regionalEsimsRegionsList',
+        localShowAllBtn: '#localShowAllCountriesBtn',
+        musafirShowAllBtn: '#musafirShowAllCountriesBtn',
+        localShowAllContainer: '#localShowAllCountriesContainer',
+        musafirShowAllContainer: '#musafirShowAllCountriesContainer'
     }
 };

@@ -1,4 +1,4 @@
-<div class="modal fade model-pakages" id="pakageDetailModel" tabindex="-1" aria-labelledby="modelPakagesLabel" aria-hidden="true">
+<div class="modal fade model-pakages" id="packageDetailModel" tabindex="-1" aria-labelledby="modelPakagesLabel" aria-hidden="true">
     <div class="modal-dialog .modal-fullscreen-xxl-down">
         <div class="modal-content">
             <div class="modal-header flex-wrap">
@@ -414,8 +414,6 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <!-- End testimonial item -->
-
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
@@ -429,93 +427,20 @@
                             </h3>
                         </div>
                         <div class="col-lg-6 order-lg-2 order-3">
-                            <h3 class="pb-lg-5 pt-5">
-                                Available Top Packages
-                            </h3>
+                            <h3 class="pb-lg-5 pt-5">Additional Information</h3>
                         </div>
                         <div class="col-lg-6 order-lg-3 order-2 d-flex align-items-stretch">
                             <div class="card w-100">
-                                <div class="card-header d-flex align-items-center justify-content-between py-lg-3">
-                                    <h5 class="mb-0">
-                                        UNITED KINGDOM
-                                    </h5>
-                                    <img src="{{ asset('assets/web/img/flag-2.svg') }}" alt="">
-                                </div>
                                 <div class="card-body">
                                     <ul class="list-group border-0">
                                         <li class="list-group-item">
                                             <div
                                                 class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                                                 <div>
-                                                    <p class="label-field">
-                                                        COVERAGE
-                                                    </p>
+                                                    <p class="label-field">UNITED KINGDOM</p>
                                                 </div>
                                                 <div>
-                                                    <p class="data-field">
-                                                        United Kingdom
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div
-                                                class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                                                <div>
-                                                    <p class="label-field">
-                                                        DATA
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="data-field">
-                                                        3 GB
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div
-                                                class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                                                <div>
-                                                    <p class="label-field">
-                                                        Activation Policy
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="data-field">
-                                                        The validity period starts when the eSIM connects to any
-                                                        supported network
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <div
-                                                class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-                                                <div>
-                                                    <p class="label-field">
-                                                        Activation Policy
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="data-field">
-                                                        The validity period starts w hen the eSIM connects to any
-                                                        supported network
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="list-group-item align-items-center border-bottom-0 flex-wrap gap-3">
-                                            <div class="d-flex justify-content-between">
-                                                <div>
-                                                    <p class="label-field">
-                                                        PRICE
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p class="data-field">
-                                                        07 Days
-                                                    </p>
+                                                    <p class="data-field"><img src="{{ asset('assets/web/img/flag-2.svg') }}" alt=""></p>
                                                 </div>
                                             </div>
                                         </li>
@@ -529,28 +454,20 @@
                                     <li class="list-group-item">
                                         <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                                             <div>
-                                                <p class="label-field">
-                                                    COVERAGE
-                                                </p>
+                                                <p class="label-field">Network</p>
                                             </div>
                                             <div>
-                                                <p class="data-field">
-                                                    United Kingdom
-                                                </p>
+                                                <p class="data-field">02 - UK</p>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="list-group-item">
                                         <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                                             <div>
-                                                <p class="label-field">
-                                                    DATA
-                                                </p>
+                                                <p class="label-field">Plan Type</p>
                                             </div>
                                             <div>
-                                                <p class="data-field">
-                                                    3 GB
-                                                </p>
+                                                <p class="data-field">Data Only</p>
                                             </div>
                                         </div>
                                     </li>
@@ -572,29 +489,20 @@
                                     <li class="list-group-item">
                                         <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                                             <div>
-                                                <p class="label-field">
-                                                    Activation Policy
-                                                </p>
+                                                <p class="label-field">eKYC (IDENTITY VERIFICATION)</p>
                                             </div>
                                             <div>
-                                                <p class="data-field">
-                                                    The validity period starts w hen the eSIM connects to any supported
-                                                    network
-                                                </p>
+                                                <p class="data-field">Not Required</p>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="list-group-item align-items-center border-bottom-0 flex-wrap gap-3">
                                         <div class="d-flex justify-content-between">
                                             <div>
-                                                <p class="label-field">
-                                                    PRICE
-                                                </p>
+                                                <p class="label-field">TOP-UP OPTION</p>
                                             </div>
                                             <div>
-                                                <p class="data-field">
-                                                    07 Days
-                                                </p>
+                                                <p class="data-field">Available</p>
                                             </div>
                                         </div>
                                     </li>

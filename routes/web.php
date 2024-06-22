@@ -35,8 +35,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
 	|--------------------------------------------------------------------------
 	*/
     Route::controller(HomeController::class)->as('home.')->group(function () {
-        Route::get('/',             'index')->name('index');
-        Route::get('data',          'data' )->name('data' );
+        Route::get('/',                 'index'         )->name('index'         );
+        Route::get('countries/list',    'countriesList' )->name('countries.list');
+        Route::get('regions/list',      'regionsList'   )->name('regions.list'  );
     });
 
     /*
@@ -45,9 +46,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
 	|--------------------------------------------------------------------------
 	*/
     Route::controller(PlanController::class)->prefix('plans')->as('plans.')->group(function () {
-        Route::get('list',             'index'   )->name('index'    );
-        Route::get('data',             'data'    )->name('data'     );
-        Route::get('packages',         'packages')->name('packages' );
+        Route::get('list',              'index'         )->name('index'         );
+        Route::get('countries/list',    'countriesList' )->name('countries.list');
+        Route::get('regions/list',      'regionsList'   )->name('regions.list'  );
+        Route::get('packages',          'packages'      )->name('packages'      );
     });
 
     /*
@@ -59,6 +61,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
         Route::get('login-register',     'loginRegisterForm' )->name('login-register');
         Route::post('register',          'register'          )->name('register'      );
         Route::post('login',             'login'             )->name('login'         );
+        Route::get('otp',                'otpForm'           )->name('otp-form'      );
         Route::post('send-otp',          'sendOTP'           )->name('sendOtp'       );
         Route::post('verify-otp',        'verifyOTP'         )->name('verifyOtp'     );
         Route::get('forgot-password',    'forgotPasswordForm')->name('forgotPassword');

@@ -3,7 +3,7 @@
         <div class="countries-flag">
             <img src="{{ asset('assets/web/img/maps-icon.svg') }}" alt="">
         </div>
-        <h4 class="mb-0 countries-heading">{{ $name }}</h4>
+        <h4 class="mb-0 countries-heading">{{ $filterByName }}</h4>
     </div>
 @else
     <div class="d-flex justify-content-center align-items-center gap-4 mb-lg-5 mb-3">
@@ -78,7 +78,7 @@
                                 </div>
                             </li>
                             <li class="list-group-item align-items-center border-bottom-0">
-                                <a href="javascript:;" class="text-white pakageDetail"
+                                <a href="javascript:;" class="text-white packageDetail"
                                     data-bundleid="{{ $row['bundleId'] }}"
                                     data-bundlename="{{ $row['bundleName'] }}"
                                     data-countryname="{{ $row['countryNavigation']['countryName'] }}"

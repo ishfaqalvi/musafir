@@ -73,6 +73,15 @@
                 <div class="tab-pane active" id="localEsims" role="tabpanel" aria-labelledby="localEsims-tab">
                     <h4 class="mb-lg-5 mb-3">Popular Countries</h4>
                     <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="localEsimsCountriesList"></div>
+                    <div class="row pb-5 justify-content-center" id="localShowAllCountriesContainer">
+                        <div class="col-lg-6 col-md-8">
+                            <div class="card border-0">
+                                <div class="card-body text-center">
+                                    <a href="javascript:;" id="localShowAllCountriesBtn"><p class="mb-0">Show All Countries</p></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane" id="regionalEsims" role="tabpanel" aria-labelledby="regionalEsims-tab">
                     <h4 class="mb-lg-5 mb-3">REGIONS</h4>
@@ -81,7 +90,15 @@
                 </div>
                 <div class="tab-pane" id="musafirPlans" role="tabpanel" aria-labelledby="musafirPlans-tab">
                     <h4 class="mb-lg-5 mb-3">Countries</h4>
-                    <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="musafirPlansCountriesList">
+                    <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="musafirPlansCountriesList"></div>
+                    <div class="row pb-5 justify-content-center" id="musafirShowAllCountriesContainer">
+                        <div class="col-lg-6 col-md-8">
+                            <div class="card border-0">
+                                <div class="card-body text-center">
+                                    <a href="javascript:;" id="musafirShowAllCountriesBtn"><p class="mb-0">Show All Countries</p></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -239,91 +256,88 @@
 @section('script')
 <script>
     $(function () {
-        let spinnerContent =
-        `
-        <div class="text-center text-warning">
-            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-                <span class="visually-hidden">Loading...</span>
+        const config = {
+            spinnerContent: `
+            <div class="text-center text-warning">
+                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
             </div>
-        </div>
-        `;
-        // const apiUrlCountries = config.apiBaseUrl + config.admin.countries;
-        $('#localEsimsCountriesList').append(spinnerContent);
-        $('#musafirPlansCountriesList').append(spinnerContent);
-        $('#regionalEsimsRegionsList').append(spinnerContent);
-        // $.ajax({
-        //     url: apiUrlCountries,
-        //     method: 'GET',
-        //     dataType: 'json',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     success: function(countries) {
-        //         let localEsimsHtml = '';
-        //         let musafirPlansHtml = '';
-
-        //         $.each(countries.details, function(index, row) {
-        //             const countryCode = escapeHtml(row.countryCode);
-        //             const countryName = escapeHtml(row.countryName);
-        //             const flagImage = 'data:image/svg+xml;base64,' + btoa(row.flagImage);
-        //             const rightIconUrl = "{{ asset('assets/web/img/right-Icon.png') }}";
-
-        //             localEsimsHtml += `
-        //             <div class="col-lg-4 col-md-6">
-        //                 <a href="plans.html?type=local&country=${countryCode}">
-        //                     <div class="card border-0">
-        //                         <div class="card-body d-flex justify-content-between p-4 align-items-center">
-        //                             <div>
-        //                                 <div class="d-flex gap-3 align-items-center">
-        //                                     <img src="${flagImage}" alt="Flag of ${countryName}" height="35px" width="45px">
-        //                                     <h5>${countryName}</h5>
-        //                                 </div>
-        //                             </div>
-        //                             <div>
-        //                                 <img src="${rightIconUrl}" alt="Right Icon">
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                 </a>
-        //             </div>`;
-
-        //             musafirPlansHtml += `
-        //             <div class="col-lg-4 col-md-6">
-        //                 <a href="plans.html?type=musafir&country=${countryCode}">
-        //                     <div class="card border-0">
-        //                         <div class="card-body d-flex justify-content-between p-4 align-items-center">
-        //                             <div>
-        //                                 <div class="d-flex gap-3 align-items-center">
-        //                                     <img src="${flagImage}" alt="Flag of ${countryName}" height="35px" width="45px">
-        //                                     <h5>${countryName}</h5>
-        //                                 </div>
-        //                             </div>
-        //                             <div>
-        //                                 <img src="${rightIconUrl}" alt="Right Icon">
-        //                             </div>
-        //                         </div>
-        //                     </div>
-        //                 </a>
-        //             </div>`;
-        //         });
-        //         $('#localEsimsContainer').html(localEsimsHtml);
-        //         $('#musafirPlansContainer').html(musafirPlansHtml);
-        //     },
-        //     error: function(error) {
-        //         toastr.warning('Something went wrong please reload page!.');
-        //     }
-        // });
-        $.ajax({
-            url: '{{ route('home.data') }}',
-            method: 'GET',
-            success: function(data) {
-                $('#localEsimsCountriesList').html(data.countries.localEsims);
-                $('#musafirPlansCountriesList').html(data.countries.musafirPlans);
-                $('#regionalEsimsRegionsList').html(data.regions);
+            `,
+            routes: {
+                countries: '{{ route('home.countries.list') }}',
+                regions: '{{ route('home.regions.list') }}'
             },
-            error: function(error) {
-                toastr.warning('Something went wrong please reload page!.');
+            selectors: {
+                localCountries: '#localEsimsCountriesList',
+                musafirCountries: '#musafirPlansCountriesList',
+                regionsList: '#regionalEsimsRegionsList',
+                localShowAllBtn: '#localShowAllCountriesBtn',
+                musafirShowAllBtn: '#musafirShowAllCountriesBtn',
+                localShowAllContainer: '#localShowAllCountriesContainer',
+                musafirShowAllContainer: '#musafirShowAllCountriesContainer'
             }
+        };
+
+        const $localCountries = $(config.selectors.localCountries);
+        const $musafirCountries = $(config.selectors.musafirCountries);
+        const $regionsList = $(config.selectors.regionsList);
+        const $localShowAllContainer = $(config.selectors.localShowAllContainer);
+        const $musafirShowAllContainer = $(config.selectors.musafirShowAllContainer);
+
+        // Show spinner while loading
+        $localCountries.append(config.spinnerContent);
+        $musafirCountries.append(config.spinnerContent);
+        $regionsList.append(config.spinnerContent);
+        $localShowAllContainer.hide();
+        $musafirShowAllContainer.hide();
+
+        const showError = (xhr) => {
+            const errorMessage = `Error - ${xhr.status}: ${xhr.statusText} - ${xhr.responseText}`;
+            toastr.warning('Something went wrong in fetching data');
+            console.log(errorMessage);
+        };
+
+        // Reusable AJAX function
+        const fetchData = (url, onSuccess) => {
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: onSuccess,
+                error: showError
+            });
+        };
+
+        // Initial data fetch
+        fetchData(`${config.routes.countries}?type=local&page=first`, (data) => {
+            $localCountries.html(data);
+            $localShowAllContainer.show();
+        });
+
+        fetchData(config.routes.regions, (data) => {
+            $regionsList.html(data);
+        });
+
+        fetchData(`${config.routes.countries}?type=musafir&page=first`, (data) => {
+            $musafirCountries.html(data);
+            $musafirShowAllContainer.show();
+        });
+
+        // "Show All" button click handlers
+        $(config.selectors.localShowAllBtn).on('click', function () {
+            $localShowAllContainer.html(config.spinnerContent);
+            fetchData(`${config.routes.countries}?type=local&page=remaining`, (data) => {
+                $localCountries.append(data);
+                $localShowAllContainer.hide();
+            });
+        });
+
+        $(config.selectors.musafirShowAllBtn).on('click', function () {
+            $musafirShowAllContainer.html(config.spinnerContent);
+            fetchData(`${config.routes.countries}?type=musafir&page=remaining`, (data) => {
+                $musafirCountries.append(data);
+                $musafirShowAllContainer.hide();
+            });
         });
     });
 </script>

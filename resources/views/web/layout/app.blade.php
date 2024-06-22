@@ -28,11 +28,11 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/web/css/home.css') }}" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="
     {{ str_contains(url()->full(), '/login-register') ? 'login-body' : ''}}
+    {{ str_contains(url()->full(), '/otp') ? 'login-body' : ''}}
     {{ str_contains(url()->full(), '/forgot-password') ? 'login-body' : ''}}
     ">
     <!-- ======= Header ======= -->
@@ -52,7 +52,10 @@
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
     <script src="{{ asset('assets/web/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/web/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('assets/web/vendor/glightbox/js/glightbox.min.js') }}"></script>
@@ -60,7 +63,6 @@
     <script src="{{ asset('assets/web/vendor/purecounter/purecounter_vanilla.js') }}"></script>
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/web/js/main.js') }}"></script>
-    <script src="{{ asset('assets/web/js/config.js') }}"></script>
     @yield('script')
 </body>
 </html>
