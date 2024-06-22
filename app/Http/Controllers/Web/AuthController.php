@@ -96,35 +96,24 @@ class AuthController extends Controller
             $decodedPayload = base64_decode($payload);
 
             $data = json_decode($decodedPayload, true);
-            return response()->json($data);
+            if($data['Verified'] != 'False')
+            {
+                $data['token'] = $token;
+                session(['api_token' => $data]);
+                $responce = ['status' => true, 'type' => 'login', 'data' => $data];
+            }else{
+                $data = ['isEmailVerification' => true, 'email' => $request->email];
+                $otpResponce = $this->authService->sendOtp($data, $token);
+                if($otpResponce['status']){
+                    $data = ['email' => $request->email, 'password' => $request->password, 'token' => $token];
+                    $responce = ['status' => true, 'type' => 'otp', 'data' => $data];
+                }else{
+                    $responce = $otpResponce;
+                }
+            }
+            return response()->json($responce);
         }
         return response()->json($loginResponce['status']);
-        // if($loginResponce['status'] == true){
-        //     $token = $loginResponce['data']['details']['token'];
-        //     list($header, $payload, $signature) = explode('.', $token);
-
-        //     $decodedPayload = base64_decode($payload);
-
-        //     $data = json_decode($decodedPayload, true);
-        //     if($data['Verified'] != 'False')
-        //     {
-        //         $data['token'] = $token;
-        //         session(['api_token' => $data]);
-        //         $responce = ['status' => true, 'type' => 'login', 'data' => $data];
-        //     }else{
-        //         $data = ['isEmailVerification' => true, 'email' => $request->email];
-        //         $otpResponce = $this->authService->sendOtp($data, $token);
-        //         if($otpResponce['status']){
-        //             $data = ['email' => $request->email, 'password' => $request->password, 'token' => $token];
-        //             $responce = ['status' => true, 'type' => 'otp', 'data' => $data];
-        //         }else{
-        //             $responce = $otpResponce;
-        //         }
-        //         return response()->json($responce);
-        //     }
-        // }else{
-        //     return response()->json($loginResponce);
-        // }
     }
 
     /**
@@ -192,11 +181,21 @@ class AuthController extends Controller
     public function forgotPassword(Request $request)
     {
         $responce = $this->authService->forgotPassword($request->all());
-        if(!is_null($responce)){
-            return response()->json(['status' => true, 'data' => $responce]);
-        }else{
-            return response()->json(['status' => false, 'message' => 'Something went wrong!']);
+        return response()->json($responce);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function resetPasswordForm()
+    {
+        if(session('api_token'))
+        {
+            return redirect()->route('profile.accountInfo');
         }
+        return view('web.auth.reset-password');
     }
 
     /**
@@ -207,11 +206,24 @@ class AuthController extends Controller
      */
     public function resetPassword(Request $request)
     {
-        $responce = $this->authService->resetPassword($request->all());
-        if(!is_null($responce)){
-            return response()->json(['status' => true, 'data' => $responce]);
-        }else{
-            return response()->json(['status' => false, 'message' => 'Something went wrong!']);
+        $resetPassResponce = $this->authService->resetPassword($request->all());
+        if($resetPassResponce['status']){
+            $input = $request->all();
+            unset($input['otp']);
+            $input['isSSO'] = false;
+            $loginResponce = $this->authService->login($input);
+            if($loginResponce['status']){
+                $token = $loginResponce['data']['details']['token'];
+                list($header, $payload, $signature) = explode('.', $token);
+                $decodedPayload = base64_decode($payload);
+
+                $data = json_decode($decodedPayload, true);
+                $data['token'] = $token;
+                session(['api_token' => $data]);
+                return response()->json($resetPassResponce);
+            }
+            return response()->json($loginResponce);
         }
+        return response()->json($resetPassResponce);
     }
 }

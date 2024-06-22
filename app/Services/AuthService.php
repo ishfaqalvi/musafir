@@ -70,11 +70,31 @@ class AuthService extends BaseService
 
     public function forgotPassword($data)
     {
-        return $this->post('/Auth/forgot-password', $data);
+        $message = 'Something went wrong in forgot password';
+        $responce = $this->post('/Auth/forgot-password', $data);
+        if(!is_null($responce) && $responce['status'])
+        {
+            return $responce;
+        }else{
+            if(isset($responce['data']['details'])){
+                $message = $responce['data']['details'];
+            }
+            return ['status' => false, 'message' => $message];
+        }
     }
 
     public function resetPassword($data)
     {
-        return $this->post('/Auth/reset-password', $data);
+        $message = 'Something went wrong in reset password';
+        $responce = $this->post('/Auth/reset-password', $data);
+        if(!is_null($responce) && $responce['status'])
+        {
+            return $responce;
+        }else{
+            if(isset($responce['data']['details'])){
+                $message = $responce['data']['details'];
+            }
+            return ['status' => false, 'message' => $message];
+        }
     }
 }

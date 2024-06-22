@@ -34,6 +34,7 @@
     {{ str_contains(url()->full(), '/login-register') ? 'login-body' : ''}}
     {{ str_contains(url()->full(), '/otp') ? 'login-body' : ''}}
     {{ str_contains(url()->full(), '/forgot-password') ? 'login-body' : ''}}
+    {{ str_contains(url()->full(), '/reset-password') ? 'login-body' : ''}}
     ">
     <!-- ======= Header ======= -->
     @yield('header')

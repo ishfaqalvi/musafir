@@ -202,7 +202,7 @@
             },
             messages: {
                 name: {
-                    required: "Please enter your name",
+                    required: "Please enter varification code",
                     minlength: "Your otp must consist of 6 characters",
                     maxlength: "Your otp must consist of 6 characters",
                 }

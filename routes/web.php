@@ -66,6 +66,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
         Route::post('verify-otp',        'verifyOTP'         )->name('verifyOtp'     );
         Route::get('forgot-password',    'forgotPasswordForm')->name('forgotPassword');
         Route::post('forgot-password',   'forgotPassword'    )->name('forgotPassword');
+        Route::get('reset-password',     'resetPasswordForm' )->name('resetPassword' );
         Route::post('reset-password',    'resetPassword'     )->name('resetPassword' );
     });
 

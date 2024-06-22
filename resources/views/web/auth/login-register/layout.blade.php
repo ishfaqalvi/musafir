@@ -222,7 +222,7 @@
                     data: formData,
                     success: function(responce) {
                         if(responce.status){
-                            if(responce.data.type == 'login'){
+                            if(responce.type === "login"){
                                 toastr.success('Login successfully.');
                                 window.location.href = "{{ route('profile.accountInfo') }}";
                             }else{
@@ -231,9 +231,8 @@
                                 localStorage.setItem('password', responce.data.password);
                                 localStorage.setItem('otpExpired', 'false');
                                 localStorage.removeItem('remainingTime');
-                                toastr.success('Your account is not varified. Otp sent to your email!');
-                                $loginBtn.html($loginBtnContent);
-                                // window.location.href = config.routes.otpForm;
+                                toastr.success('Check your email otp sent to your email!');
+                                window.location.href = config.routes.otpForm;
                             }
                         }else{
                             toastr.warning(responce.message);
