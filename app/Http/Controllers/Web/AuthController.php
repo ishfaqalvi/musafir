@@ -113,7 +113,7 @@ class AuthController extends Controller
             }
             return response()->json($responce);
         }
-        return response()->json($loginResponce['status']);
+        return response()->json($loginResponce);
     }
 
     /**
