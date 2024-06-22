@@ -72,6 +72,7 @@
             </div>
             `,
             signupBtnContent: '<button type="submit">SIGN UP</button>',
+            loginBtnContent: '<button type="submit">LOGIN</button>',
             routes: {
                 register: '{{ route('auth.register') }}',
                 login: '{{ route('auth.login') }}',
@@ -80,12 +81,17 @@
             selectors: {
                 registerForm: '#registerForm',
                 signupBtn: '#signupBtn',
+                loginForm: '#loginForm',
+                loginBtn: '#loginBtn',
             }
         };
 
         const $registerForm = $(config.selectors.registerForm);
         const $signupBtn = $(config.selectors.signupBtn);
         const $signupBtnContent = $(config.signupBtnContent);
+        const $loginBtnContent = $(config.loginBtnContent);
+        const $loginForm = $(config.selectors.loginForm);
+        const $loginBtn = $(config.selectors.loginBtn);
 
         $.validator.addMethod("customPassword", function(value, element) {
             return this.optional(element) ||
@@ -137,7 +143,7 @@
                     error: function(xhr, status, error) {
                         toastr.warning('Something went wrong please try again!.');
                         $signupBtn.html($signupBtnContent);
-                        console.console.log(error);
+                        console.log(error);
                     }
                 });
             },
@@ -192,6 +198,71 @@
                 },
                 agree: {
                     required: "Please agree terms & conditions"
+                }
+            }
+        });
+        $loginForm.validate({
+            errorElement: "div",
+            errorPlacement: function(error, element) {
+                error.addClass("invalid-feedback");
+                error.insertAfter(element);
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass("is-invalid").removeClass("is-valid");
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).addClass("is-valid").removeClass("is-invalid");
+            },
+            submitHandler: function(form) {
+                formData = $(form).serializeArray();
+                $loginBtn.html(config.spinnerContent);
+                $.ajax({
+                    type: 'POST',
+                    url: config.routes.login,
+                    data: formData,
+                    success: function(responce) {
+                        if(responce.status){
+                            if(responce.data.type == 'login'){
+                                toastr.success('Login successfully.');
+                                window.location.href = "{{ route('profile.accountInfo') }}";
+                            }else{
+                                localStorage.setItem('token', responce.data.token);
+                                localStorage.setItem('email', responce.data.email);
+                                localStorage.setItem('password', responce.data.password);
+                                localStorage.setItem('otpExpired', 'false');
+                                localStorage.removeItem('remainingTime');
+                                toastr.success('Your account is not varified. Otp sent to your email!');
+                                $loginBtn.html($loginBtnContent);
+                                // window.location.href = config.routes.otpForm;
+                            }
+                        }else{
+                            toastr.warning(responce.message);
+                            $loginBtn.html($loginBtnContent);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        toastr.warning('Something went wrong please try again!.');
+                        $loginBtn.html($loginBtnContent);
+                        console.log(error);
+                    }
+                });
+            },
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                }
+            },
+            messages: {
+                email: {
+                    required: "Please enter your email",
+                    email: "Please enter a valid email address"
+                },
+                password: {
+                    required: "Please provide a password"
                 }
             }
         });

@@ -62,7 +62,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
         Route::post('register',          'register'          )->name('register'      );
         Route::post('login',             'login'             )->name('login'         );
         Route::get('otp',                'otpForm'           )->name('otp-form'      );
-        Route::post('send-otp',          'sendOTP'           )->name('sendOtp'       );
         Route::post('verify-otp',        'verifyOTP'         )->name('verifyOtp'     );
         Route::get('forgot-password',    'forgotPasswordForm')->name('forgotPassword');
         Route::post('forgot-password',   'forgotPassword'    )->name('forgotPassword');

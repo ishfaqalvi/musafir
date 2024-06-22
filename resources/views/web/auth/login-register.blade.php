@@ -28,7 +28,7 @@
         $('#verifyOtpForm').hide();
         $('#registerForm').submit(function(event) {
 
-            
+
         });
         $('#loginForm').submit(function(event) {
             $('#loginBtn').html(spinnerContent);
@@ -76,8 +76,7 @@
                                 }
                             });
                         }else{
-                            toastr.success('Login successfully.');
-                            window.location.href = "{{ route('profile.accountInfo') }}";
+                            
                         }
                     }else{
                         toastr.warning(responce.message);

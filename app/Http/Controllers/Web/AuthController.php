@@ -87,24 +87,38 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $input = $request->all();
-        $input['isSSO'] = true;
-        $responce = $this->authService->login($input);
-        if(!is_null($responce)){
-            $token = $responce['data']['details']['token'];
-            list($header, $payload, $signature) = explode('.', $token);
-
-            $decodedPayload = base64_decode($payload);
-
-            $data = json_decode($decodedPayload, true);
-            $data['token'] = $token;
-            if($data['Verified'] != 'False')
-            {
-                session(['api_token' => $data]);
-            }
-            return response()->json(['status' => true, 'data' => $data]);
-        }else{
-            return response()->json(['status' => false, 'message' => 'Something went wrong!']);
+        $input['isSSO'] = false;
+        $loginResponce = $this->authService->login($input);
+        if($loginResponce['status']){
+            return response()->json($loginResponce['data']);
         }
+        return response()->json($loginResponce['status']);
+        // if($loginResponce['status'] == true){
+        //     $token = $loginResponce['data']['details']['token'];
+        //     list($header, $payload, $signature) = explode('.', $token);
+
+        //     $decodedPayload = base64_decode($payload);
+
+        //     $data = json_decode($decodedPayload, true);
+        //     if($data['Verified'] != 'False')
+        //     {
+        //         $data['token'] = $token;
+        //         session(['api_token' => $data]);
+        //         $responce = ['status' => true, 'type' => 'login', 'data' => $data];
+        //     }else{
+        //         $data = ['isEmailVerification' => true, 'email' => $request->email];
+        //         $otpResponce = $this->authService->sendOtp($data, $token);
+        //         if($otpResponce['status']){
+        //             $data = ['email' => $request->email, 'password' => $request->password, 'token' => $token];
+        //             $responce = ['status' => true, 'type' => 'otp', 'data' => $data];
+        //         }else{
+        //             $responce = $otpResponce;
+        //         }
+        //         return response()->json($responce);
+        //     }
+        // }else{
+        //     return response()->json($loginResponce);
+        // }
     }
 
     /**

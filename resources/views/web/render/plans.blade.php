@@ -8,7 +8,7 @@
 @else
     <div class="d-flex justify-content-center align-items-center gap-4 mb-lg-5 mb-3">
         <div class="countries-flag">
-            <img src="data:image/svg+xml;base64, {{ $flagImage }}" alt="Flag of {{ $countryName }}" height="35px" width="45px">
+            <img src="{{ $flagImage }}" alt="Flag of {{ $countryName }}" height="35px" width="45px">
         </div>
         <h4 class="mb-0 countries-heading">{{ $countryName }}</h4>
     </div>

@@ -76,7 +76,7 @@ class PlanController extends Controller
         {
             $category     = $this->adminService->getCountryByCode($perameters['country']);
             $countryName  = htmlspecialchars($category['countryName'], ENT_QUOTES, 'UTF-8');
-            $flagImage    = base64_encode($category['flagImage']);
+            $flagImage    = asset('images/country-flag/'.strtolower($category['countryCode']).'.png');
         }
         $data = view('web.render.plans', [
             'perameters' => $perameters,
