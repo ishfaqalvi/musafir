@@ -17,10 +17,10 @@
                 <li class="dropdown">
                     <a href="#">
                         <img class="me-2" src="{{ asset('assets/web/img/user-icon.svg') }}" alt="">
-                        <span>{{ $auth['FirstName'].' '. $auth['LastName'] }}</span><i class="bi bi-chevron-down dropdown-indicator"></i>
+                        <span>{{ authName() }}</span><i class="bi bi-chevron-down dropdown-indicator"></i>
                     </a>
                     <ul>
-                        <li><a href="#">Account Information</a></li>
+                        <li><a href="{{ route('profile.accountInfo') }}">Account Information</a></li>
                         <li><a href="#">Saved Cards</a></li>
                         <li><a href="#">Existing Packages</a></li>
                         <li><a href="#">Used Cards</a></li>

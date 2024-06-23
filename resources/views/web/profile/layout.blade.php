@@ -1,7 +1,6 @@
-@php($auth = session('api_token'))
 @extends('web.layout.app')
 
-@section('title') Musafir | {{ $auth['FirstName'].' '. $auth['LastName'] }} @endsection
+@section('title') Musafir | {{ authName() }} @endsection
 
 @section('header') @include('web.layout.header') @endsection
 
@@ -27,7 +26,7 @@
                 <div class="col-lg-3 mb-lg-0 mb-5">
                     <div class="profile-list card border-0">
                         <div class="card-header text-center bg-transparent py-3">
-                            <h5>{{ $auth['FirstName'].' '. $auth['LastName'] }}</h5>
+                            <h5>{{ authName() }}</h5>
                             <span>Traveler</span>
                         </div>
                         <div class="card-body">

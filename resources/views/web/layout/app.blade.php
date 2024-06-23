@@ -50,7 +50,7 @@
         <i class="bi bi-arrow-up-short"></i>
     </a>
 
-    <div id="preloader"></div>
+    {{-- <div id="preloader"></div> --}}
 
     <!-- Vendor JS Files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

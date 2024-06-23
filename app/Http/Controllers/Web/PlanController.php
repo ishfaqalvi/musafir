@@ -61,6 +61,8 @@ class PlanController extends Controller
             'packageId' => urlencode($packageId),
             'token' => urlencode($token)
         ];
+        // $link = $url['baseurl'].'amount='.$url['amount'].'&currency='.$url['currency'].'&package='.$url['package'].'&packageId='.$url['packageId'].'&token='.$url['token'];
+        // return redirect()->to($link);
         return view('web.plan.buy-now', compact('url'));
     }
 
