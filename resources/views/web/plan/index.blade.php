@@ -391,7 +391,7 @@
             $('#coverage').text($(this).data('coverage'));
             $('#bundledata').text($(this).data('bundledata'));
             $('#validity').text(`${$(this).data('period')} ${$(this).data('periodtype')}`);
-            $('#price').text(`${$(this).data('currency')} ${$(this).data('price')}`);
+            $('#price').text(`$ ${$(this).data('price')} ${$(this).data('currency')}`);
             $('#buyNowAmount').val($(this).data('price'));
             $('#buyNowCurrency').val($(this).data('currency'));
             $('#buyNowPackage').val($(this).data('bundlename'));
