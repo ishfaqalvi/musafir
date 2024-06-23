@@ -517,7 +517,7 @@
 }
 .portfolio .main-div-deatil-card .details-card {
   background: linear-gradient(180deg, #0872A4 0.01%, #579CBC 100%);
-  margin-top: -75px;
+  margin-top: -50px;
 }
 .portfolio .main-div-deatil-card .details-card ul {
   background: transparent;
@@ -535,7 +535,6 @@
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.04em;
-  max-width: 50%;
 }
 .portfolio .main-div-deatil-card .details-card ul li {
   background: transparent;
@@ -685,8 +684,8 @@ padding: 57px 0 100px 0;
 .footer p {
   font-size: 14px;
   font-weight: 400;
-  line-height: 30px;
-  text-align: justify;
+  line-height: 22px;
+  text-align: left;
   color: var(--color-ligh-black);
   max-width: 181px;
 
@@ -758,7 +757,7 @@ padding: 57px 0 100px 0;
   position: relative;
 }
 .login-body .card-footer {
-  /* background: rgba(240, 240, 240, 1); */
+  background: rgba(240, 240, 240, 1);
   border-radius: 0 0 30px 30px;
 }
 .login-body .card-footer p {
@@ -1045,8 +1044,8 @@ padding: 57px 0 100px 0;
   border-radius: 10px 0px 0px 0px;
   border-radius: 10px;
   opacity: 0px;
-  background: rgba(58, 58, 58, 1);
-  color: var(--color-default);
+  background: rgba(253, 215, 0, 1);
+  color: var(--color-black);
 }
 .payment-method .payment-method-container .form-check .form-check-input , .paymentMethod-modal .modal-content .form-check .form-check-input {
   height: 35px;
@@ -1104,6 +1103,7 @@ padding: 57px 0 100px 0;
 }
 .profile .profile-container {
   max-width: 1430px;
+  padding-left: 40px;
 
 }
 .profile .profile-list .card-header h5 {
@@ -1194,8 +1194,31 @@ padding: 57px 0 100px 0;
   padding-right: 30px;
   font-weight: 500;
 }
-
-
+.profile .profile-card-table {
+  border-radius: 20px;
+  border: 1px solid rgba(203, 213, 225, 1);
+}
+.profile .profile-card-table table th {
+  background: rgba(203, 213, 225, 1);
+  padding-top: 17px;
+  padding-bottom: 17px;
+  font-family: var(--font-primary) ;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14.52px;
+}
+.profile .profile-card-table table td {
+  font-family: var(--font-secondary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  width: 16%;
+}
+.profile .profile-card-table .table-responsive {
+  border-radius: 20px 20px 0 0;
+}
 @media screen and (max-width: 1199px) {
   .portfolio .main-div-deatil-card .details-card ul li p {
     font-size: 12px;
@@ -1219,10 +1242,18 @@ padding: 57px 0 100px 0;
   .portfolio .main-div-deatil-card .details-card {
     margin-top: -50px;
   }
+  .profile .profile-container {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
 }
 
 
 @media screen and (max-width: 991px) {
+  .profile .profile-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   .hero {
     padding: 0;
   }
@@ -1409,7 +1440,30 @@ padding: 57px 0 100px 0;
     font-weight: 500;
     width: 106px;
   }
-  .portfolio .main-div-deatil-card .details-card ul li .United-kingdom ,.portfolio .main-div-deatil-card .details-card ul li .gif-mob {
+  /* .portfolio .main-div-deatil-card .details-card ul li .United-kingdom ,.portfolio .main-div-deatil-card .details-card ul li .gif-mob {
     max-width: 100%;
-  }
+  } */
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
