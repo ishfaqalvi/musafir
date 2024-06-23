@@ -528,13 +528,14 @@
   font-weight: 600;
   line-height: 33px;
   letter-spacing: 0.04em;
+  max-width: 51%;
 }
 .portfolio .main-div-deatil-card .details-card ul li .United-kingdom {
   font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.04em;
-  max-width: 180px;
+  max-width: 50%;
 }
 .portfolio .main-div-deatil-card .details-card ul li {
   background: transparent;
@@ -1193,6 +1194,34 @@ padding: 57px 0 100px 0;
   padding-right: 30px;
   font-weight: 500;
 }
+
+
+@media screen and (max-width: 1199px) {
+  .portfolio .main-div-deatil-card .details-card ul li p {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .portfolio .main-div-deatil-card .details-card ul li p.data-field {
+    width: 114px;
+  }
+  .portfolio .main-div-deatil-card .details-card ul li .gif-mob {
+    max-width: 47%;
+    font-size: 18px;
+    line-height: 20px;
+  }
+  .portfolio .main-div-deatil-card .details-card ul li .United-kingdom {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .portfolio .main-div-deatil-card .country-card-img img {
+    height: 80px;
+  }
+  .portfolio .main-div-deatil-card .details-card {
+    margin-top: -50px;
+  }
+}
+
+
 @media screen and (max-width: 991px) {
   .hero {
     padding: 0;
@@ -1364,5 +1393,23 @@ padding: 57px 0 100px 0;
   }
   .login-body .card .card-body li:last-child button , .login-body .card .card-body li:first-child button{
     width: 120px;
+  }
+  .country-card-img img {
+    height: 55px!important;
+  }
+  .portfolio .main-div-deatil-card .details-card {
+    margin-top: -29px;
+  }
+  .portfolio .main-div-deatil-card .details-card ul li p {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+  }
+  .portfolio .main-div-deatil-card .details-card ul li p.data-field {
+    font-weight: 500;
+    width: 106px;
+  }
+  .portfolio .main-div-deatil-card .details-card ul li .United-kingdom ,.portfolio .main-div-deatil-card .details-card ul li .gif-mob {
+    max-width: 100%;
   }
 }
