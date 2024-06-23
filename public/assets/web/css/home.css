@@ -534,6 +534,7 @@
   font-weight: 500;
   line-height: 24px;
   letter-spacing: 0.04em;
+  max-width: 180px;
 }
 .portfolio .main-div-deatil-card .details-card ul li {
   background: transparent;
@@ -555,6 +556,11 @@
 }
 .portfolio .main-div-deatil-card .details-card ul li p.data-field {
   font-weight: 600;
+  text-align: end;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 170px;
 }
 .portfolio button {
   box-shadow: 0px 2px 3px 0px var(--color-yellow);;
