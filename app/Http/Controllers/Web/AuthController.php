@@ -100,7 +100,8 @@ class AuthController extends Controller
             {
                 $data['token'] = $token;
                 session(['api_token' => $data]);
-                $responce = ['status' => true, 'type' => 'login', 'data' => $data];
+                $redirectUrl = session('url.intended', '/');
+                $responce = ['status' => true, 'type' => 'login', 'data' => $data, 'redirect' => $redirectUrl];
             }else{
                 $data = ['isEmailVerification' => true, 'email' => $request->email];
                 $otpResponce = $this->authService->sendOtp($data, $token);

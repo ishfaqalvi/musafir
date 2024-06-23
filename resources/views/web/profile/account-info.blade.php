@@ -13,7 +13,7 @@
             <input type="name" class="form-control border-0 p-3" name="lastName" id="lastName"  aria-describedby="helpId" placeholder="Last Name (Optional)" value="{{ $auth['LastName'] ?? $auth['lastName'] }}" />
         </div>
         <div class="mb-4">
-            <input type="email" class="form-control border-0 p-3" name="email" id="email"  aria-describedby="helpId" placeholder="Email" value="{{ $auth['email'] }}"/>
+            <input type="email" class="form-control border-0 p-3" name="email" id="email"  aria-describedby="helpId" placeholder="Email" value="{{ $auth['email'] }}" readonly />
         </div>
         <div class="mb-4">
             <input type="password" class="form-control border-0 p-3" name="password" id="password"  aria-describedby="helpId" placeholder="Password" />

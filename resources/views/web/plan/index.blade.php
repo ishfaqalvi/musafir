@@ -388,7 +388,7 @@
         $('#bundleDetails').on('click', '.packageDetail', function() {
             $('#bundlename').text($(this).data('bundlename'));
             $('#countryname').text($(this).data('countryname'));
-            $('#coverage').text($(this).data('countryname'));
+            $('#coverage').text($(this).data('coverage'));
             $('#bundledata').text($(this).data('bundledata'));
             $('#validity').text(`${$(this).data('period')} ${$(this).data('periodtype')}`);
             $('#price').text(`${$(this).data('currency')} ${$(this).data('price')}`);

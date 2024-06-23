@@ -18,8 +18,6 @@
                     <a href="#" class="twitter"><img src="{{ asset('assets/web/img/twitter.svg') }}" alt=""></a>
                     <a href="#" class="linkedin"><img src="{{ asset('assets/web/img/youtube.svg') }}" alt=""></a>
                     <a href="#" class="instagram"><img src="{{ asset('assets/web/img/instagram.svg') }}" alt=""></a>
-                    <a href="#" class="linkedin"><img src="{{ asset('assets/web/img/tik_tok.svg') }}" alt=""></a>
-                    <a href="#" class="linkedin"><img src="{{ asset('assets/web/img/linkedin.svg') }}" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 footer-links">

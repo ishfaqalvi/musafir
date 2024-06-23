@@ -14,7 +14,7 @@
     </div>
 @endif
 @if(isset($plans['bundles']) && is_array($plans['bundles']))
-    <div class="row g-3 pb-3 pb-lg-5">';
+    <div class="row g-3 pb-3 pb-lg-5">
         @foreach ($plans['bundles'] as $key => $row)
             <div class="col-lg-4 col-md-6">
                 <div class="main-div-deatil-card">
@@ -24,8 +24,7 @@
                     <div class="card  details-card  position-relative">
                         <ul class="list-group border-0 mt-0">
                             <li class="list-group-item">
-                                <h4 class="mb-1 text-white gif-mob">GiffGaf Mobile</h4>
-                                <h5 class="text-white United-kingdom">{{ $row['bundleName'] }}</h5>
+                                <h5 class="text-white United-kingdom">{{ $row['countryNavigation']['countryName'] }}</h5>
                             </li>
                             <li class="list-group-item">
                                 <div class="d-flex align-items-center justify-content-between">
@@ -35,7 +34,7 @@
                                             <p class="label-field">COVERAGE</p>
                                         </div>
                                     </div>
-                                    <div><p class="data-field">{{ $row['countryNavigation']['countryName'] }}</p></div>
+                                    <div><p class="data-field">{{ $row['countryNavigation']['networkType'] }}</p></div>
                                 </div>
                             </li>
                             <li class="list-group-item">
@@ -73,7 +72,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="data-field">{{ $row['currency'].' '.$row['price'] }}</p>
+                                        <p class="data-field">{{ '$ '. $row['price'].' '.$row['currency'] }}</p>
                                     </div>
                                 </div>
                             </li>
@@ -82,6 +81,7 @@
                                     data-bundleid="{{ $row['bundleId'] }}"
                                     data-bundlename="{{ $row['bundleName'] }}"
                                     data-countryname="{{ $row['countryNavigation']['countryName'] }}"
+                                    data-coverage="{{ $row['countryNavigation']['networkType'] }}"
                                     data-bundledata="{{ $row['bundleData'] }}"
                                     data-period="{{ $row['period'] }}"
                                     data-periodtype="{{ $row['periodType'] }}"
