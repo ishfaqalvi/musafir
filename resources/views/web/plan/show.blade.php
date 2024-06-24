@@ -27,8 +27,23 @@
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <p class="data-field" id="coverage"></p>
+                                            <div class="d-flex">
+                                                <p class="data-field" id="coverage">
+
+                                                </p>
+                                                {{-- <p>
+                                                <button
+                                                    id="coverageTooltip"
+                                                    type="button"
+                                                    class="border-0 bg-transparent p-0 "
+                                                    data-bs-toggle="tooltip"
+                                                    data-bs-placement="top"
+                                                    title=""
+                                                    data-bs-custom-class="custom-tooltip"
+                                                >
+                                                    <i class="bi bi-info"></i>
+                                                </button>
+                                                </p> --}}
                                             </div>
                                         </div>
                                     </li>

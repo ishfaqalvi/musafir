@@ -8,44 +8,54 @@
 
 @section('script')
 <script>
-    window.addEventListener('load', function() {
-        // Parse URL parameters
-        const urlParams = new URLSearchParams(window.location.search);
-        const paymentId = urlParams.get('payment_id');
-        const packageId = urlParams.get('package_id');
-        const status = urlParams.get('status');
+    // Function to handle messages from iframe
+    function handleMessage(event) {
+        // Verify the origin of the message for security
+        if (event.origin !== 'http://your-iframe-url.com') { // Replace with actual iframe URL
+            console.warn('Origin not allowed:', event.origin);
+            return;
+        }
 
-        // Create data object
-        const data = {
-            payment_id: paymentId,
-            package_id: packageId,
-            status: status
-        };
-        window.parent.postMessage(data, '*');
-    });
-    // setInterval(function() {
-    //     try {
-    //         const generatedUrl = $('#paymentIframe').attr('src');
-    //         window.parent.postMessage({ url: generatedUrl }, '*');
+        // Get the message data
+        const data = event.data;
 
-    //     } catch (error) {
-    //         // This will fail if the iframe is from a different origin
-    //         console.log('Error accessing iframe content:', error);
-    //     }
-    // }, 1000);
+        // Check if data is sent and log it
+        if (data) {
+            console.log('Data received from iframe:', data);
+        } else {
+            console.log('No data sent from iframe.');
+        }
+    }
+
+    // Add event listener for messages
+    window.addEventListener('message', handleMessage, false);
 </script>
+
+{{-- <script>
+    // Create the message to send to the parent window
+    const data = {
+        payment_id: 'payment-id',
+        package_id: 'package-id',
+        status: ''
+    };
+
+    // Post message to parent window
+    window.parent.postMessage(message, '*'); // Replace '*' with specific origin for security
+</script> --}}
+
 <script>
+
+
+
+
     window.addEventListener('message', function(event) {
       // For security reasons, you should check the origin of the event
       // if (event.origin !== 'https://your-iframe-origin.com') return;
-
-      if (event.data) {
-        const iframeUrl = event.data.package_id;
-        console.log('URL from iframe:', iframeUrl);
-
-        // Process the URL further as needed
-        // For example, you can make an AJAX call to send this URL to your server
-      }
+        console.log(event.data);
+    //   if (event.data) {
+    //     const iframeUrl = event.data.package_id;
+    //     console.log('URL from iframe:', iframeUrl);
+    //   }
     });
   </script>
 {{-- <script>

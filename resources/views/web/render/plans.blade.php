@@ -45,7 +45,7 @@
                                                 title="{{ $row['countryNavigation']['networkTypeHimsi'] }}"
                                                 data-bs-custom-class="custom-tooltip"
                                             >
-                                            <i class="bi bi-info"></i>
+                                                <i class="bi bi-info"></i>
                                             </button>
                                         </p>
                                     </div>
@@ -96,6 +96,7 @@
                                     data-bundleid="{{ $row['bundleId'] }}"
                                     data-bundlename="{{ $row['bundleName'] }}"
                                     data-countryname="{{ $row['countryNavigation']['countryName'] }}"
+                                    data-tootip="{{ $row['countryNavigation']['networkTypeHimsi'] }}"
                                     data-coverage="{{ $row['countryNavigation']['networkType'] }}"
                                     data-bundledata="{{ $row['bundleData'] }}"
                                     data-period="{{ $row['period'] }}"

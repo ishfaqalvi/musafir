@@ -406,6 +406,7 @@
             $('#bundlename').text($(this).data('bundlename'));
             $('#countryname').text($(this).data('countryname'));
             $('#coverage').text($(this).data('coverage'));
+            $('#coverageTooltip').attr('title', $(this).data('tooltip'));
             $('#bundledata').text($(this).data('bundledata'));
             $('#validity').text(`${$(this).data('period')} ${$(this).data('periodtype')}`);
             $('#price').text(`$ ${$(this).data('price')} ${$(this).data('currency')}`);
