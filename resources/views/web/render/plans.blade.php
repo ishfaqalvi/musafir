@@ -34,7 +34,21 @@
                                             <p class="label-field">COVERAGE</p>
                                         </div>
                                     </div>
-                                    <div><p class="data-field">{{ $row['countryNavigation']['networkType'] }}</p></div>
+                                    <div>
+                                        <p class="data-field">
+                                            {{ $row['countryNavigation']['networkType'] }}
+                                            <button
+                                                type="button"
+                                                class="border-0 bg-transparent p-0 "
+                                                data-bs-toggle="tooltip"
+                                                data-bs-placement="top"
+                                                title="{{ $row['countryNavigation']['networkTypeHimsi'] }}"
+                                                data-bs-custom-class="custom-tooltip"
+                                            >
+                                            <i class="bi bi-info"></i>
+                                            </button>
+                                        </p>
+                                    </div>
                                 </div>
                             </li>
                             <li class="list-group-item">
