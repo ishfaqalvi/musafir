@@ -25,9 +25,9 @@ class PlanController extends Controller
      */
     public function index(Request $request)
     {
-        $perameters = $request->all();
+        $parameters = $request->all();
 
-        return view('web.plan.index', compact('perameters'));
+        return view('web.plan.index', compact('parameters'));
     }
 
     /**
@@ -72,23 +72,23 @@ class PlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function fetchPlansData($perameters)
+    public function fetchPlansData($parameters)
     {
-        $plans = $this->bundleService->getFilterBundles($perameters);
-        if($perameters['type'] != 'regional')
+        $plans = $this->bundleService->getFilterBundles($parameters);
+        if($parameters['type'] != 'regional')
         {
-            $category     = $this->adminService->getCountryByCode($perameters['country']);
+            $category     = $this->adminService->getCountryByCode($parameters['country']);
             $countryName  = htmlspecialchars($category['countryName'], ENT_QUOTES, 'UTF-8');
             $flagImage    = asset('images/country-flag/'.strtolower($category['countryCode']).'.png');
         }
         $data = view('web.render.plans', [
-            'perameters' => $perameters,
-            'type' => $perameters['type'],
+            'parameters' => $parameters,
+            'type' => $parameters['type'],
             'name' => $parameters['name'] ?? '',
             'countryName' => $countryName ?? '',
             'flagImage' => $flagImage ?? '',
             'plans' => $plans,
-            'filterByName' => $countryName ?? $perameters['name']
+            'filterByName' => $countryName ?? $parameters['name']
         ])->render();
         return $data;
     }

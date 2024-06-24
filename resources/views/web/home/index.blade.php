@@ -23,7 +23,6 @@
     </div>
 </section>
 <!-- End Hero Section -->
-
 <!-- ======= Main ======= -->
 <main id="main">
     <section id="portfolio" class="portfolio">

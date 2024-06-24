@@ -1,4 +1,4 @@
-@if($perameters['type'] == 'regional')
+@if($parameters['type'] == 'regional')
     <div class="d-flex justify-content-center align-items-center gap-4 mb-lg-5 mb-3">
         <div class="countries-flag">
             <img src="{{ asset('assets/web/img/maps-icon.svg') }}" alt="">
@@ -24,7 +24,10 @@
                     <div class="card  details-card  position-relative">
                         <ul class="list-group border-0 mt-0">
                             <li class="list-group-item">
-                                <h5 class="text-white United-kingdom">{{ $row['countryNavigation']['countryName'] }}</h5>
+                                <h5 class="text-white United-kingdom">
+                                    <img src="{{ $flagImage }}" alt="Flag of {{ $countryName }}" height="35px" width="45px">
+                                    {{ $row['countryNavigation']['countryName'] }}
+                                </h5>
                             </li>
                             <li class="list-group-item">
                                 <div class="d-flex align-items-center justify-content-between">
@@ -86,7 +89,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="data-field">{{ '$ '. $row['price'].' '.$row['currency'] }}</p>
+                                        <p class="data-field">{{ '$'. $row['price'].' '.$row['currency'] }}</p>
                                     </div>
                                 </div>
                             </li>

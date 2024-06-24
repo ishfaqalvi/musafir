@@ -15,12 +15,16 @@ class BaseService
         $this->secretKey = env('API_SECRET_KEY');
     }
 
-    protected function get($endpoint, $params = [])
+    protected function get($endpoint, $params = [], $token = null)
     {
         try {
-            $response = Http::withHeaders([
-                'secret-key' => $this->secretKey
-            ])->get($this->baseUrl . $endpoint, $params);
+            $headers = ['secret-key' => $this->secretKey];
+
+            if(!is_null($token)){
+                $headers['Authorization'] = 'Bearer ' . $token;
+            }
+
+            $response = Http::withHeaders($headers)->get($this->baseUrl . $endpoint, $params);
             return $this->handleResponse($response);
         } catch (\Exception $e) {
             return $this->handleException($e);

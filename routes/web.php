@@ -87,8 +87,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'middleware' => ['api.a
     Route::controller(ProfileController::class)->as('profile.')->group(function () {
         Route::get('account-info',          'accountInfoForm'   )->name('accountInfo');
         Route::post('account-info',         'accountInfo'       )->name('accountInfo');
-        Route::get('card-list',             'cardList'          )->name('cardList');
-        Route::post('card-save',            'cardSave'          )->name('cardSave');
+        Route::get('payments',              'payments'          )->name('payments'   );
+        Route::get('payments-data',        'paymentData'       )->name('paymentData');
         Route::get('logout',                'logout'            )->name('logout'     );
         // Route::post('register',          'register'         )->name('register'      );
         // Route::post('login',             'login'            )->name('login'         );

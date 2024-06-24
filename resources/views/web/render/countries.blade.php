@@ -1,6 +1,6 @@
 @foreach ($countries as $row)
     <div class="col-lg-4 col-md-6">
-        <a href="{{ route('plans.index', ['type' => $type, 'country' => htmlspecialchars($row['countryCode'], ENT_QUOTES, 'UTF-8')]) }}">
+        <a href="{{ route('plans.index', ['type' => $type, 'country' => htmlspecialchars($row['countryCode'], ENT_QUOTES, 'UTF-8')]) }}#portfolio">
             <div class="card border-0">
                 <div class="card-body d-flex justify-content-between p-4 align-items-center">
                     <div>

@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <ul>
                                 <li><a href="{{ route('profile.accountInfo') }}">Account Information</a></li>
-                                <li><a href="{{ route('profile.cardList') }}">Saved Cards</a></li>
+                                <li><a href="{{ route('profile.payments')}}">Payment History</a></li>
                                 <li><a href="#">Existing Packages</a></li>
                                 <li><a href="#">Used Cards</a></li>
                                 <li><a href="#">Order Cards</a></li>

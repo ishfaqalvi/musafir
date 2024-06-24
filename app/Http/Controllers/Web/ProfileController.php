@@ -4,16 +4,22 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Services\UserService;
+use App\Services\PaymentService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
 class ProfileController extends Controller
 {
     protected $userService;
+    protected $payment;
 
-    public function __construct(UserService $userService)
+    public function __construct(
+        UserService $userService,
+        PaymentService $payment
+    )
     {
         $this->userService = $userService;
+        $this->payment = $payment;
     }
 
     /**
@@ -51,9 +57,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function payments()
     {
-        //
+        return view('web.profile.payment');
     }
 
     /**
@@ -62,9 +68,12 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function paymentData()
     {
-        //
+        $token = session('api_token')['token'];
+        $records = $this->payment->getPayments($token);
+        $data = view('web.render.payments', ['records' => $records])->render();
+        return response()->json($data);
     }
 
     /**

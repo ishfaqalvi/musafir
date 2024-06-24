@@ -27,7 +27,7 @@
 <!-- ======= Main ======= -->
 <main id="main">
     <section id="portfolio" class="portfolio">
-        <div class="container container-theme" data-aos="fade-up" data-aos-delay="300">
+        {{-- <div class="container container-theme" data-aos="fade-up" data-aos-delay="300">
             <ul class="nav nav-tabs justify-content-center border-bottom-0 gap-lg-4 gap-md-3 gap-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button
@@ -111,6 +111,90 @@
                             </div>
                         </div>
                     @endif
+                </div>
+            </div>
+        </div> --}}
+        <div class="container container-theme" data-aos="fade-up" data-aos-delay="300">
+            <ul class="nav nav-tabs justify-content-center border-bottom-0 gap-lg-4 gap-md-3 gap-2" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link {{ $parameters['type'] == 'local' ? 'active' : '' }}"
+                        id="localEsims-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#localEsims"
+                        type="button"
+                        role="tab"
+                        aria-controls="localEsims"
+                        aria-selected="true">
+                        Local eSims
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link {{ $parameters['type'] == 'regional' ? 'active' : '' }}"
+                        id="regionalEsims-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#regionalEsims"
+                        type="button"
+                        role="tab"
+                        aria-controls="regionalEsims"
+                        aria-selected="false">
+                        Regional eSims
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button
+                        class="nav-link {{ $parameters['type'] == 'musafir' ? 'active' : '' }}"
+                        id="musafirPlans-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#musafirPlans"
+                        type="button"
+                        role="tab"
+                        aria-controls="musafirPlans"
+                        aria-selected="false">
+                        Musafir Plans
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content pt-5" id="bundleDetails">
+                <div class="tab-pane {{ $parameters['type'] == 'local' ? 'active' : '' }}" id="localEsims" role="tabpanel" aria-labelledby="localEsims-tab">
+                    <div id="localEsimPlans"></div>
+                    <div id="localCountriesContainer">
+                        <h4 class="mb-lg-5 mb-3">Popular Countries</h4>
+                        <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="localEsimsCountriesList"></div>
+                        <div class="row pb-5 justify-content-center" id="localShowAllCountriesContainer">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="card border-0">
+                                    <div class="card-body text-center">
+                                        <a href="javascript:;" id="localShowAllCountriesBtn"><p class="mb-0">Show All Countries</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane {{ $parameters['type'] == 'regional' ? 'active' : '' }}" id="regionalEsims" role="tabpanel" aria-labelledby="regionalEsims-tab">
+                    <div id="regionalEsimPlans"></div>
+                    <div id="regionsContainer">
+                        <h4 class="mb-lg-5 mb-3">REGIONS</h4>
+                        <div class="row g-lg-5 g-3 pb-5" id="regionalEsimsRegionsList"></div>
+                    </div>
+                </div>
+                <div class="tab-pane {{ $parameters['type'] == 'musafir' ? 'active' : '' }}" id="musafirPlans" role="tabpanel" aria-labelledby="musafirPlans-tab">
+                    <div id="musafirEsimPlans"></div>
+                    <div id="musafirCountriesContainer">
+                        <h4 class="mb-lg-5 mb-3">Countries</h4>
+                        <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="musafirPlansCountriesList"></div>
+                        <div class="row pb-5 justify-content-center" id="musafirShowAllCountriesContainer">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="card border-0">
+                                    <div class="card-body text-center">
+                                        <a href="javascript:;" id="musafirShowAllCountriesBtn"><p class="mb-0">Show All Countries</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -269,8 +353,8 @@
 <script>
     $(document).ready(function() {
         const config = {
-            type: "{{ $perameters['type'] }}",
-            parameters: @json($perameters),
+            type: "{{ $parameters['type'] }}",
+            parameters: @json($parameters),
             spinnerContent: `
             <div class="text-center text-warning">
                 <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
@@ -328,12 +412,15 @@
 
         switch (config.type) {
             case 'local':
+                $('#localCountriesContainer').hide();
                 $localEsimPlans.append(config.spinnerContent);
                 break;
             case 'regional':
+                $('#regionsContainer').hide();
                 $regionalEsimPlans.append(config.spinnerContent);
                 break;
             case 'musafir':
+                $('#musafirCountriesContainer').hide();
                 $musafirEsimPlans.append(config.spinnerContent);
                 break;
         }
@@ -385,6 +472,24 @@
             }
         });
 
+        $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+            const targetType = $(e.target).data('bs-target').substring(1); // Get the ID without #
+            switch (targetType) {
+                case 'localEsims':
+                    $localEsimPlans.hide();
+                    $('#localCountriesContainer').show();
+                    break;
+                case 'regionalEsims':
+                    $regionalEsimPlans.hide();
+                    $('#regionsContainer').show();
+                    break;
+                case 'musafirPlans':
+                    $musafirEsimPlans.hide();
+                    $('#musafirCountriesContainer').show();
+                    break;
+            }
+        });
+
         $('#bundleDetails').on('click', '.packageDetail', function() {
             if($(this).data('auth') == 'No'){
                 var intendedUrl = window.location.href;
@@ -409,7 +514,7 @@
             $('#coverageTooltip').attr('title', $(this).data('tooltip'));
             $('#bundledata').text($(this).data('bundledata'));
             $('#validity').text(`${$(this).data('period')} ${$(this).data('periodtype')}`);
-            $('#price').text(`$ ${$(this).data('price')} ${$(this).data('currency')}`);
+            $('#price').text(`$${$(this).data('price')} ${$(this).data('currency')}`);
             $('#buyNowAmount').val($(this).data('price'));
             $('#buyNowCurrency').val($(this).data('currency'));
             $('#buyNowPackage').val($(this).data('bundlename'));
