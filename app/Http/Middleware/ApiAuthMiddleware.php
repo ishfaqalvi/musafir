@@ -18,7 +18,7 @@ class ApiAuthMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!Session::has('api_token')) {
-            Session::put('url.intended', $request->url());
+            // Session::put('url.intended', $request->url());
             return redirect('/login-register');
         }
         return $next($request);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use App\Services\{AdminService,BundleService};
 
 class PlanController extends Controller
@@ -115,5 +116,16 @@ class PlanController extends Controller
         $regions = $this->adminService->getRegions();
         $data = view('web.render.regions', ['regions' => $regions])->render();
         return response()->json($data);
+    }
+
+    /**
+     * Fetch a listing of the resource from api.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function intendedUrl(Request $request)
+    {
+        Session::put('url.intended', $request->input('url'));
+        return response()->json(['success' => true]);
     }
 }

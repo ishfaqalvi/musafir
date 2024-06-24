@@ -100,8 +100,8 @@ class AuthController extends Controller
             {
                 $data['token'] = $token;
                 session(['api_token' => $data]);
-                $redirectUrl = session('url.intended', '/');
-                $responce = ['status' => true, 'type' => 'login', 'data' => $data, 'redirect' => $redirectUrl];
+                $redirectUrl = session('url.intended', route('profile.accountInfo'));
+                $responce = ['status' => true, 'type' => 'login', 'data' => $data, 'redirectUrl' => $redirectUrl];
             }else{
                 $data = ['isEmailVerification' => true, 'email' => $request->email];
                 $otpResponce = $this->authService->sendOtp($data, $token);
@@ -152,7 +152,8 @@ class AuthController extends Controller
                 $data = json_decode($decodedPayload, true);
                 $data['token'] = $token;
                 session(['api_token' => $data]);
-                return response()->json(['status' => true, 'data' => $data]);
+                $redirectUrl = session('url.intended', route('profile.accountInfo'));
+                return response()->json(['status' => true, 'data' => $data, 'redirectUrl' => $redirectUrl]);
             }
             return response()->json($loginResponce);
         }

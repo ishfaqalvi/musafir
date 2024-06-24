@@ -224,7 +224,7 @@
                         if(responce.status){
                             if(responce.type === "login"){
                                 toastr.success('Login successfully.');
-                                window.location.href = "{{ route('profile.accountInfo') }}";
+                                window.location.href = responce.redirectUrl;
                             }else{
                                 localStorage.setItem('token', responce.data.token);
                                 localStorage.setItem('email', responce.data.email);

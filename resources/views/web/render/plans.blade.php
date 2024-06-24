@@ -78,6 +78,7 @@
                             </li>
                             <li class="list-group-item align-items-center border-bottom-0">
                                 <a href="javascript:;" class="text-white packageDetail"
+                                    data-auth="{{ session('api_token') ? 'Yes' : 'No'}}"
                                     data-bundleid="{{ $row['bundleId'] }}"
                                     data-bundlename="{{ $row['bundleName'] }}"
                                     data-countryname="{{ $row['countryNavigation']['countryName'] }}"

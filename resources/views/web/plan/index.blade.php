@@ -386,6 +386,23 @@
         });
 
         $('#bundleDetails').on('click', '.packageDetail', function() {
+            if($(this).data('auth') == 'No'){
+                var intendedUrl = window.location.href;
+                $.ajax({
+                    url: "{{ route('plans.intendedUrl') }}",
+                    method: 'POST',
+                    data: {
+                        url: intendedUrl,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function() {
+                        console.log('Set intended URL.');
+                    },
+                    error: function() {
+                        console.error('Failed to set intended URL.');
+                    }
+                });
+            }
             $('#bundlename').text($(this).data('bundlename'));
             $('#countryname').text($(this).data('countryname'));
             $('#coverage').text($(this).data('coverage'));
