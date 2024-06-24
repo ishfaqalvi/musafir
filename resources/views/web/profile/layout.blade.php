@@ -21,7 +21,7 @@
 <!-- End Hero Section -->
 <main id="main pt-3">
     <section class="profile pb-lg-5 mb-4">
-        <div class="container-fluid profile-container ps-lg-0">
+        <div class="container-fluid profile-container">
             <div class="row g-lg-3">
                 <div class="col-lg-3 mb-lg-0 mb-5">
                     <div class="profile-list card border-0">
