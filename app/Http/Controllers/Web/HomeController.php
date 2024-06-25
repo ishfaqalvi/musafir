@@ -22,6 +22,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function commingSoon()
+    {
+        return view('web.home.commingSoon');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('web.home.index');

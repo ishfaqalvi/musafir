@@ -35,7 +35,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
 	|--------------------------------------------------------------------------
 	*/
     Route::controller(HomeController::class)->as('home.')->group(function () {
-        Route::get('/',                 'index'         )->name('index'         );
+        Route::get('/',                 'commingSoon'   )->name('commingSoon'   );
+        Route::get('index',             'index'         )->name('index'         );
         Route::get('countries/list',    'countriesList' )->name('countries.list');
         Route::get('regions/list',      'regionsList'   )->name('regions.list'  );
     });
