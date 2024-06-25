@@ -633,7 +633,10 @@
   background: var(--color-default);
   border-radius: 100px 0px 0px 0px;
   padding: 50px 0px;
-
+  }
+  .musafir-works-about {
+  background: url('../img/bg-about.png');
+  background-repeat: no-repeat;
   }
   .musafir-works h3 {
   font-size: 40px;
@@ -649,6 +652,9 @@
   }
   .why-musafir {
   padding: 57px 0 100px 0;
+  }
+  .why-musafir-about {
+  padding: 100px 0 0 0;
   }
   .why-musafir h3 {
   font-size: 45px;
@@ -667,6 +673,9 @@
   text-align: justify;
   color: var(--color-ligh-black);
   max-width: 648px;
+  }
+  .why-musafir-about p {
+  text-align: left;
   }
   .bg-musafir {
   padding: 100px 0;
@@ -1232,6 +1241,95 @@
   .profile .profile-card-table .table-responsive {
   border-radius: 20px 20px 0 0;
   }
+  .Contact-Us .contact_us_div  {
+  max-width: 414px;
+  }
+  .Contact-Us .contact_us_div h2 {
+  font-family: var(--font-secondary);
+  font-size: 50px;
+  font-weight: 600;
+  line-height: 60px;
+  margin-bottom: 25px
+  }
+  .Contact-Us .contact_us_div p{
+  font-family: var(--font-secondary);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0.01em;
+  color: var(--color-ligh-black);
+  margin-bottom: 50px;
+  }
+  .Contact-Us p {
+  font-family: var(--font-secondary);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0.01em;
+  color: var(--color-ligh-black);
+  }
+  .Contact-Us .contact_us_div .email-or-num a {
+  color: var(--color-ligh-black);
+  margin-bottom: 30px;
+  font-family: var(--font-secondary);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 35px;
+  letter-spacing: 0.01em;
+  }
+  .Contact-Us .customer-suppport, .Contact-Us  h5  {
+  font-family: var(--font-secondary);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 38.4px;
+  letter-spacing: 0.01em;
+  color: var(--color-black);
+  }
+  .Contact-Us .card {
+  border: none;
+  border-radius: 30px;
+  padding: 0;
+  }
+  .Contact-Us .card .card-body {
+  padding: 55px 33px;
+  }
+  .Contact-Us .card .card-body h6 {
+  font-family: var(--font-secondary);
+  font-size: 35px;
+  font-weight: 600;
+  line-height: 52.5px;
+  letter-spacing: 0.01em;
+  }
+  .Contact-Us .card .card-body input,.Contact-Us .card .card-body textarea {
+  border: 1px solid rgba(196, 196, 196, 1);
+  font-family: var(--font-secondary);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  border-radius: 20px;
+  padding: 24px;
+  }
+  .Contact-Us .card .card-body .email-message  {
+  background: url('../img/Message-input.svg');
+  background-position-x: 20px;
+  background-position-y: 26px;
+  padding-left: 60px;
+  background-repeat: no-repeat;
+  }
+  .Contact-Us .card .card-body .btn-primary {
+  background: rgba(253, 215, 0, 1);
+  font-family: var(--font-secondary);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 25px;
+  border: none;
+  color: var(--color-black);
+  padding: 22px;
+  border-radius: 20px;
+  }
+  .Contact-Us .card .card-body .field-name {
+  width: 50%;
+  }
   @media screen and (max-width: 1199px) {
   .portfolio .main-div-deatil-card .details-card ul li p {
     font-size: 12px;
@@ -1456,6 +1554,15 @@
   /* .portfolio .main-div-deatil-card .details-card ul li .United-kingdom ,.portfolio .main-div-deatil-card .details-card ul li .gif-mob {
     max-width: 100%;
   } */
+  .Contact-Us .card .card-body .field-name {
+    width: 100%;
+  }
+  .Contact-Us .card .card-body  .flex-wrap-div {
+    flex-wrap: wrap;
+  }
+  .Contact-Us .card .card-body {
+    padding: 30px 20px;
+  }
   }
   .tooltip {
   position: relative;

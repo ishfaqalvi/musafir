@@ -8,8 +8,9 @@
             <ul>
                 <li><a href="{{ route('home.index') }}">Home</a></li>
                 <li><a href="{{ route('home.index') }}#plans">Plans</a></li>
-                <li><a href="{{ route('home.index') }}#about">About Us</a></li>
-                <li><a href="{{ route('home.index') }}#download">Download</a></li>
+                <li><a href="{{ route('page.aboutUs') }}">About Us</a></li>
+                <li><a href="{{ route('page.contactUs') }}">Contact Us</a></li>
+                <li><a href="{{ route('home.index') }}#download">Downloads</a></li>
                 <li><img class="menu-divider" src="{{ asset('assets/web/img/menu-divider.svg') }}" alt="">
                 </li>
                 @php($auth = session('api_token'))

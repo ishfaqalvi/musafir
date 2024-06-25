@@ -71,6 +71,15 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
         Route::post('reset-password',    'resetPassword'     )->name('resetPassword' );
     });
 
+    /*
+	|--------------------------------------------------------------------------
+	| Pages Routes
+	|--------------------------------------------------------------------------
+	*/
+    Route::controller(PagesController::class)->as('page.')->group(function () {
+        Route::get('about-us',     'aboutUs'  )->name('aboutUs'  );
+        Route::get('contact-us',   'contactUs')->name('contactUs');
+    });
 });
 
 /*
