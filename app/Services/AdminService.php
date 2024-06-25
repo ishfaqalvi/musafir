@@ -39,4 +39,22 @@ class AdminService extends BaseService
             return $this->get('/Admin/GetRegions')['data']['details'];
         });
     }
+
+    public function saveContactUs($data)
+    {
+        $message = 'Something went wrong in saving data';
+        $responce = $this->post('/Admin/SaveContactUs', $data);
+        if(!is_null($responce) && $responce['status'])
+        {
+            return $responce;
+        }else{
+            if(isset($responce['data']['details'])){
+                $message = $responce['data']['details'];
+            }
+            if(isset($responce['data']['title'])){
+                $message = $responce['data']['title'];
+            }
+            return ['status' => false, 'message' => $message];
+        }
+    }
 }

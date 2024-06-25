@@ -32,9 +32,9 @@
                                 <a href="#">3738-3874774-09</a>
                             </div>
                         </div>
-                        <a href="#" class="customer-suppport">Customer Support</a>
+                        {{-- <a href="#" class="customer-suppport">Customer Support</a> --}}
                     </div>
-                    <div class="row pt-3">
+                    <div class="row">
                         <div class="col-lg-6">
                             <h5>Customer Support</h5>
                             <p>Our Support team is available around the clock to address any concerns or queries you may have</p>
@@ -54,38 +54,35 @@
                             <h6>Get In Touch</h6>
                             <p>You can reach us anytime</p>
                             <div class="pt-lg-4">
-                                <from class="quick">
+                                <form class="quick" id="contact-us-form" action="{{ route('page.contactUs') }}" method="POST">
+                                    @csrf
                                     <div class="d-flex gap-3 flex-wrap-div">
                                         <div class="mb-4 field-name">
-                                            <input type="text" name="" id="" class="form-control"
-                                                placeholder="First name" aria-describedby="helpId">
+                                            <input type="text" name="firstName" required id="" class="form-control" placeholder="First name" aria-describedby="helpId">
                                         </div>
                                         <div class="mb-4 field-name">
-                                            <input type="text" name="" id="" class="form-control"
-                                                placeholder="Last name" aria-describedby="helpId">
+                                            <input type="text" name="lastName" required id="" class="form-control" placeholder="Last name" aria-describedby="helpId">
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <input type="email" class="form-control email-message" name=""
-                                            id="" aria-describedby="emailHelpId" placeholder="Your email">
+                                        <input type="email" class="form-control email-message" name="email" required id="" aria-describedby="emailHelpId" placeholder="Your email">
                                     </div>
                                     <div class="mb-4">
                                         <!-- <input type="number" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="Your email"> -->
                                         <div class="form-group">
-                                            <input type="text" id="mobile_code" class="form-control"
-                                                placeholder="Phone Number" name="name">
+                                            <input type="text" id="mobile_code" class="form-control" placeholder="Phone Number" name="mobile" required>
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <textarea class="form-control" name="" id="" rows="6" placeholder="Type your message here"></textarea>
+                                        <textarea class="form-control" name="message" id="" rows="4" placeholder="Type your message here" required></textarea>
                                     </div>
-                                    <div class="mb-0 text-center">
+                                    <div class="mb-0 text-center" id="submitBtn">
                                         <button type="submit" class="btn btn-primary w-50">
-                                            <img src="{{ asset('assets/web/img/send.svg') }}" alt="">
+                                            {{-- <img src="{{ asset('assets/web/img/send.svg') }}" alt=""> --}}
                                             Submit
                                         </button>
                                     </div>
-                                </from>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -97,4 +94,71 @@
 @endsection
 
 @section('script')
+<script>
+    $(document).ready(function() {
+        const config = {
+            spinnerContent: `
+            <div class="text-center text-warning">
+                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            `,
+            submitBtnContent: '<button type="submit" class="btn btn-primary w-50">Submit</button>',
+        };
+        $('#contact-us-form').validate({
+            errorElement: "div",
+            errorPlacement: function(error, element) {
+                error.addClass("invalid-feedback");
+                error.insertAfter(element);
+            },
+            highlight: function(element, errorClass, validClass) {
+                $(element).addClass("is-invalid").removeClass("is-valid");
+            },
+            unhighlight: function(element, errorClass, validClass) {
+                $(element).addClass("is-valid").removeClass("is-invalid");
+            },
+            submitHandler: function(form) {
+                formData = $(form).serializeArray();
+                $('#submitBtn').html(config.spinnerContent);
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('page.contactUs') }}",
+                    data: formData,
+                    success: function(responce) {
+                        if(responce.status){
+                            toastr.success('Your message send successfully.');
+                            window.location.reload();
+                        }else{
+                            toastr.warning(responce.message);
+                            $('#submitBtn').html(config.submitBtnContent);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        toastr.warning('Something went wrong please try again!.');
+                        $('#submitBtn').html(config.submitBtnContent);
+                        console.log(error);
+                    }
+                });
+            },
+            messages: {
+                firstName:{
+                    required: "Please enter your first name"
+                },
+                lastName:{
+                    required: "Please enter your last name"
+                },
+                email: {
+                    required: "Please enter your email"
+                },
+                mobile: {
+                    required: "Please enter your phone number"
+                },
+                message: {
+                    required: "Please enter your message"
+                }
+            }
+        });
+    });
+</script>
 @endsection

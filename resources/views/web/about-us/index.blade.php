@@ -43,13 +43,10 @@
             <div class="row align-items-start" data-aos="fade-up" data-aos-delay="400">
                 <div class="col-lg-7 col-md-6">
                     <h2>
-                        About Airalo
+                        Introduction
                     </h2>
                     <p>
-                        The platform's goal is to eradicate the problem of expensive roaming charges by offering
-                        budget-friendly eSim options. Users can select from a variety of eSim tailored to their travel
-                        destinations, including local, regional, and global options. A incidunt veniam quo saepe
-                        mollitia nam nesciunt omnis non autem praesentium.
+                        Musafir is changing the way people stay connected with their mobile devices. Founded by four friends who are passionate about technology, our goal is to make mobile connectivity easy, flexible, and affordable using eSIM technology.
                     </p>
                 </div>
                 <div class="col-lg-5 col-md-6">
@@ -90,10 +87,7 @@
                         Our Mission
                     </h2>
                     <p>
-                        The platform's goal is to eradicate the problem of expensive roaming charges by offering
-                        budget-friendly eSim options. Users can select from a variety of eSim tailored to their travel
-                        destinations, including local, regional, and global options. A incidunt veniam quo saepe
-                        mollitia nam nesciunt omnis non autem praesentium.
+                        Musafir is committed to offering innovative solutions for travelers, remote workers, and businesses, providing them with convenient and flexible mobile connectivity options.
                     </p>
                 </div>
                 <div class="col-lg-5 col-md-6">
@@ -115,10 +109,7 @@
                 <div class="col-lg-7 col-md-6">
                     <h2>Impact</h2>
                     <p>
-                        Lorem ipsum dolor sit amet. Sed velit perferendis et voluptatem dolores eos porro dolor. Quo
-                        assumenda ducimus et nisi tempore sit harum tempora est delectus reiciendis aut saepe pariatur
-                        est nulla quia. A incidunt veniam quo saepe mollitia nam nesciunt omnis non autem praesentium id
-                        laborum maxime vel vero voluptatem.
+                        We want to provide simple and hassle-free access to the best mobile networks around the world, allowing users to switch between carriers without needing a physical SIM card.
                     </p>
                 </div>
             </div>
