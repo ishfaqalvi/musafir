@@ -14,40 +14,41 @@
             <div class="col-lg-4 col-md-6 footer-links">
                 <h4 class="mb-2">Stay Tuned</h4>
                 <div class="social-links d-flex flex flex-wrap mt-4 gap-4">
-                    <a href="#" class="facebook"><img src="{{ asset('assets/web/img/facebook.svg') }}" alt=""></a>
-                    <a href="#" class="twitter"><img src="{{ asset('assets/web/img/twitter.svg') }}" alt=""></a>
-                    <a href="#" class="linkedin"><img src="{{ asset('assets/web/img/youtube.svg') }}" alt=""></a>
-                    <a href="#" class="instagram"><img src="{{ asset('assets/web/img/instagram.svg') }}" alt=""></a>
+                    <a href="https://www.facebook.com/musafir.esim" target="_blank" class="facebook">
+                        <img src="{{ asset('assets/web/img/facebook.svg') }}" alt="">
+                    </a>
+                    <a href="https://www.tiktok.com/@musafir.esims" class="twitter" target="_blank">
+                        <img src="{{ asset('assets/web/img/tik_tok.svg') }}" alt="">
+                    </a>
+                    <a href="https://www.linkedin.com/company/musafir-esim/?viewAsMember=true" class="linkedin" target="_blank">
+                        <img src="{{ asset('assets/web/img/linkedin.svg') }}" alt="">
+                    </a>
+                    <a href="https://www.instagram.com/musafiresim" class="instagram" target="_blank">
+                        <img src="{{ asset('assets/web/img/instagram.svg') }}" alt="">
+                    </a>
+                    <a href="https://x.com/MusafirESIM" class="instagram" target="_blank">
+                        <img src="{{ asset('assets/web/img/x.svg') }}" alt="">
+                    </a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 footer-links">
                 <h4 class="mb-4">About</h4>
                 <ul class="ps-0">
                     <li><a href="{{ route('page.privacyPolicy') }}">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="{{ route('page.termsConditions') }}">Terms & Conditions</a></li>
                 </ul>
             </div>
             <div class="col-lg-2 col-md-6 footer-contact ">
                 <h4 class="mb-4">Learn More</h4>
                 <ul class="ps-0">
-                    <li><a href="#">Shop Data Plan</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Patner With Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="{{ route('home.index') }}#blog">Blog</a></li>
+                    <li><a href="{{ route('page.contactUs') }}">Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container mt-4">
-        <div class="copyright">
-            &copy; Copyright <strong><span>Musafir©2024.</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
-            <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-        </div>
+    <div class="container container-theme mt-4 d-flex justify-content-between">
+        <div class="copyright"> &copy; Copyright <strong><span>Musafir©2024.</span></strong>. All Rights Reserved </div>
+        <div class="credits"> Developed by <a href="https://kloudstack.co.uk" target="_blank">Kloudstack</a> </div>
     </div>
 </footer>

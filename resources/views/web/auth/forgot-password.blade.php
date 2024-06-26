@@ -8,7 +8,7 @@
         <div class="row pt-5">
             <div class="col-lg-12">
                 <div class="pb-5 text-center">
-                    <img src="{{ asset('assets/web/img/login_logout_log.png') }}" alt="">
+                    <a href="{{ route('home.index') }}"><img src="{{ asset('assets/web/img/login_logout_log.png') }}" alt=""></a>
                 </div>
                 <div class="card pt-5 border-0">
                     <div class="card-body"><div class="row justify-content-between tab-content">

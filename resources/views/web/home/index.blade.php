@@ -146,7 +146,7 @@
             </div>
         </div>
     </section>
-    <section class="why-musafir" id="about">
+    <section class="why-musafir" id="blog">
         <div class="container container-theme">
             <div class="row pb-lg-5 pb-md-5 pb-4 align-items-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="col-12 text-center">

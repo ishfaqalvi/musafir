@@ -55,4 +55,14 @@ class PagesController extends Controller
     {
         return view('web.privacy-policy.index');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function termsConditions()
+    {
+        return view('web.terms-conditions.index');
+    }
 }

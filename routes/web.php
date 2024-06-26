@@ -78,10 +78,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
 	|--------------------------------------------------------------------------
 	*/
     Route::controller(PagesController::class)->as('page.')->group(function () {
-        Route::get('about-us',          'aboutUs'        )->name('aboutUs'      );
-        Route::get('contact-us',        'contactUs'      )->name('contactUs'    );
-        Route::post('contact-us',       'contactUsSave'  )->name('contactUs'    );
-        Route::get('privacy-policy',    'privacyPolicy'  )->name('privacyPolicy');
+        Route::get('about-us',              'aboutUs'        )->name('aboutUs'          );
+        Route::get('contact-us',            'contactUs'      )->name('contactUs'        );
+        Route::post('contact-us',           'contactUsSave'  )->name('contactUs'        );
+        Route::get('privacy-policy',        'privacyPolicy'  )->name('privacyPolicy'    );
+        Route::get('terms-and-conditions',  'termsConditions')->name('termsConditions'  );
     });
 });
 
