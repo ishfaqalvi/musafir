@@ -14,6 +14,7 @@ class PagesController extends Controller
     {
         $this->adminService = $adminService;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,5 +44,15 @@ class PagesController extends Controller
     {
         $responce = $this->adminService->saveContactUs($request->all());
         return response()->json($responce);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function privacyPolicy()
+    {
+        return view('web.privacy-policy.index');
     }
 }

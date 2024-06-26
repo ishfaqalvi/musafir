@@ -293,7 +293,7 @@
 
         const showError = (xhr) => {
             const errorMessage = `Error - ${xhr.status}: ${xhr.statusText} - ${xhr.responseText}`;
-            toastr.warning('Something went wrong in fetching data');
+            toastr.error('Something went wrong in fetching data');
             console.log(errorMessage);
         };
 

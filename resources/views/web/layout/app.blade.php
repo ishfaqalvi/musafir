@@ -51,6 +51,9 @@
     </a>
 
     {{-- <div id="preloader"></div> --}}
+    <div id="loader">
+        <img src="{{ asset('assets/web/img/spinner.gif') }}" alt="Loading...">
+    </div>
 
     <!-- Vendor JS Files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

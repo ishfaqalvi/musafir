@@ -5,17 +5,19 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
-use App\Services\{AdminService,BundleService};
+use App\Services\{AdminService,BundleService,SubscriptionService};
 
 class PlanController extends Controller
 {
     protected $adminService;
     protected $bundleService;
+    protected $subscriptionService;
 
-    public function __construct(AdminService $adminService, BundleService $bundleService)
+    public function __construct(AdminService $adminService, BundleService $bundleService, SubscriptionService $subscriptionService)
     {
         $this->adminService = $adminService;
         $this->bundleService = $bundleService;
+        $this->subscriptionService = $subscriptionService;
     }
 
     /**
@@ -127,5 +129,17 @@ class PlanController extends Controller
     {
         Session::put('url.intended', $request->input('url'));
         return response()->json(['success' => true]);
+    }
+
+    /**
+     * Fetch a listing of the resource from api.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function subscription(Request $request)
+    {
+        $token = session('api_token')['token'];
+        $responce = $this->subscriptionService->subscribePackage($request->all(), $token);
+        return response()->json($responce);
     }
 }

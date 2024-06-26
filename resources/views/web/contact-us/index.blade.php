@@ -135,7 +135,7 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        toastr.warning('Something went wrong please try again!.');
+                        toastr.error('Something went wrong please try again!.');
                         $('#submitBtn').html(config.submitBtnContent);
                         console.log(error);
                     }

@@ -9,36 +9,33 @@
 
 @section('script')
 <script>
-    // function updateIframeURL() {
-    //     const iframe = document.getElementById('paymentIframe');
-    //     const iframeURL = iframe.contentWindow.location.body;
-    //     console.log(iframeURL)
-    // }
-    // setInterval(function() {
-    //     updateIframeURL();
-    // }, 1000);
-
-
-    // function handleMessage(event) {
-
-    //     const data = event.data;
-    //     console.log('Data recieived:' ,data);
-    //     // Check if data is sent and log it
-    //     if (data && typeof data === 'object') {
-    //         console.log('Data received from iframe:', data);
-    //     } else {
-    //         console.log('No data or invalid format sent from iframe.');
-    //     }
-    // }
-
-    // // Add event listener for messages
-    // window.addEventListener('message', handleMessage, false);
-
-</script>
-<script>
     window.addEventListener('message', function(event) {
-        console.log('THis status:' , event.data.status);
-        // document.getElementById('paymentIframe').textContent = `Current Iframe URL: ${}`;
+        console.log('Data from iframe:', event.data);
+        var data = event.data;
+        if (data && data.payment_id) {
+            $.ajax({
+                url: "{{ route('plans.subscription')}}",
+                method: 'POST',
+                data: {
+                    _token : $('meta[name="csrf-token"]').attr('content'),
+                    paymentId: data.payment_id,
+                    bundleId: "{{ $url['packageId'] }}"
+                },
+                success: function(response) {
+                    if (response.status) {
+                        toastr.success('Your subscription completed successfully!');
+                        window.location.href = "{{ route('profile.payments') }}";
+                    } else {
+                        toastr.warning('Your subscription is not completed!');
+                        window.location.href = "{{ route('home.index') }}";
+                    }
+                },
+                error: function(xhr, status, error) {
+                    toastr.error('Something went wrong please try again');
+                    window.location.href = "{{ route('home.index') }}";
+                }
+            });
+        }
     }, false);
 </script>
 @endsection

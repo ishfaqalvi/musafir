@@ -94,7 +94,7 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        toastr.warning('Something went wrong please try again!.');
+                        toastr.error('Something went wrong please try again!.');
                         $('#submitBtn').html('<button type="submit">Continue</button>');
                         console.log(error);
                     }

@@ -78,9 +78,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
 	|--------------------------------------------------------------------------
 	*/
     Route::controller(PagesController::class)->as('page.')->group(function () {
-        Route::get('about-us',     'aboutUs'        )->name('aboutUs'  );
-        Route::get('contact-us',   'contactUs'      )->name('contactUs');
-        Route::post('contact-us',  'contactUsSave'  )->name('contactUs');
+        Route::get('about-us',          'aboutUs'        )->name('aboutUs'      );
+        Route::get('contact-us',        'contactUs'      )->name('contactUs'    );
+        Route::post('contact-us',       'contactUsSave'  )->name('contactUs'    );
+        Route::get('privacy-policy',    'privacyPolicy'  )->name('privacyPolicy');
     });
 });
 
@@ -115,5 +116,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'middleware' => ['api.a
 	*/
     Route::controller(PlanController::class)->prefix('plans')->as('plans.')->group(function () {
         Route::post('buy_now',       'buyNow')->name('buyNow');
+        Route::post('subscription',  'subscription')->name('subscription');
     });
 });

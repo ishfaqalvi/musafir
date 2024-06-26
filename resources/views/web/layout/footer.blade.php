@@ -23,7 +23,7 @@
             <div class="col-lg-3 col-md-6 footer-links">
                 <h4 class="mb-4">About</h4>
                 <ul class="ps-0">
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="{{ route('page.privacyPolicy') }}">Privacy Policy</a></li>
                     <li><a href="#">Terms & Conditions</a></li>
                 </ul>
             </div>

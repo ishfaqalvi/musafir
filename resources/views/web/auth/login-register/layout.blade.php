@@ -141,7 +141,7 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        toastr.warning('Something went wrong please try again!.');
+                        toastr.error('Something went wrong please try again!.');
                         $signupBtn.html($signupBtnContent);
                         console.log(error);
                     }
@@ -240,7 +240,7 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        toastr.warning('Something went wrong please try again!.');
+                        toastr.error('Something went wrong please try again!.');
                         $loginBtn.html($loginBtnContent);
                         console.log(error);
                     }

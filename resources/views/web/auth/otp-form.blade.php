@@ -149,7 +149,7 @@
                     }
                 },
                 error: function(xhr, status, error) {
-                    toastr.warning('Something went wrong please try again!.');
+                    toastr.error('Something went wrong please try again!.');
                     $resendOtpContainer.html('<button type="button" id="resendOtpBtn">RESEND OTP</button>');
                     console.console.log(error);
                 }
@@ -187,7 +187,7 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        toastr.warning('Something went wrong please try again!.');
+                        toastr.error('Something went wrong please try again!.');
                         $verifyOtpBtn.html('<button type="submit">VERIFY OTP</button>');
                         console.console.log(error);
                     }

@@ -40,16 +40,6 @@
                                     <div>
                                         <p class="data-field">
                                             {{ $row['countryNavigation']['networkType'] }}
-                                            <button
-                                                type="button"
-                                                class="border-0 bg-transparent p-0 "
-                                                data-bs-toggle="tooltip"
-                                                data-bs-placement="top"
-                                                title="{{ $row['countryNavigation']['networkTypeHimsi'] }}"
-                                                data-bs-custom-class="custom-tooltip"
-                                            >
-                                                <i class="bi bi-info"></i>
-                                            </button>
                                         </p>
                                     </div>
                                 </div>
@@ -85,11 +75,12 @@
                                     <div>
                                         <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
                                             <img src="{{ asset('assets/web/img/price.png') }}" alt="">
-                                            <p class="label-field">PRICE</p>
+                                            <p class="label-field">Vendor</p>
                                         </div>
                                     </div>
                                     <div>
-                                        <p class="data-field">{{ '$'. $row['price'].' '.$row['currency'] }}</p>
+                                        @php($vendor = explode(':', $row['countryNavigation']['networkTypeHimsi']))
+                                        <p >{{ $vendor[0] }}</p>
                                     </div>
                                 </div>
                             </li>
@@ -107,7 +98,7 @@
                                     data-currency="{{ $row['currency'] }}"
                                     data-price="{{ $row['price'] }}">
                                     <div class="w-100 border py-2 fw-bold rounded text-white text-center">
-                                        BUY NOW
+                                        {{ 'BUY NOW ($'. $row['price'].' '.$row['currency'].')' }}
                                     </div>
                                 </a>
                             </li>

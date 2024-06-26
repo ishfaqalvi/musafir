@@ -110,7 +110,7 @@
                         }
                     },
                     error: function(xhr, status, error) {
-                        toastr.warning('Something went wrong please try again!.');
+                        toastr.error('Something went wrong please try again!.');
                         $('#resetPassBtn').html('<button type="submit">RESET PASSWORD</button>');
                         console.log(error);
                     }

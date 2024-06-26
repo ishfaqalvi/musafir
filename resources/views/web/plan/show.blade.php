@@ -31,19 +31,6 @@
                                                 <p class="data-field" id="coverage">
 
                                                 </p>
-                                                {{-- <p>
-                                                <button
-                                                    id="coverageTooltip"
-                                                    type="button"
-                                                    class="border-0 bg-transparent p-0 "
-                                                    data-bs-toggle="tooltip"
-                                                    data-bs-placement="top"
-                                                    title=""
-                                                    data-bs-custom-class="custom-tooltip"
-                                                >
-                                                    <i class="bi bi-info"></i>
-                                                </button>
-                                                </p> --}}
                                             </div>
                                         </div>
                                     </li>
@@ -99,7 +86,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <div class="container banner-card px-lg-5 px-0">
+                {{-- <div class="container banner-card px-lg-5 px-0">
                     <h3 class="pb-lg-5 pt-5">
                         Available Top Packages
                     </h3>
@@ -433,7 +420,7 @@
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="container additional-info px-lg-5 px-0 pb-5 mb-5">
                     <div class="row g-5">
                         <div class="col-lg-6 order-lg-1">
@@ -511,7 +498,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="list-group-item align-items-center border-bottom-0 flex-wrap gap-3">
+                                    {{-- <li class="list-group-item align-items-center border-bottom-0 flex-wrap gap-3">
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 <p class="label-field">TOP-UP OPTION</p>
@@ -520,7 +507,7 @@
                                                 <p class="data-field">Available</p>
                                             </div>
                                         </div>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

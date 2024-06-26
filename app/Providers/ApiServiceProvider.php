@@ -7,6 +7,7 @@ use App\Services\UserService;
 use App\Services\AdminService;
 use App\Services\BundleService;
 use App\Services\PaymentService;
+use App\Services\SubscriptionService;
 use Illuminate\Support\ServiceProvider;
 
 class ApiServiceProvider extends ServiceProvider
@@ -36,6 +37,10 @@ class ApiServiceProvider extends ServiceProvider
 
         $this->app->singleton(PaymentService::class, function ($app) {
             return new PaymentService();
+        });
+
+        $this->app->singleton(SubscriptionService::class, function ($app) {
+            return new SubscriptionService();
         });
     }
 
