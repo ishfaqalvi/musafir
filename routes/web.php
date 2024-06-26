@@ -98,16 +98,15 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'middleware' => ['api.a
 	|--------------------------------------------------------------------------
 	*/
     Route::controller(ProfileController::class)->as('profile.')->group(function () {
-        Route::get('account-info',          'accountInfoForm'   )->name('accountInfo');
-        Route::post('account-info',         'accountInfo'       )->name('accountInfo');
-        Route::get('payments',              'payments'          )->name('payments'   );
-        Route::get('payments-data',        'paymentData'       )->name('paymentData');
-        Route::get('logout',                'logout'            )->name('logout'     );
-        // Route::post('register',          'register'         )->name('register'      );
-        // Route::post('login',             'login'            )->name('login'         );
-        // Route::post('send-otp',          'sendOTP'          )->name('sendOtp'       );
-        // Route::post('verify-otp',        'verifyOTP'        )->name('verifyOtp'     );
-        // Route::get('send-email',         'sendEmail'        )->name('sendEmail'     );
+        Route::get('account-info',          'accountInfoForm'   )->name('accountInfo'      );
+        Route::post('account-info',         'accountInfo'       )->name('accountInfo'      );
+        Route::get('payments',              'payments'          )->name('payments'         );
+        Route::get('payments-data',         'paymentData'       )->name('paymentData'      );
+        Route::get('subscribed-bundles',    'subscribedBundles' )->name('subscribedBundles');
+        Route::get('used-bundles',          'usedBundles'       )->name('usedBundles'      );
+        Route::get('activate-bundles',      'activateBundles'   )->name('activateBundles'  );
+        Route::get('bundles-data',          'bundlesData'       )->name('bundlesData'      );
+        Route::get('logout',                'logout'            )->name('logout'           );
     });
 
     /*

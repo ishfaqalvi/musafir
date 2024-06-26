@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use Illuminate\Http\Request;
 use App\Services\UserService;
 use App\Services\PaymentService;
+use App\Services\SubscriptionService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -12,14 +13,17 @@ class ProfileController extends Controller
 {
     protected $userService;
     protected $payment;
+    protected $subscription;
 
     public function __construct(
         UserService $userService,
-        PaymentService $payment
+        PaymentService $payment,
+        SubscriptionService $subscription
     )
     {
         $this->userService = $userService;
         $this->payment = $payment;
+        $this->subscription = $subscription;
     }
 
     /**
@@ -77,26 +81,50 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Display the specified resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function subscribedBundles()
     {
-        //
+        return view('web.profile.subscribed-bundles');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function usedBundles()
     {
-        //
+        return view('web.profile.used-bundles');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function activateBundles()
+    {
+        return view('web.profile.activate-bundles');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function bundlesData(Request $request)
+    {
+        $token = session('api_token')['token'];
+        $records = $this->subscription->subscriptionsCategory($token);
+        $data = view('web.render.bundles', ['records' => $records[$request->type]])->render();
+        return response()->json($data);
     }
 
     /**

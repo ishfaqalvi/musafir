@@ -3,6 +3,11 @@ namespace App\Services;
 
 class SubscriptionService extends BaseService
 {
+    public function subscriptionsCategory($token)
+    {
+        return $this->get('/Subscription/GetUserSubscriptionsCategory', [], $token)['data']['details'];
+    }
+
     public function subscribePackage($data, $token)
     {
         $message = 'Something went wrong in subscribing package!';

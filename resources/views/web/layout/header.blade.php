@@ -22,10 +22,11 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('profile.accountInfo') }}">Account Information</a></li>
-                        <li><a href="{{ route('profile.payments')}}">Payment History</a></li>
+                        <li><a href="{{ route('profile.payments') }}">Payment History</a></li>
                         <li><a href="#">Existing Packages</a></li>
-                        <li><a href="#">Subscribed</a></li>
-                        <li><a href="#">Order Cards</a></li>
+                        <li><a href="{{ route('profile.subscribedBundles') }}">Subscribed Bundles</a></li>
+                        <li><a href="{{ route('profile.usedBundles') }}">Used Bundles</a></li>
+                        <li><a href="{{ route('profile.activateBundles') }}">Activate Bundles</a></li>
                         <li class="d-flex justify-content-between align-items-center">
                             <a href="{{ route('profile.logout') }}">Logout</a>
                             <img src="{{ asset('assets/web/img/logout.png') }}" alt="">

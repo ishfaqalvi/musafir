@@ -75,7 +75,7 @@
                                     <div>
                                         <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
                                             <img src="{{ asset('assets/web/img/price.png') }}" alt="">
-                                            <p class="label-field">Vendor</p>
+                                            <p class="label-field">VENDOR</p>
                                         </div>
                                     </div>
                                     <div>

@@ -1,12 +1,9 @@
 @extends('web.profile.layout')
 
 @section('profile_content')
-    @php($auth = session('api_token'))
     <div class="account-info-form h-100">
-        <h3>Payment History</h3>
-        <div class="card profile-card-table">
-            <div class="card-body p-lg-5" id="payment-history"></div>
-        </div>
+        <h3>Subscribed Bundles</h3>
+        <div class="payment-method" id="page-content"></div>
     </div>
 @endsection
 
@@ -21,15 +18,13 @@
                     </div>
                 </div>
                 `,
-                saveBtnContent: '<button class="btn">Save Changes</button>',
             };
-            $('#payment-history').html(config.spinnerContent);
+            $('#page-content').html(config.spinnerContent);
             $.ajax({
-                url: "{{ route('profile.paymentData') }}",
+                url: "{{ route('profile.bundlesData') }}?type=subscribedBundles",
                 method: 'GET',
-                success: function(data) {
-                    var paymentTable = $('#payment-history');
-                    paymentTable.html(data);
+                success: function(responce) {
+                    $('#page-content').html(responce);
                 },
                 error: function(xhr, status, error) {
                     toastr.error('Error fetching data');
