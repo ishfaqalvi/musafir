@@ -498,11 +498,11 @@
   width: 100%;
   position: relative;
   background-image: linear-gradient(to right, rgba(8, 114, 164, 1), rgba(8, 114, 164, 1));
-  padding:  130px 95px 70px 95px;
+  padding:  220px 95px 130px 95px;
 }
-.hero .hero-container {
+/* .hero .hero-container {
   min-height: 800px
-}
+} */
 .check-hero .check-container {
   min-height: 283px;
   padding-bottom: 65px;
@@ -532,65 +532,6 @@
   max-width: 650px;
 }
 
-/* .hero #search-field {
-  background: url(../img/search-icon.png) no-repeat left 15px center !important;
-  background-size: 4% 52% !important;
-  width: 100%;
-  font-size: 16px;
-  padding: 12px 20px 12px 50px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
-  background: transparent;
-  color: var(--color-default);
-  background-position-y: center;
-  border-radius: 20px;
-  outline: none;
-}
-.hero #search-field::placeholder {
-  color: var(--color-default);
-}
-.hero .img-cross {
-  position: absolute;
-  right: 20px;
-  top: 19px;
-  height: 15px;
-}
-.hero #search-results {
-  list-style-type: none;
-  padding: 15px 40px;
-  margin: 0;
-  background-color: rgba(240, 240, 240, 1);
-  border-radius: 20px;
-}
-.hero #search-results .bg-badge {
-  background: var(--color-default);
-  border: 1px solid rgba(196, 196, 196, 1);
-  border-radius: 10px;
-  font-family: var(--font-secondary);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 14px;
-}
-.hero #search-results h6 {
-  font-family: var(--font-secondary);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-}
-.hero #search-results li a {
-  border-bottom: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders;
-  background-color: #f6f6f6; 
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block
-}
-
-.hero #search-results li a:hover:not(.header) {
-  background-color: #eee;
-} */
 .hero #search-field {
     background: url(../img/search-icon.png) no-repeat left 15px center !important;
     background-size: 4% 52% !important;
