@@ -150,14 +150,14 @@
         <div class="container container-theme">
             <div class="row pb-lg-5 pb-md-5 pb-4 align-items-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="col-12 text-center">
-                    <h3>Why Musafir</h3>
+                    <h3>Why Musafir eSIM?</h3>
                 </div>
             </div>
             <div class="row align-items-center" data-aos="fade-up" data-aos-delay="400">
                 <div class="col-lg-7 col-md-6">
-                    <h2>The Problem</h2>
+                    <h2>Stay Connected Effortlessly</h2>
                     <p>
-                        The platform's goal is to eradicate the problem of expensive roaming charges by offering budget-friendly eSim options. Users can select from a variety of eSim tailored to their travel destinations, including local, regional, and global options. A incidunt veniam quo saepe mollitia nam nesciunt omnis non autem praesentium.
+                        Musafir eSIM makes it easy for you to stay connected wherever you travel. With a simple setup process and comprehensive coverage, our eSIM ensures you can communicate and access the internet without hassle.
                     </p>
                 </div>
                 <div class="col-lg-5 col-md-6">
@@ -177,8 +177,9 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-6">
-                    <h2>Affordable & Transparent</h2>
-                    <p>Lorem ipsum dolor sit amet. Sed velit perferendis et voluptatem dolores eos porro dolor. Quo assumenda ducimus et nisi tempore sit harum tempora est delectus reiciendis aut saepe pariatur est nulla quia. A incidunt veniam quo saepe mollitia nam nesciunt omnis non autem praesentium id laborum maxime vel vero voluptatem.</p>
+                    <h2>Instant Activation</h2>
+                    <p>Get connected in minutes with our straightforward activation process. No more dealing with physical SIM cards or waiting in line at local stores.</p>
+                    <p>Activate your eSIM instantly upon arrival in your destination country. Simply scan the QR code and start using your data plan right away.</p>
                 </div>
             </div>
         </div>
@@ -187,8 +188,9 @@
         <div class="container container-theme pt-5">
             <div class="row align-items-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="col-lg-7 col-md-6">
-                    <h2>The Problem</h2>
-                    <p>The platform's goal is to eradicate the problem of expensive roaming charges by offering budget-friendly eSim options. Users can select from a variety of eSim tailored to their travel destinations, including local, regional, and global options. A incidunt veniam quo saepe mollitia nam nesciunt omnis non autem praesentium.</p>
+                    <h2>Affordable Rates</h2>
+                    <p>Enjoy transparent, competitive rates without any hidden fees. Our plans are designed to offer the best eSIM app value for your money.</p>
+                    <p>Avoid expensive roaming fees and stay within your budget with our affordable eSIM app for travel data plans.</p>
                 </div>
                 <div class="col-lg-5 col-md-6">
                     <div>
@@ -207,8 +209,9 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-6">
-                    <h2>Affordable & Transparent</h2>
-                    <p>Lorem ipsum dolor sit amet. Sed velit perferendis et voluptatem dolores eos porro dolor. Quo assumenda ducimus et nisi tempore sit harum tempora est delectus reiciendis aut saepe pariatur est nulla quia. A incidunt veniam quo saepe mollitia nam nesciunt omnis non autem praesentium id laborum maxime vel vero voluptatem.</p>
+                    <h2>Flexible Plans</h2>
+                    <p>Choose from a variety of data plans that suit your travel needs, whether you're on a short trip or an extended stay.</p>
+                    <p>Tailor your own plan based on your itinerary and data usage requirements.</p>
                 </div>
             </div>
         </div>
@@ -217,8 +220,9 @@
         <div class="container container-theme pt-5">
             <div class="row align-items-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="col-lg-7 col-md-6">
-                    <h2>The Problem</h2>
-                    <p>The platform's goal is to eradicate the problem of expensive roaming charges by offering budget-friendly eSim options. Users can select from a variety of eSim tailored to their travel destinations, including local, regional, and global options. A incidunt veniam quo saepe mollitia nam nesciunt omnis non autem praesentium.</p>
+                    <h2>Secure Connections</h2>
+                    <p>Enjoy encrypted and secure internet access, ensuring your personal information and browsing data are protected.</p>
+                    <p>Experience consistent and dependable connectivity with our trusted network partners.</p>
                 </div>
                 <div class="col-lg-5 col-md-6">
                     <div>
@@ -232,7 +236,8 @@
         <div class="container container-theme bg-download">
             <div class="row align-items-center g-3" data-aos="zoom-in" data-aos-delay="300">
                 <div class="col-lg-6 col-md-6">
-                    <h2>Download it now</h2>
+                    <h2>Ready to experience hassle-free mobile connectivity?</h2>
+                    <p>Download the Musafir app today to purchase, manage, and top up your eSIMs instantly, wherever you are!</p>
                     <div class="d-flex flex-wrap gap-2">
                         <a href="">
                             <img src="{{ asset('assets/web/img/google.svg') }}" alt="">

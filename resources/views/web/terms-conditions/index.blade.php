@@ -375,9 +375,8 @@
             <div class="container container-theme bg-download">
                 <div class="row align-items-center g-3" data-aos="zoom-in" data-aos-delay="300">
                     <div class="col-lg-6 col-md-6">
-                        <h2>
-                            Download it now
-                        </h2>
+                        <h2>Ready to experience hassle-free mobile connectivity?</h2>
+                        <p>Download the Musafir app today to purchase, manage, and top up your eSIMs instantly, wherever you are!</p>
                         <div class="d-flex flex-wrap gap-2">
                             <a href="">
                                 <img src="{{ asset('assets/web/img/google.svg') }}" alt="">

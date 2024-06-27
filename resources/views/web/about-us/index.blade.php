@@ -19,7 +19,7 @@
             <div class="col-12 order-2 order-lg-1 d-flex  justify-content-center align-items-end">
                 <div>
                     <h4 class="mb-0">
-                        About Musafir
+                        About Musafir Esim
                     </h4>
                 </div>
             </div>
@@ -66,15 +66,8 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-6">
-                    <h2>
-                        The eSim Solution
-                    </h2>
-                    <p>
-                        Lorem ipsum dolor sit amet. Sed velit perferendis et voluptatem dolores eos porro dolor. Quo
-                        assumenda ducimus et nisi tempore sit harum tempora est delectus reiciendis aut saepe pariatur
-                        est nulla quia. A incidunt veniam quo saepe mollitia nam nesciunt omnis non autem praesentium id
-                        laborum maxime vel vero voluptatem.
-                    </p>
+                    <h2>Our Vision</h2>
+                    <p>We want to provide simple and hassle-free access to the best mobile networks around the world, allowing users to switch between carriers without needing a physical SIM card.</p>
                 </div>
             </div>
         </div>
@@ -107,10 +100,10 @@
                     </div>
                 </div>
                 <div class="col-lg-7 col-md-6">
-                    <h2>Impact</h2>
-                    <p>
-                        We want to provide simple and hassle-free access to the best mobile networks around the world, allowing users to switch between carriers without needing a physical SIM card.
-                    </p>
+                    <h2>Our Solutions</h2>
+                    <p><strong>Global eSIM Plans:</strong> Stay connected no matter where you are with plans designed for travelers and digital nomads.</p>
+                    <p><strong>Business Solutions:</strong> Improve your business operations with our solutions for global workforces and devices.</p>
+                    <p><strong>Customizable Packages:</strong> Choose data plans that fit your needs, ensuring you always have the right amount of data.</p>
                 </div>
             </div>
         </div>
@@ -119,12 +112,9 @@
         <div class="container container-theme">
             <div class="row align-items-start" data-aos="fade-up" data-aos-delay="300">
                 <div class="col-lg-7 col-md-6">
-                    <h2>Our Team</h2>
+                    <h2>Team</h2>
                     <p>
-                        The platform's goal is to eradicate the problem of expensive roaming charges by offering
-                        budget-friendly eSim options. Users can select from a variety of eSim tailored to their travel
-                        destinations, including local, regional, and global options. A incidunt veniam quo saepe
-                        mollitia nam nesciunt omnis non autem praesentium.
+                        Meet the Musafir team! Our dedicated team members are located in our main hubs in United Kingdome, as well as remotely around the world. Together, we strive to make Musafir a leader in global mobile connectivity.
                     </p>
                 </div>
                 <div class="col-lg-5 col-md-6">
@@ -139,9 +129,8 @@
         <div class="container container-theme bg-download">
             <div class="row align-items-center g-3" data-aos="zoom-in" data-aos-delay="300">
                 <div class="col-lg-6 col-md-6">
-                    <h2>
-                        Download it now
-                    </h2>
+                    <h2>Ready to experience hassle-free mobile connectivity?</h2>
+                    <p>Download the Musafir app today to purchase, manage, and top up your eSIMs instantly, wherever you are!</p>
                     <div class="d-flex flex-wrap gap-2">
                         <a href="">
                             <img src="{{ asset('assets/web/img/google.svg') }}" alt="">
