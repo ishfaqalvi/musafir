@@ -23,7 +23,6 @@
                     <ul>
                         <li><a href="{{ route('profile.accountInfo') }}">Account Information</a></li>
                         <li><a href="{{ route('profile.payments') }}">Payment History</a></li>
-                        <li><a href="#">Existing Packages</a></li>
                         <li><a href="{{ route('profile.subscribedBundles') }}">Subscribed Bundles</a></li>
                         <li><a href="{{ route('profile.usedBundles') }}">Used Bundles</a></li>
                         <li><a href="{{ route('profile.activateBundles') }}">Activate Bundles</a></li>

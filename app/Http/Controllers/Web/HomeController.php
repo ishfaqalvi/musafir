@@ -61,4 +61,24 @@ class HomeController extends Controller
         $data = view('web.render.regions', ['regions' => $regions])->render();
         return response()->json($data);
     }
+
+    /**
+     * Fetch a listing of the resource from api.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+        $keyword = $request->keyword;
+        $countries = $this->adminService->getCountries();
+        $filteredCountries = array_filter($countries, function ($country) use ($keyword) {
+            return stripos($country['countryName'], $keyword) !== false;
+        });
+        $regions = $this->adminService->getRegions();
+        $filteredRegions = array_filter($regions, function ($region) use ($keyword) {
+            return stripos($region['region'], $keyword) !== false;
+        });
+        $data = view('web.render.search-result', ['regions' => $filteredRegions, 'countries' => $filteredCountries])->render();
+        return response()->json($data);
+    }
 }

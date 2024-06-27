@@ -39,6 +39,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Web'], function () {
         Route::get('index',             'index'         )->name('index'         );
         Route::get('countries/list',    'countriesList' )->name('countries.list');
         Route::get('regions/list',      'regionsList'   )->name('regions.list'  );
+        Route::get('search',            'search'        )->name('search'        );
     });
 
     /*
