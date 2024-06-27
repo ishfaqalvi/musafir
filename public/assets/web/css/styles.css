@@ -564,7 +564,7 @@
     margin: 0;
     background-color: rgba(240, 240, 240, 1);
     border-radius: 20px;
-    position: absolute;
+    position: relative;
     width: 100%;
     z-index: 1000;
     display: none; /* Initially hidden */
