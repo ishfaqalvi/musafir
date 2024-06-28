@@ -10,14 +10,21 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero">
     <div class="container container-theme position-relative hero-container d-flex">
-        <div class="row gy-5" data-aos="zoom-in" data-aos-delay="100">
-            <div class="col-12 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+        <div class="row" data-aos="zoom-in" data-aos-delay="100">
+            <div class="col-12 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start banner-container">
                 <h3>
-                  <span>Welcome To Musafir... </span>Stay connected, wherever you travel, at affordable prices
+                    <span>Welcome To Musafir... </span>Stay connected, wherever you travel, at affordable prices 
                 </h3>
                 <h4>
-                  Empowering connectivity
+                    Empowering connectivity
                 </h4>
+            <div>
+            <div class="position-relative">
+                <input type="text" id="search-field" placeholder="Search for names..">
+                <a href="javascript:void();" id="clear-button">
+                    <img class="img-cross" src="{{ asset('assets/web/img/search-clear-icon.png') }}" alt="">
+                </a>
+                <ul id="search-results" class="dropdown-menu"></ul>
             </div>
         </div>
     </div>
@@ -27,93 +34,6 @@
 <!-- ======= Main ======= -->
 <main id="main">
     <section id="portfolio" class="portfolio">
-        {{-- <div class="container container-theme" data-aos="fade-up" data-aos-delay="300">
-            <ul class="nav nav-tabs justify-content-center border-bottom-0 gap-lg-4 gap-md-3 gap-2" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button
-                        class="nav-link {{ $perameters['type'] == 'local' ? 'active' : '' }}"
-                        id="localEsims-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#localEsims"
-                        type="button"
-                        role="tab"
-                        aria-controls="localEsims"
-                        aria-selected="true">
-                        Local eSims
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button
-                        class="nav-link {{ $perameters['type'] == 'regional' ? 'active' : '' }}"
-                        id="regionalEsims-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#regionalEsims"
-                        type="button"
-                        role="tab"
-                        aria-controls="regionalEsims"
-                        aria-selected="false">
-                        Regional eSims
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button
-                        class="nav-link {{ $perameters['type'] == 'musafir' ? 'active' : '' }}"
-                        id="musafirPlans-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#musafirPlans"
-                        type="button"
-                        role="tab"
-                        aria-controls="musafirPlans"
-                        aria-selected="false">
-                        Musafir Plans
-                    </button>
-                </li>
-            </ul>
-            <div class="tab-content pt-5" id="bundleDetails">
-                <div class="tab-pane {{ $perameters['type'] == 'local' ? 'active' : '' }}" id="localEsims" role="tabpanel" aria-labelledby="localEsims-tab">
-                    @if($perameters['type'] == 'local')
-                        <div id="localEsimPlans"></div>
-                    @else
-                        <h4 class="mb-lg-5 mb-3">Popular Countries</h4>
-                        <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="localEsimsCountriesList"></div>
-                        <div class="row pb-5 justify-content-center" id="localShowAllCountriesContainer">
-                            <div class="col-lg-6 col-md-8">
-                                <div class="card border-0">
-                                    <div class="card-body text-center">
-                                        <a href="javascript:;" id="localShowAllCountriesBtn"><p class="mb-0">Show All Countries</p></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                </div>
-                <div class="tab-pane {{ $perameters['type'] == 'regional' ? 'active' : '' }}" id="regionalEsims" role="tabpanel" aria-labelledby="regionalEsims-tab">
-                    @if($perameters['type'] == 'regional')
-                        <div id="regionalEsimPlans"></div>
-                    @else
-                        <h4 class="mb-lg-5 mb-3">REGIONS</h4>
-                        <div class="row g-lg-5 g-3 pb-5" id="regionalEsimsRegionsList"></div>
-                    @endif
-                </div>
-                <div class="tab-pane {{ $perameters['type'] == 'musafir' ? 'active' : '' }}" id="musafirPlans" role="tabpanel" aria-labelledby="musafirPlans-tab">
-                    @if($perameters['type'] == 'musafir')
-                        <div id="musafirEsimPlans"></div>
-                    @else
-                        <h4 class="mb-lg-5 mb-3">Countries</h4>
-                        <div class="row g-lg-5 g-3 pb-lg-5 pb-3" id="musafirPlansCountriesList"></div>
-                        <div class="row pb-5 justify-content-center" id="musafirShowAllCountriesContainer">
-                            <div class="col-lg-6 col-md-8">
-                                <div class="card border-0">
-                                    <div class="card-body text-center">
-                                        <a href="javascript:;" id="musafirShowAllCountriesBtn"><p class="mb-0">Show All Countries</p></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div> --}}
         <div class="container container-theme" data-aos="fade-up" data-aos-delay="300">
             <ul class="nav nav-tabs justify-content-center border-bottom-0 gap-lg-4 gap-md-3 gap-2" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -525,6 +445,29 @@
             $('#buyNowPackage').val($(this).data('bundledata'));
             $('#buyNowPackageId').val($(this).data('bundleid'));
             $('#packageDetailModel').modal('show');
+        });
+
+        $('#clear-button').on('click', function() {
+            $('#search-field').val('');
+            $('#search-results').hide('slow');
+        });
+        $('#search-field').on('keyup', function() {
+            let keyword = $(this).val();
+            if (keyword.length >= 2) {
+                $('#search-results').show('slow');
+                $('#search-results').html(config.spinnerContent);
+                $.ajax({
+                    url: "{{ route('home.search') }}",
+                    type: "GET",
+                    data: { keyword: keyword },
+                    dataType: "json",
+                    success: function(data) {
+                        $('#search-results').html(data);
+                    }
+                });
+            }else{
+                $('#search-results').hide('slow');
+            }
         });
     });
 </script>

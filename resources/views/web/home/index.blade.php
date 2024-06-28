@@ -11,7 +11,7 @@
 <section id="hero" class="hero">
     <div class="container container-theme position-relative hero-container d-flex">
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
-            <div class="col-12 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+            <div class="col-12 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start banner-container">
                 <h3>
                     <span>Welcome To Musafir... </span>Stay connected, wherever you travel, at affordable prices 
                 </h3>
@@ -29,20 +29,6 @@
         </div>
     </div>
 </section>
-{{-- <section id="hero" class="hero">
-    <div class="container container-theme position-relative hero-container d-flex">
-        <div class="row gy-5" data-aos="zoom-in" data-aos-delay="100">
-            <div class="col-12 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-                <h3>
-                  <span>Welcome To Musafir... </span>Stay connected, wherever you travel, at affordable prices
-                </h3>
-                <h4>
-                  Empowering connectivity
-                </h4>
-            </div>
-        </div>
-    </div>
-</section> --}}
 <!-- End Hero Section -->
 <!-- ======= Main ======= -->
 <main id="main">
@@ -370,7 +356,7 @@
         });
         $('#search-field').on('keyup', function() {
             let keyword = $(this).val();
-            if (keyword.length >= 1) {
+            if (keyword.length >= 2) {
                 $('#search-results').show('slow');
                 $('#search-results').html(config.spinnerContent);
                 $.ajax({
