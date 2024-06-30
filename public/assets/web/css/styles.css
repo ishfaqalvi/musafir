@@ -1292,8 +1292,8 @@ background: linear-gradient(180deg, #0872A4 0.01%, #579CBC 100%);
 .profile .account-info-form .transaction-id {
     position: relative;
     cursor: pointer;
-    color: blue;
-    text-decoration: underline;
+    color: var(--color-yellow);
+    text-decoration: none;
 }
 .profile .account-info-form .transaction-id:hover::after {
     content: "Click to copy";

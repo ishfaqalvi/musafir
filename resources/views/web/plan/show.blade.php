@@ -454,7 +454,7 @@
                             <div class="card w-100">
                                 <ul class="list-group border-0">
                                     <li class="list-group-item">
-                                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                        <div class="d-flex align-items-center justify-content-between gap-3">
                                             <div>
                                                 <p class="label-field">Network</p>
                                             </div>

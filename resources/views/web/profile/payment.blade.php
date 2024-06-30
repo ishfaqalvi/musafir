@@ -46,7 +46,6 @@
             tempInput.select();
             document.execCommand("copy");
             document.body.removeChild(tempInput);
-            alert("Transaction ID copied: " + transactionId);
         }
     </script>
 @endsection

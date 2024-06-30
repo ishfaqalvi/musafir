@@ -183,7 +183,7 @@
             <p>We're sorry, but we couldn't find any packages.. If you need further assistance, feel free to contact our support team.</p>
         </div>
         <div class="Confirm-Purchase add_new_card text-center">
-            <a href="{{ route('home.index') }}" class="btn">PURCHASED NOW</a>
+            <a href="{{ route('home.index') }}" class="btn">BUY DATA BUNDLE</a>
         </div>
     </div>
 </div>
