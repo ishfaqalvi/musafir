@@ -8,6 +8,11 @@ class SubscriptionService extends BaseService
         return $this->get('/Subscription/GetUserSubscriptionsCategory', [], $token)['data']['details'];
     }
 
+    public function getEsimInfo($id, $token)
+    {
+        return $this->get('/Subscription/GetEsimInfo/'.$id, [], $token)['data']['details'];
+    }
+
     public function subscribePackage($data, $token)
     {
         $message = 'Something went wrong in subscribing package!';

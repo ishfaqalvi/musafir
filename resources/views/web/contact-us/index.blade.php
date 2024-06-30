@@ -14,7 +14,17 @@
 
 @section('content')
 <section id="hero" class="hero check-hero mb-5">
-    <div class="container container-theme position-relative hero-container check-container d-flex"></div>
+    <div class="container container-theme position-relative hero-container check-container d-flex">
+        <div class="row gy-5 w-100" data-aos="fade-in">
+            <div class="col-12 order-2 order-lg-1 d-flex  justify-content-center align-items-end">
+                <div> 
+                    <h4 class="mb-0">
+                        Contact Musafir Support
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <main id="main pt-3">
     <section class="Contact-Us">
@@ -23,27 +33,26 @@
                 <div class="col-lg-6 d-lg-grid">
                     <div class="contact_us_div">
                         <h2>Contact - Us</h2>
-                        <p>Email, call, or complete the form to learn how eSim can solve your problem.</p>
+                        <p>Email us or complete the form to learn how eSim can solve your problem.</p>
                         <div class="pb-lg-4 pb-3 email-or-num">
                             <div>
-                                <a href="#">info@musafireSim.com</a>
+                                <a href="mailto:enquiries@musfirsolutions.com" target="_blank">enquiries@musfirsolutions.com</a>
                             </div>
-                            <div>
+                            {{-- <div>
                                 <a href="#">3738-3874774-09</a>
-                            </div>
+                            </div> --}}
                         </div>
                         {{-- <a href="#" class="customer-suppport">Customer Support</a> --}}
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
                             <h5>Customer Support</h5>
-                            <p>Our Support team is available around the clock to address any concerns or queries you may have</p>
+                            <p>Our Support team is available 24/7 to address any concerns or queries you may have.</p>
                         </div>
                         <div class="col-lg-6">
                             <h5>Feedback & Suggestions</h5>
                             <p>
-                                We value your feedback and are continuously working to improve Musafir eSim. your input
-                                is crucial in shaping the future of Musafir.e
+                                We value your feedback and are continuously working to improve Musafir eSim. Your input is crucial in shaping the future of Musafir eSim.
                             </p>
                         </div>
                     </div>
@@ -127,8 +136,10 @@
                     data: formData,
                     success: function(responce) {
                         if(responce.status){
-                            toastr.success('Your message send successfully.');
-                            window.location.reload();
+                            toastr.success('Request submitted successfully.');
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 3000);
                         }else{
                             toastr.warning(responce.message);
                             $('#submitBtn').html(config.submitBtnContent);

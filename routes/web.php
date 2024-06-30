@@ -107,6 +107,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Web', 'middleware' => ['api.a
         Route::get('used-bundles',          'usedBundles'       )->name('usedBundles'      );
         Route::get('activate-bundles',      'activateBundles'   )->name('activateBundles'  );
         Route::get('bundles-data',          'bundlesData'       )->name('bundlesData'      );
+        Route::get('esim-info',             'esimInfo'          )->name('esimInfo'      );
         Route::get('logout',                'logout'            )->name('logout'           );
     });
 

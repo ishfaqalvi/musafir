@@ -123,8 +123,21 @@ class ProfileController extends Controller
     {
         $token = session('api_token')['token'];
         $records = $this->subscription->subscriptionsCategory($token);
-        $data = view('web.render.bundles', ['records' => $records[$request->type]])->render();
+        $data = view('web.render.bundles', ['records' => $records[$request->type], 'type' => $request->type])->render();
         return response()->json($data);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function esimInfo(Request $request)
+    {
+        $token = session('api_token')['token'];
+        $responce = $this->subscription->getEsimInfo($request->id, $token);
+        return response()->json($responce);
     }
 
     /**
@@ -136,6 +149,6 @@ class ProfileController extends Controller
     public function logout()
     {
         Session::forget('api_token');
-        return redirect()->route('auth.login-register');
+        return redirect()->route('home.index');
     }
 }

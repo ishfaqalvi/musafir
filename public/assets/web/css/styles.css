@@ -1058,7 +1058,7 @@ padding: 57px 0 100px 0;
   line-height: 25px;
   letter-spacing: 2px;
   text-align: center;
-  padding: 31px 200px 31px 200px;
+  padding: 25px 200px 25px 200px;
   gap: 10px;
   border-radius: 10px 0px 0px 0px;
   border-radius: 10px;
@@ -1288,6 +1288,23 @@ background: linear-gradient(180deg, #0872A4 0.01%, #579CBC 100%);
 .profile .account-info-form {
   max-width: 827px;
   margin: auto;
+}
+.profile .account-info-form .transaction-id {
+    position: relative;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+.profile .account-info-form .transaction-id:hover::after {
+    content: "Click to copy";
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    white-space: nowrap;
+    z-index: 1000;
+    top: 20px; /* Adjust based on your design */
+    left: 0;
 }
 .profile .account-info-form  h3 , .profile .account-info-form  h4 {
   font-size: 35px;

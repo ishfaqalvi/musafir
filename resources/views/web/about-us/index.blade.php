@@ -17,9 +17,9 @@
     <div class="container container-theme position-relative hero-container check-container d-flex">
         <div class="row gy-5 w-100" data-aos="fade-in">
             <div class="col-12 order-2 order-lg-1 d-flex  justify-content-center align-items-end">
-                <div>
+                <div> 
                     <h4 class="mb-0">
-                        About Musafir Esim
+                        About Musafir eSIMs
                     </h4>
                 </div>
             </div>

@@ -38,4 +38,15 @@
             });
         });
     </script>
+    <script>
+        function copyToClipboard(transactionId) {
+            var tempInput = document.createElement("input");
+            tempInput.value = transactionId;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("Transaction ID copied: " + transactionId);
+        }
+    </script>
 @endsection

@@ -421,15 +421,15 @@
                         </div>
                     </div>
                 </div> --}}
-                <div class="container additional-info px-lg-5 px-0 pb-5 mb-5">
+                <div class="container additional-info px-lg-5 px-0">
                     <div class="row g-5">
                         <div class="col-lg-6 order-lg-1">
-                            <h3 class="pb-lg-5 pt-5">
+                            <h3 class="pt-3">
                                 Supported Countries
                             </h3>
                         </div>
                         <div class="col-lg-6 order-lg-2 order-3">
-                            <h3 class="pb-lg-5 pt-5">Additional Information</h3>
+                            <h3 class="pt-3">Additional Information</h3>
                         </div>
                         <div class="col-lg-6 order-lg-3 order-2 d-flex align-items-stretch">
                             <div class="card w-100">
@@ -439,10 +439,10 @@
                                             <div
                                                 class="d-flex align-items-center justify-content-between flex-wrap gap-3">
                                                 <div>
-                                                    <p class="label-field">UNITED KINGDOM</p>
+                                                    <p class="label-field" id="supported_country_name">UNITED KINGDOM</p>
                                                 </div>
                                                 <div>
-                                                    <p class="data-field"><img src="{{ asset('assets/web/img/flag-2.svg') }}" alt=""></p>
+                                                    <p class="data-field"><img id="supported_country_flag" src="{{ asset('assets/web/img/flag-2.svg') }}" alt="" height="40px"></p>
                                                 </div>
                                             </div>
                                         </li>
@@ -459,7 +459,7 @@
                                                 <p class="label-field">Network</p>
                                             </div>
                                             <div>
-                                                <p class="data-field">02 - UK</p>
+                                                <p class="data-field" id="additional_info_network"></p>
                                             </div>
                                         </div>
                                     </li>
@@ -520,7 +520,7 @@
                 <input type="hidden" name="currency" id="buyNowCurrency">
                 <input type="hidden" name="package" id="buyNowPackage">
                 <input type="hidden" name="packageId" id="buyNowPackageId">
-                <div class="modal-footer justify-content-center py-5">
+                <div class="modal-footer justify-content-center">
                     <button type="submit" class="btn">Proceed</button>
                 </div>
             </form>

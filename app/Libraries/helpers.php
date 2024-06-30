@@ -54,3 +54,10 @@ function authName()
     }
     return $f_name .' '. $l_name;
 }
+
+function getTransactionIdInnerPart($transactionId)
+{
+    $length = strlen($transactionId);
+    $start = intval(($length - 10) / 2);
+    return substr($transactionId, $start, 10);
+}

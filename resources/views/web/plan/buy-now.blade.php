@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="payment-overlay" id="payment-overlay">
-    <span id="countdown">10</span>
+    <span id="countdown">5</span>
 </div>
 <iframe id="paymentIframe" src="{{ $url['baseurl'].'amount='.$url['amount'].'&currency='.$url['currency'].'&package='.$url['package'].'&packageId='.$url['packageId'].'&token='.$url['token'] }}&method=web" style="width:100%; height:100vh;" frameborder="0">
 </iframe>
@@ -30,7 +30,7 @@
                     $('#payment-overlay').show();
                     if (response.status) {
                         toastr.success('Your subscription completed successfully!');
-                        var countdown = 10;
+                        var countdown = 5;
                         var countdownInterval = setInterval(function() {
                             countdown--;
                             $('#countdown').text('Redirecting in '+ countdown + ' seconds...');
@@ -41,7 +41,7 @@
                         }, 1000);
                     } else {
                         toastr.warning('Your subscription is not completed!');
-                        var countdown = 10;
+                        var countdown = 5;
                         var countdownInterval = setInterval(function() {
                             countdown--;
                             $('#countdown').text('Redirecting in '+ countdown + ' seconds...');

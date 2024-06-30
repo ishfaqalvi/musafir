@@ -10,7 +10,7 @@
                 <li><a href="{{ route('home.index') }}#plans">Plans</a></li>
                 <li><a href="{{ route('page.aboutUs') }}">About Us</a></li>
                 <li><a href="{{ route('page.contactUs') }}">Contact Us</a></li>
-                <li><a href="{{ route('home.index') }}#download">Downloads</a></li>
+                <li><a href="{{ route('home.index') }}#download">Download App</a></li>
                 <li><img class="menu-divider" src="{{ asset('assets/web/img/menu-divider.svg') }}" alt="">
                 </li>
                 @php($auth = session('api_token'))
@@ -24,8 +24,8 @@
                         <li><a href="{{ route('profile.accountInfo') }}">Account Information</a></li>
                         <li><a href="{{ route('profile.payments') }}">Payment History</a></li>
                         <li><a href="{{ route('profile.subscribedBundles') }}">Subscribed Bundles</a></li>
-                        <li><a href="{{ route('profile.usedBundles') }}">Used Bundles</a></li>
-                        <li><a href="{{ route('profile.activateBundles') }}">Activate Bundles</a></li>
+                        <li><a href="{{ route('profile.activateBundles') }}">Activated Bundles</a></li>
+                        <li><a href="{{ route('profile.usedBundles') }}">Expired Bundles</a></li>
                         <li class="d-flex justify-content-between align-items-center">
                             <a href="{{ route('profile.logout') }}">Logout</a>
                             <img src="{{ asset('assets/web/img/logout.png') }}" alt="">

@@ -25,7 +25,7 @@
                         <ul class="list-group border-0 mt-0">
                             <li class="list-group-item">
                                 <h5 class="text-white United-kingdom">
-                                    <img src="{{ $flagImage }}" alt="Flag of {{ $countryName }}" height="35px" width="45px">
+                                    <img src="{{ asset('images/country-flag/'.strtolower($row['countryNavigation']['countryCode']).'.png') }}" alt="Flag of {{ $countryName }}" height="35px" width="45px">
                                     {{ $row['countryNavigation']['countryName'] }}
                                 </h5>
                             </li>
@@ -74,7 +74,7 @@
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <div class="d-flex gap-lg-4 gap-2 align-items-center img-icon">
-                                            <img src="{{ asset('assets/web/img/price.png') }}" alt="">
+                                            <img src="{{ asset('assets/web/img/vendor.png') }}" alt="">
                                             <p class="label-field">VENDOR</p>
                                         </div>
                                     </div>
@@ -90,13 +90,16 @@
                                     data-bundleid="{{ $row['bundleId'] }}"
                                     data-bundlename="{{ $row['bundleName'] }}"
                                     data-countryname="{{ $row['countryNavigation']['countryName'] }}"
+                                    data-countryflag="{{ asset('images/country-flag/'.strtolower($row['countryNavigation']['countryCode']).'.png') }}"
                                     data-tootip="{{ $row['countryNavigation']['networkTypeHimsi'] }}"
                                     data-coverage="{{ $row['countryNavigation']['networkType'] }}"
                                     data-bundledata="{{ $row['bundleData'] }}"
                                     data-period="{{ $row['period'] }}"
                                     data-periodtype="{{ $row['periodType'] }}"
                                     data-currency="{{ $row['currency'] }}"
-                                    data-price="{{ $row['price'] }}">
+                                    data-price="{{ $row['price'] }}"
+                                    data-networktype="{{ $row['countryNavigation']['networkTypeHimsi'].' | '. $row['countryNavigation']['networkTypeVimsi']}}"
+                                    >
                                     <div class="w-100 border py-2 fw-bold rounded text-white text-center">
                                         {{ 'BUY NOW ($'. $row['price'].' '.$row['currency'].')' }}
                                     </div>

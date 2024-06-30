@@ -32,7 +32,7 @@
                 <div class="row g-3 pb-lg-5 mb-lg-5 mb-5">
                     <div class="col-lg-12">
                         <div class=" Privacy-Policy-inner">
-                            <h2>Privacy-Policy</h2>
+                            <h2>Privacy Policy</h2>
                             <div class="mb-lg-5">
                                 <p>Last Updated: 25 June 2024</p>
                             </div>

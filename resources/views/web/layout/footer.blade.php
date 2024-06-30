@@ -6,9 +6,7 @@
                     <img src="{{ asset('assets/web/img/footer-logo.png') }}" alt="">
                 </a>
                 <p>
-                    Musafir is one of the leading digital eSim, Solution that solve the pain of high roaming bills
-                    by giving you
-                    access to globally at affordable prices.
+                    Musafir is one of the leading digital eSim providers, that solves the pain of high roaming bills by giving you access to Local, Regional and Global packages, at affordable prices.
                 </p>
             </div>
             <div class="col-lg-4 col-md-6 footer-links">
@@ -48,7 +46,8 @@
         </div>
     </div>
     <div class="container container-theme mt-4 d-flex justify-content-between">
-        <div class="copyright"> &copy; Copyright <strong><span>Musafir©2024.</span></strong>. All Rights Reserved </div>
+
+        <div class="copyright">&copy; {{ date('Y') }} Musafir.All Rights Reserved</div>
         <div class="credits"> Developed by <a href="https://kloudstack.co.uk" target="_blank">Kloudstack</a> </div>
     </div>
 </footer>

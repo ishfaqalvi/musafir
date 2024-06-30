@@ -20,7 +20,7 @@
                 </h4>
             <div>
             <div class="position-relative">
-                <input type="text" id="search-field" placeholder="Search for names..">
+                <input type="text" id="search-field" placeholder="Search data packs for 250+ countries and...">
                 <a href="javascript:void();" id="clear-button">
                     <img class="img-cross" src="{{ asset('assets/web/img/search-clear-icon.png') }}" alt="">
                 </a>
@@ -267,6 +267,7 @@
 @section('script')
 <script>
     $(function () {
+        $('#clear-button').hide();
         const config = {
             spinnerContent: `
             <div class="text-center text-warning">
@@ -329,7 +330,7 @@
             $regionsList.html(data);
         });
 
-        fetchData(`${config.routes.countries}?type=musafir&page=first`, (data) => {
+        fetchData(`${config.routes.countries}?type=global&page=first`, (data) => {
             $musafirCountries.html(data);
             $musafirShowAllContainer.show();
         });
@@ -345,7 +346,7 @@
 
         $(config.selectors.musafirShowAllBtn).on('click', function () {
             $musafirShowAllContainer.html(config.spinnerContent);
-            fetchData(`${config.routes.countries}?type=musafir&page=remaining`, (data) => {
+            fetchData(`${config.routes.countries}?type=global&page=remaining`, (data) => {
                 $musafirCountries.append(data);
                 $musafirShowAllContainer.hide();
             });
@@ -353,10 +354,12 @@
         $('#clear-button').on('click', function() {
             $('#search-field').val('');
             $('#search-results').hide('slow');
+            $('#clear-button').hide('slow');
         });
         $('#search-field').on('keyup', function() {
             let keyword = $(this).val();
             if (keyword.length >= 2) {
+                $('#clear-button').show('slow');
                 $('#search-results').show('slow');
                 $('#search-results').html(config.spinnerContent);
                 $.ajax({
@@ -369,6 +372,7 @@
                     }
                 });
             }else{
+                $('#clear-button').hide('slow');
                 $('#search-results').hide('slow');
             }
         });

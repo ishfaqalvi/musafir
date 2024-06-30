@@ -2,7 +2,7 @@
 
 @section('profile_content')
     <div class="account-info-form h-100">
-        <h3>Activate Bundles</h3>
+        <h3>Activated Bundles</h3>
         <div class="payment-method" id="page-content"></div>
     </div>
 @endsection

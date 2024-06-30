@@ -20,7 +20,7 @@
                 </h4>
             <div>
             <div class="position-relative">
-                <input type="text" id="search-field" placeholder="Search for names..">
+                <input type="text" id="search-field" placeholder="Search data packs for 250+ countries and...">
                 <a href="javascript:void();" id="clear-button">
                     <img class="img-cross" src="{{ asset('assets/web/img/search-clear-icon.png') }}" alt="">
                 </a>
@@ -64,7 +64,7 @@
                 </li>
                 <li class="nav-item" role="presentation">
                     <button
-                        class="nav-link {{ $parameters['type'] == 'musafir' ? 'active' : '' }}"
+                        class="nav-link {{ $parameters['type'] == 'global' ? 'active' : '' }}"
                         id="musafirPlans-tab"
                         data-bs-toggle="tab"
                         data-bs-target="#musafirPlans"
@@ -100,7 +100,7 @@
                         <div class="row g-lg-5 g-3 pb-5" id="regionalEsimsRegionsList"></div>
                     </div>
                 </div>
-                <div class="tab-pane {{ $parameters['type'] == 'musafir' ? 'active' : '' }}" id="musafirPlans" role="tabpanel" aria-labelledby="musafirPlans-tab">
+                <div class="tab-pane {{ $parameters['type'] == 'global' ? 'active' : '' }}" id="musafirPlans" role="tabpanel" aria-labelledby="musafirPlans-tab">
                     <div id="musafirEsimPlans"></div>
                     <div id="musafirCountriesContainer">
                         <h4 class="mb-lg-5 mb-3">Countries</h4>
@@ -277,6 +277,7 @@
 @section('script')
 <script>
     $(document).ready(function() {
+        $('#clear-button').hide();
         const config = {
             type: "{{ $parameters['type'] }}",
             parameters: @json($parameters),
@@ -344,7 +345,7 @@
                 $('#regionsContainer').hide();
                 $regionalEsimPlans.append(config.spinnerContent);
                 break;
-            case 'musafir':
+            case 'global':
                 $('#musafirCountriesContainer').hide();
                 $musafirEsimPlans.append(config.spinnerContent);
                 break;
@@ -370,14 +371,14 @@
             $regionsList.html(data);
         });
 
-        fetchData(`${config.routes.countries}?type=musafir&page=first`, (data) => {
+        fetchData(`${config.routes.countries}?type=global&page=first`, (data) => {
             $musafirCountries.html(data);
             $musafirShowAllContainer.show();
         });
 
         $(config.selectors.musafirShowAllBtn).on('click', function() {
             $musafirShowAllContainer.html(config.spinnerContent);
-            fetchData(`${config.routes.countries}?type=musafir&page=remaining`, (data) => {
+            fetchData(`${config.routes.countries}?type=global&page=remaining`, (data) => {
                 $musafirCountries.append(data);
                 $musafirShowAllContainer.hide();
             });
@@ -391,7 +392,7 @@
                 case 'regional':
                     $regionalEsimPlans.html(data);
                     break;
-                case 'musafir':
+                case 'global':
                     $musafirEsimPlans.html(data);
                     break;
             }
@@ -444,18 +445,23 @@
             $('#buyNowCurrency').val($(this).data('currency'));
             $('#buyNowPackage').val($(this).data('bundledata'));
             $('#buyNowPackageId').val($(this).data('bundleid'));
+            $('#supported_country_name').text($(this).data('countryname'));
+            $('#supported_country_flag').attr('src', $(this).data('countryflag'));
+            $('#additional_info_network').text($(this).data('networktype'))
             $('#packageDetailModel').modal('show');
         });
 
         $('#clear-button').on('click', function() {
             $('#search-field').val('');
             $('#search-results').hide('slow');
+            $('#clear-button').hide('slow');
         });
         $('#search-field').on('keyup', function() {
             let keyword = $(this).val();
             if (keyword.length >= 2) {
                 $('#search-results').show('slow');
                 $('#search-results').html(config.spinnerContent);
+                $('#clear-button').show('slow');
                 $.ajax({
                     url: "{{ route('home.search') }}",
                     type: "GET",
@@ -466,6 +472,7 @@
                     }
                 });
             }else{
+                $('#clear-button').hide('slow');
                 $('#search-results').hide('slow');
             }
         });

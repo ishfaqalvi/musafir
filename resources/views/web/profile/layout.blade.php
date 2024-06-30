@@ -27,15 +27,15 @@
                     <div class="profile-list card border-0">
                         <div class="card-header text-center bg-transparent py-3">
                             <h5>{{ authName() }}</h5>
-                            <span>Traveler</span>
+                            {{-- <span>Traveler</span> --}}
                         </div>
                         <div class="card-body">
                             <ul>
                                 <li><a href="{{ route('profile.accountInfo') }}" class="{{ request()->routeIs('profile.accountInfo*') ? 'active' : ''}}">Account Information</a></li>
                                 <li><a href="{{ route('profile.payments')}}" class="{{ request()->routeIs('profile.payments*') ? 'active' : ''}}">Payment History</a></li>
                                 <li><a href="{{ route('profile.subscribedBundles') }}" class="{{ request()->routeIs('profile.subscribedBundles*') ? 'active' : ''}}">Subscribed Bundles</a></li>
-                                <li><a href="{{ route('profile.usedBundles') }}" class="{{ request()->routeIs('profile.usedBundles*') ? 'active' : ''}}">Used Bundles</a></li>
-                                <li><a href="{{ route('profile.activateBundles') }}" class="{{ request()->routeIs('profile.activateBundles*') ? 'active' : ''}}">Activate Bundles</a></li>
+                                <li><a href="{{ route('profile.activateBundles') }}" class="{{ request()->routeIs('profile.activateBundles*') ? 'active' : ''}}">Activated Bundles</a></li>
+                                <li><a href="{{ route('profile.usedBundles') }}" class="{{ request()->routeIs('profile.usedBundles*') ? 'active' : ''}}">Expired Bundles</a></li>
                                 <li class="d-flex justify-content-between align-items-center">
                                     <a href="{{ route('profile.logout') }}">Logout</a>
                                     <img src="{{ asset('assets/web/img/logout.png') }}" alt="">
