@@ -57,7 +57,7 @@ class PlanController extends Controller
         $packageId = $request->input('packageId');
         $token = session('api_token')['token'];
         $url = [
-            'baseurl' => "https://griffin26-001-site10.atempurl.com/checkout.html?",
+            'baseurl' => "http://ksatif-001-site3.atempurl.com/checkout.html?",
             'amount' => urlencode($amount),
             'currency' => urlencode($currency),
             'package' => urlencode($package),
