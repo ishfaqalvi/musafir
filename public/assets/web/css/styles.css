@@ -1788,3 +1788,30 @@ body.blocked {
     font-size: 24px;
     z-index: 9999;
 }
+.account-info-form .payment-method .qr-modal {
+    max-width: 550;
+    background: rgba(240, 240, 240, 1);
+    border-radius: 40px;
+}
+.account-info-form .payment-method .qr-modal .modal-content {
+    max-width: 550;
+    background: rgba(240, 240, 240, 1);
+    border-radius: 40px;
+}
+.account-info-form .payment-method .qr-modal h1  {
+    font-family: var(--font-secondary);
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 45px;
+}
+.account-info-form .payment-method .qr-modal p {
+    font-family: var(--font-secondary);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    color: rgba(138, 138, 138, 1);
+    max-width: 526px;
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}

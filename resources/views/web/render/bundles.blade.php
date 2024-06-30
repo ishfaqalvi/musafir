@@ -17,7 +17,7 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
                                     <div class="d-flex gap-4 align-items-center">
-                                        <img src="{{ asset('assets/web/img/COVERAGE.svg') }}" alt="">
+                                        <img src="{{ asset('assets/web/img/iccid.png') }}" alt="">
                                         <p class="label-field">
                                             ICCID
                                         </p>
@@ -58,6 +58,23 @@
                                 </div>
                             </div>
                         </li>
+                        @if($type == 'activatedBundles')
+                        <li class="list-group-item">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="d-flex gap-4 align-items-center">
+                                        <img src="{{ asset('assets/web/img/DATA.svg') }}" alt="">
+                                        <p class="label-field">
+                                            REMAINING DATA
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="data-field">{{ $row['remainFlowCM'] }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        @endif
                         <li class="list-group-item">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
@@ -73,6 +90,23 @@
                                 </div>
                             </div>
                         </li>
+                        @if($type == 'activatedBundles')
+                        <li class="list-group-item">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="d-flex gap-4 align-items-center">
+                                        <img src="{{ asset('assets/web/img/VALIDITY.svg') }}" alt="">
+                                        <p class="label-field">
+                                            REMAINING TIME
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="data-field">{{ $row['remainTimeCM'] }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        @endif
                         <li class="list-group-item">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div>
