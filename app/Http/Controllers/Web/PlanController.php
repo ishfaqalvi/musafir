@@ -80,10 +80,13 @@ class PlanController extends Controller
             $category     = $this->adminService->getCountryByCode($parameters['country']);
             $countryName  = htmlspecialchars($category['countryName'], ENT_QUOTES, 'UTF-8');
             $flagImage    = asset('images/country-flag/'.strtolower($category['countryCode']).'.png');
+            $countryCode  = $category['countryCode'];
         }
         $data = view('web.render.plans', [
             'parameters' => $parameters,
             'type' => $parameters['type'],
+            'countryCode' => $countryCode ?? '',
+            'region' => $parameters['region'] ?? '',
             'name' => $parameters['name'] ?? '',
             'countryName' => $countryName ?? '',
             'flagImage' => $flagImage ?? '',

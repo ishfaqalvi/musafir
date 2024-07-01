@@ -111,6 +111,42 @@
             </div>
         @endforeach
     </div>
+    @if($plans['totalPages'] > 1)
+    <div class="row pb-5 justify-content-center mt-lg-5">
+        <div class="text-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination pagination-lg justify-content-center">
+                    @if($plans['currentPage'] == 1)
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&laquo;</a>
+                        </li>
+                    @else
+                        @php($parameters =['type' => $type, 'region' => $region, 'country' => htmlspecialchars($countryCode, ENT_QUOTES, 'UTF-8'), 'page' => 1, 'pageSize' => 9])
+                        <li class="page-item">
+                            <a class="page-link" href="{{ route('plans.index', $parameters) }}#portfolio">&laquo;</a>
+                        </li>
+                    @endif
+                    @for($i = 1; $i <= $plans['totalPages']; $i++)
+                        @php($parameters =['type' => $type, 'region' => $region, 'country' => htmlspecialchars($countryCode, ENT_QUOTES, 'UTF-8'), 'page' => $i, 'pageSize' => 9])
+                        <li class="page-item {{ request('page', 1) == $i ? 'active' : '' }}">
+                            <a class="page-link" href="{{ route('plans.index', $parameters) }}#portfolio">{{ $i }}</a>
+                        </li>
+                    @endfor
+                    @if($plans['totalPages'] == $plans['currentPage'])
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                    @else
+                        @php($parameters =['type' => $type, 'region' => $region, 'country' => htmlspecialchars($countryCode, ENT_QUOTES, 'UTF-8'), 'page' => $plans['totalPages'], 'pageSize' => 9])
+                        <li class="page-item">
+                            <a class="page-link" href="{{ route('plans.index', $parameters) }}#portfolio">&raquo;</a>
+                        </li>
+                    @endif
+                </ul>
+            </nav>
+        </div>
+    </div>
+    @endif
 @else
     <div class="row mb-md-5">
         <div class="col-sm-12 text-center">

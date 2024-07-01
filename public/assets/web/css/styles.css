@@ -605,7 +605,12 @@
   .hero #search-results li a:hover:not(.header) {
     background-color: #eee;
   }
-  
+  /* .hero .tab-content .pagination .page-item {
+    color: var(--color-yellow) !important;
+  }
+  .hero .tab-content .pagination .active {
+    background-color: var(--color-yellow) !important;
+  } */
 
 
 /*--------------------------------------------------------------

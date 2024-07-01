@@ -399,7 +399,7 @@
         });
 
         $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-            const targetType = $(e.target).data('bs-target').substring(1); // Get the ID without #
+            const targetType = $(e.target).data('bs-target').substring(1);
             switch (targetType) {
                 case 'localEsims':
                     $localEsimPlans.hide();
